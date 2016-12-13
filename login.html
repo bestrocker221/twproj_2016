@@ -11,9 +11,9 @@
     <title>Login</title>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container ">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3 group-login">
             <div class="panel panel-login">
                 <div class="panel-heading">
                     <div class="row">
@@ -31,19 +31,24 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form id="login-form" action="#" method="post" role="form" style="display:block;">
-                                <div class="form-group">
+                            <!-- LOGIN FORM -->
+                            <form class="form-horizontal" id="login-form" action="#" method="post" role="form" style="display:block;">
+                                <div id="row-user" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                     <label for="username" hidden>Username</label>
-                                    <input class="form-control" autofocus placeholder="Username" tabindex="1" value="" type="text" name="username" id="username" >
+                                    <input class="form-control" autofocus placeholder="Username o Email" tabindex="1" value="" type="text" name="username" id="username" >
+                                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                                 </div>
-                                <div class="form-group">
+                                <div id="row-password" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                     <label for="password" hidden>Password</label>
                                     <input class="form-control" placeholder="Password" value="" tabindex="2" type="text" name="password" id="password" >
+                                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                                 </div>
                                 <!-- error messages -->
-                                <div id="error-div" class="alert alert-danger alert-dismissible fade in" style="display: none;">
+                                <div id="error-div" class="alert alert-danger alert-dismissible fade in" style="display: none; margin-top: 10px;">
                                     <a href="#" class="close" aria-label="close">&times;</a>
-                                    <strong>Errore!</strong><span id="error-msg"> Mancano informazioni per procedere </span>
+                                    <strong>Errore!</strong><span id="error-msg"> Mancano informazioni per procedere (minimo 8 caratteri) </span>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
@@ -64,6 +69,7 @@
                                     </div>
                                 </div>
                             </form>
+                            <!-- REGISTER FORM -->
                             <form id="register-form" action="" method="post" role="form" style="display: none;">
                                 <div class="form-group">
                                     <label for="name" hidden>Nome</label>
@@ -74,10 +80,14 @@
                                     <input type="text" name="Surname" id="surname" tabindex="2" class="form-control" placeholder="Il tuo cognome" value="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email" hidden>Email</label>
-                                    <input type="email" name="Email" id="email" tabindex="3" class="form-control" placeholder="La tua email" value="">
+                                    <div class="input-group" >
+                                            <label for="email1" hidden>Email hostname</label>
+                                            <input type="email" name="Email1" id="email1" tabindex="3" class="form-control" placeholder="example" value="" style="text-align: right" >
+                                            <span class="input-group-addon" id="sizing-addon1" style="width: 10%;">@</span>
+                                            <label for="email2" hidden>Email domain name</label>
+                                            <input type="email" name="Email2" id="email2" tabindex="3" class="form-control" placeholder="example.com" value="" style="text-align: left">
+                                    </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">

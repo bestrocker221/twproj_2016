@@ -50,6 +50,18 @@ Input behind panel login
     transition: all 0.1s linear;
 }
 
+.group-login{
+    box-shadow: 5px 5px 5px #ccc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+}
+
+input{
+    text-align: center;
+}
+
+/*
 .panel-login input:hover,
 .panel-login input:focus{
     outline:none;
@@ -57,7 +69,7 @@ Input behind panel login
     -moz-box-shadow: none;
     box-shadow: none;
     border-color:#ccc;
-}
+}*/
 
 .btn.btn-login {
     background-color: #59B2E0;
