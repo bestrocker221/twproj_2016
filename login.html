@@ -34,7 +34,7 @@
                             <form id="login-form" action="#" method="post" role="form" style="display:block;">
                                 <div class="form-group">
                                     <label for="username" hidden>Username</label>
-                                    <input class="form-control" placeholder="Username" tabindex="1" value="" type="text" name="username" id="username" >
+                                    <input class="form-control" autofocus placeholder="Username" tabindex="1" value="" type="text" name="username" id="username" >
                                 </div>
                                 <div class="form-group">
                                     <label for="password" hidden>Password</label>
@@ -43,7 +43,7 @@
                                 <!-- error messages -->
                                 <div id="error-div" class="alert alert-danger alert-dismissible fade in" style="display: none;">
                                     <a href="#" class="close" aria-label="close">&times;</a>
-                                    <strong>Errore!</strong><span id="error-msg"> Mancano informazioni </span>
+                                    <strong>Errore!</strong><span id="error-msg"> Mancano informazioni per procedere </span>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
@@ -67,7 +67,15 @@
                             <form id="register-form" action="" method="post" role="form" style="display: none;">
                                 <div class="form-group">
                                     <label for="name" hidden>Nome</label>
-                                    <input type="text" name="Name" id="name" tabindex="1" class="form-control" placeholder="Il tuo nome" value="">
+                                    <input type="text" name="Name" id="name" tabindex="1" autofocus class="form-control" placeholder="Il tuo nome" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="surname" hidden>Cognome</label>
+                                    <input type="text" name="Surname" id="surname" tabindex="2" class="form-control" placeholder="Il tuo cognome" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" hidden>Email</label>
+                                    <input type="email" name="Email" id="email" tabindex="3" class="form-control" placeholder="La tua email" value="">
                                 </div>
 
                                 <div class="form-group">
