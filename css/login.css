@@ -1,5 +1,5 @@
 div{
-    padding-top: 30px;
+    padding-top: 10px;
 }
 .panel-login{
     border-color: #ccc;
@@ -50,21 +50,52 @@ Input behind panel login
     transition: all 0.1s linear;
 }
 
-.panel-login input:hover , input:focus{
+.panel-login input:hover,
+.panel-login input:focus{
     outline:none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
     border-color:#ccc;
 }
-.btn-login{
+
+.btn.btn-login {
     background-color: #59B2E0;
     outline: none;
     color: #fff;
     font-size:14px;
     height: auto;
     font-weight: normal;
-    text-transform: capitalize;
+    text-transform: uppercase;
     padding: 14px 0;
     border-color: #59B2E6;
+}
+.btn.btn-login:hover,
+.btn.btn-login:focus{
+    color: #fff;
+    background-color: #53a3cd;
+    border-color: #53a3cd;
+}
+.forgot-password:hover,
+.forgot-password:focus {
+    text-decoration: underline;
+    color: #666;
+}
+
+.btn.btn-register {
+    background-color: #1CB94E;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    text-transform: uppercase;
+    border-color: #1CB94A;
+}
+.btn.btn-register:hover,
+.btn.btn-register:focus {
+    color: #fff;
+    background-color: #1CA347;
+    border-color: #1CA347;
 }
