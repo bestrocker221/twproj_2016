@@ -1,5 +1,5 @@
 div{
-    padding-top: 30px;
+    padding-top: 10px;
 }
 .panel-login{
     border-color: #ccc;
@@ -57,14 +57,24 @@ Input behind panel login
     box-shadow: none;
     border-color:#ccc;
 }
-.btn-login{
+
+.btn.btn-login {
     background-color: #59B2E0;
     outline: none;
     color: #fff;
     font-size:14px;
     height: auto;
     font-weight: normal;
-    text-transform: capitalize;
+    text-transform: uppercase;
     padding: 14px 0;
     border-color: #59B2E6;
+}
+.btn.btn-login:hover, .btn.btn-login:focus{
+    color: #fff;
+    background-color: #53a3cd;
+    border-color: #53a3cd;
+}
+.forgot-password:hover, .forgot-password:focus {
+    text-decoration: underline;
+    color: #666;
 }
