@@ -19,9 +19,17 @@ $(function (){
         event.preventDefault();
     });
 
+    $('.alert .close').on('click', function(e) {
+        $(this).parent().hide();
+    });
+
     $("#login-submit").click(function (event) {
-
-
+        console.log("entro");
+        if($("#username").val().length < 8){
+            console.log("entro2");
+            $(".alert").show();
+        }
+        event.preventDefault();
     });
 
 });
