@@ -1,5 +1,5 @@
 div{
-    padding-top: 10px;
+    padding-top: 5px;
 }
 .panel-login{
     border-color: #ccc;
@@ -110,4 +110,11 @@ input{
     color: #fff;
     background-color: #1CA347;
     border-color: #1CA347;
+}
+.pwstrength_viewport_progress>div{
+    padding-top:0!important;
+}
+.pwstrength_viewport_progress>.progress{
+    border-radius: 18px;
+    height: inherit;
 }
