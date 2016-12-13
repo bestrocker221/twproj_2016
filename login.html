@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="css/bootsnipp.min.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <meta charset="UTF-8">
     <title>Login</title>
 </head>
 <body>
-<div class="row">
-    <div class="span12">
-        <div class="" id="loginModal">
-            <div class="modal-header">
-                <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
-                <h1>Hai già un account?</h1>
-            </div>
-            <div class="modal-body">
-                <div class="well">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#login" data-toggle="tab">Login</a> </li>
-                        <li><a href="#create" data-toggle="tab">Create Account</a></li>
-                    </ul>
-                    <div id="" class="tab-content">
-                        <div class="tab-pane active in" id="login">
-                            <form class="form-horizontal" action="" method="post">
-                                <fieldset>
-                                    <div id="legend">
-                                        <legend class="">Login</legend>
-                                    </div>
-                                    <div class="control-group">
-                                        <!-- username -->
-                                        <label class="control-label" for="username">Username</label>
-                                        <div class="controls">
-                                            <input type="text" id="username" name="username" placeholder="Inserisci username" class="input-xlarge">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-login">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#login" class="active" id="login-form-link">Login</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#registrati" id="register-form-link">Registrati</a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form id="login-form" action="#" method="post" role="form" style="display:block;">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input class="form-control" placeholder="Username" tabindex="1" value="" type="text" name="username" id="username" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input class="form-control" placeholder="Password" value="" tabindex="2" type="text" name="password" id="password" >
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="login-submit" id="login-submit" tabindex="3" class="form-control btn btn-login" value="Log in">
                                         </div>
                                     </div>
-                                </fieldset>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="text-center">
+                                                <label for="forgot-password" hidden>Forgot password?</label>
+                                                <a href="#s" tabindex="4" class="forgot-password" id="forgot-password">Password dimenticata?</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
