@@ -11,8 +11,8 @@
     <title>Login</title>
 </head>
 <body>
-<div class="container ">
-    <div class="row">
+<div class="container">
+    <div class="row" >
         <div class="col-md-6 col-md-offset-3 group-login">
             <div class="panel panel-login">
                 <div class="panel-heading">
@@ -29,21 +29,19 @@
                     <hr>
                 </div>
                 <div class="panel-body">
-                    <div class="row">
+                    <div class="row" id="pwd-container">
                         <div class="col-lg-12">
                             <!-- LOGIN FORM -->
                             <form class="form-horizontal" id="login-form" action="#" method="post" role="form" style="display:block;">
                                 <div id="row-user" class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                     <label for="username" hidden>Username</label>
-                                    <input class="form-control" autofocus placeholder="Username o Email" tabindex="1" value="" type="text" name="username" id="username" >
-                                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                    <input class="form-control" autofocus autocomplete="yes" placeholder="Email Istituzionale" tabindex="1" value="" type="text" name="username" id="username" >
                                 </div>
                                 <div id="row-password" class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                     <label for="password" hidden>Password</label>
-                                    <input class="form-control" placeholder="Password" value="" tabindex="2" type="text" name="password" id="password" >
-                                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                    <input class="form-control" placeholder="Password" value="" tabindex="2" type="password" name="password" id="password-login" >
                                 </div>
                                 <!-- error messages -->
                                 <div id="error-div" class="alert alert-danger alert-dismissible fade in" style="display: none; margin-top: 10px;">
@@ -70,29 +68,43 @@
                                 </div>
                             </form>
                             <!-- REGISTER FORM -->
+                            <script src="js/login_progress.js"></script>
+
                             <form id="register-form" action="" method="post" role="form" style="display: none;">
-                                <div class="form-group">
+                                <div class="form-group" id="row-name">
                                     <label for="name" hidden>Nome</label>
                                     <input type="text" name="Name" id="name" tabindex="1" autofocus class="form-control" placeholder="Il tuo nome" value="">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="row-surname">
                                     <label for="surname" hidden>Cognome</label>
                                     <input type="text" name="Surname" id="surname" tabindex="2" class="form-control" placeholder="Il tuo cognome" value="">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="row-email">
                                     <div class="input-group" >
-                                            <label for="email1" hidden>Email hostname</label>
-                                            <input type="email" name="Email1" id="email1" tabindex="3" class="form-control" placeholder="example" value="" style="text-align: right" >
-                                            <span class="input-group-addon" id="sizing-addon1" style="width: 10%;">@</span>
-                                            <label for="email2" hidden>Email domain name</label>
-                                            <input type="email" name="Email2" id="email2" tabindex="3" class="form-control" placeholder="example.com" value="" style="text-align: left">
+                                            <label for="email-register" hidden>Email hostname</label>
+                                            <input type="email" name="Email1" id="email-register" tabindex="3" class="form-control" placeholder="email" value="" >
+                                            <span class="input-group-addon" id="sizing-addon1" style="width: 10%;">@studio.unibo.it</span>
                                     </div>
+                                </div>
+                                <div class="form-group" id="row-address">
+                                    <label for="address" hidden>Indirizzo</label>
+                                    <input type="text" name="indirizzo" id="address" tabindex="5" class="form-control" placeholder="Indirizzo" value="">
+                                </div>
+                                <div class="form-group" >
+                                    <label for="password" hidden>Password</label>
+                                    <input type="password" name="password" id="password" tabindex="4" class="form-control input-lg" placeholder="Password" value="">
+                                </div>
+                                <div class="pwstrength_viewport_progress"></div>
+                                <!-- error messages -->
+                                <div id="error-div-register" class="alert alert-danger alert-dismissible fade in" tabindex="5" style="display: none; margin-top: 10px;">
+                                    <a href="#" class="close" aria-label="close">&times;</a>
+                                    <strong>Errore!</strong><span id="error-msg-register"> Mancano informazioni per procedere </span>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
                                             <label for="register-submit" hidden>Registrati</label>
-                                            <input type="submit" name="register-submit" id="register-submit" tabindex="" class="form-control btn btn-register" value="Registrati">
+                                            <input type="submit" name="register-submit" tabindex="6" id="register-submit" tabindex="" class="form-control btn btn-register" value="Registrati">
                                         </div>
                                     </div>
                                 </div>
