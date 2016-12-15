@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+    .navbar-header {
+        text-align: center;
+    }
+    .navbar-toggle {
+        float: left;
+    }
+}
