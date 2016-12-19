@@ -14,14 +14,17 @@ if($db->connect_errno){
 
     $id = $_GET["id"];
 
-    $sql = "SELECT description, date, showed FROM notifications WHERE id='$id'";
+    $sql = "SELECT description, date, showed FROM notifications WHERE id_member='$id'";
     $sql2 = "SELECT COUNT(*) FROM notifications WHERE id_member='$id'";
 
     $tot = array();
 
     $result =$db->query($sql);
     if($result->num_rows > 0){
-        $tot['val'] = $result->fetch_assoc();
+        $num = $result->num_rows;
+        for( $k=0;$k<$num;$k++){
+            array_push($tot,$result->fetch_row());
+        }
     } else {
         echo "ERROR1 " . $db->error;
     }

@@ -27,15 +27,25 @@
         function checkNotifications() {
             console.log("FACCIO ROCHIESTA");
             $.get("core/ricevinotifiche.php", {"id": "2"}, function (data) {
-                /*if (data.length > 0) {
-                    $("#notification-badge").text(data.total);
-                }*/
-                console.log("TORNO");
-                alert(data);
                 var c = JSON.parse(data);
-                alert(c.val.description); //ok
+                //alert(c.val.description); //ok
+                $("#total_not").text(c.total);
+/*
+                $("#notification_list").each(function (e) {
+                    if($(this).class() == "not-elem"){
+                        $(this).parent().remove($(this));
+                    }
+                });*/
+                for(var n = 0 ; n < 6; n++){
+                    var k = document.createElement("li");
+                    k.innerHTML = "<a href=\""+ n +"\">"+ c[n][0]+ ": " +n+"</a>";
+                    $(k).addClass("not-elem");
+                    $(k).addClass()
+                    $("#notification-separator").before(k);
+                }
             });
         }
+        checkNotifications();
         /*
         setInterval(function () {
             console.log("cerco notifiche..");
