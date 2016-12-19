@@ -13,9 +13,38 @@
 <script>
     $(function(){
         $("#header").load("header.html");
+
+        $("#crea-notifica").on("click",function () {
+            $.post("core/creanotifica.php", {"id" : "2", "desc":"prova notifica"},function (data) {
+
+                alert("DATA:" + data+ " notifica creata");
+            });
+
+            console.log("cerco notifiche..");
+            checkNotifications();
+        });
+
+        function checkNotifications() {
+            console.log("FACCIO ROCHIESTA");
+            $.get("core/ricevinotifiche.php", {"id": "2"}, function (data) {
+                /*if (data.length > 0) {
+                    $("#notification-badge").text(data.total);
+                }*/
+                console.log("TORNO");
+                alert(data);
+                var c = JSON.parse(data);
+                alert(c.val.description); //ok
+            });
+        }
+        /*
+        setInterval(function () {
+            console.log("cerco notifiche..");
+            checkNotifications();
+        }, 2000);*/
     });
 </script>
-    <div id="header"></div>
+<button type="button" class="btn" id="crea-notifica" >Crea</button>
+<div id="header"></div>
 
     <section>
         <div class="container">
