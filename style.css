@@ -13,12 +13,17 @@
 .title{
 
 }
+hr{
+    margin-top: 0;
+    margin-bottom:0;
+}
+
 header{
     padding-top:10px;
     /*background: url('res/header.png') no-repeat;
     background-position: right top;
     background-size: contain;*/
-    background: linear-gradient(to bottom, rgb(191, 22, 22), rgba(0, 0, 0, 0))
+    background: linear-gradient(to bottom, rgb(204, 0, 0), rgba(0, 0, 0, 0))
 
 }
 
@@ -28,6 +33,7 @@ body {
     /*padding-top: 15px;*/
 
 }
+
 body,
 html { height: 100%;}
 
@@ -127,6 +133,11 @@ html { height: 100%;}
     transition: all 0.5s ease;
 }
 
+.row{
+    margin-right: 0 ;
+    margin-left: 0 ;
+}
+
 #wrapper.toggled {
     padding-left: 220px;
 }
@@ -160,7 +171,7 @@ html { height: 100%;}
 
 #page-content-wrapper {
     width: 100%;
-    padding-top: 70px;
+    /*padding-top: 70px;*/
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -404,4 +415,23 @@ html { height: 100%;}
     bottom: 0;
     background-color: rgba(250,250,250,.8);
     z-index: 1;
+}
+
+.navbar-login
+{
+    width: 220px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
 }
