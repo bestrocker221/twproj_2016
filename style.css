@@ -73,6 +73,7 @@ line height is 20px by default so add 30px top and bottom to equal the new .navb
 
 
 /* EXAMPLE 8 - Center on mobile*/
+
 @media only screen and (max-width : 768px){
     .example-8 .navbar-brand {
         padding: 0px;
