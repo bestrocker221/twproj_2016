@@ -15,42 +15,49 @@
         $("#header").load("header.html");
 
         $("#crea-notifica").on("click",function () {
-            $.post("core/creanotifica.php", {"id" : "2", "desc":"prova notifica"},function (data) {
-
-                alert("DATA:" + data+ " notifica creata");
+            $.post("core/gestisci_notifiche.php", {"id" : "2", "desc":"prova notifica"},function (data) {
+                console.log("OK? " + data);
             });
-
             console.log("cerco notifiche..");
-            checkNotifications();
+        });
+
+        $(".dropdown").on("click.bs.dropdown", function (event) {
+           //importa tutte le notifiche "viste"
+            //se è stata generata prima di 2s fa allora fai alert altrimenti lasciale nella lista senza alert
+            console.log("notifiche viste");
+            var x = $(event.relatedTarget).text(); // Get the button text
+            alert("You clicked on: " + x);
+            //$.post("/core/gestisci_notifiche.php", {"id":"2"});
         });
 
         function checkNotifications() {
-            console.log("FACCIO ROCHIESTA");
-            $.get("core/ricevinotifiche.php", {"id": "2"}, function (data) {
+            $.get("core/gestisci_notifiche.php", {"id": "2"}, function (data) {
+                //console.log(data);
                 var c = JSON.parse(data);
-                //alert(c.val.description); //ok
                 $("#total_not").text(c.total);
-/*
-                $("#notification_list").each(function (e) {
-                    if($(this).class() == "not-elem"){
-                        $(this).parent().remove($(this));
-                    }
-                });*/
+
+                //Remove all old notifications
+                $(".sss").each(function () {
+                    $(this).remove();
+                });
+                //set the new ones
                 for(var n = 0 ; n < 6; n++){
                     var k = document.createElement("li");
-                    k.innerHTML = "<a href=\""+ n +"\">"+ c[n][0]+ ": " +n+"</a>";
-                    $(k).addClass("not-elem");
-                    $(k).addClass()
+                    //k.innerHTML = "<a href=\""+ n +"\">"+ c[n][0]+ ": " +n+"</a>";
+                    k.innerHTML = '<a href="">ciao' + n + '</a>';
+                    $(k).addClass("sss");
                     $("#notification-separator").before(k);
                 }
+
             });
         }
-        //checkNotifications();
-        /*
+
+        checkNotifications();
+
         setInterval(function () {
             console.log("cerco notifiche..");
             checkNotifications();
-        }, 2000);*/
+        }, 2000);
     });
 </script>
 <button type="button" class="btn" id="crea-notifica" >Crea</button>
