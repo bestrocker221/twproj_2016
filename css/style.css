@@ -3,9 +3,7 @@
 }
 #nav-title{
     background-color: white;
-    border-style: outset;
-    border-color: red;
-    border-width: 1px;
+    border: 1px outset red;
     border-radius: 20px;
 }
 
@@ -66,14 +64,15 @@ html { height: 100%;}
   src: local('TrajanProRegular'), url('../fonts/TrajanProRegular.woff') format('woff'), url('../fonts/TrajanProRegular.ttf') format('truetype');
 }
 
-/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_13972">Text with this font applied</p> */
+/* use this class to attach this font to any element i.e.
+<p class="fontsforweb_fontid_13972">Text with this font applied</p> */
 .myTrajanFont {
     font-family: 'TrajanProRegular', serif !important;
 }
 
 
-/* EXAMPLE 5 - Logo with Text*/
-.example5 .navbar-brand {
+/*Logo with Text*/
+.titlebox .navbar-brand {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -81,11 +80,11 @@ html { height: 100%;}
       -ms-flex-align: center;
           align-items: center;
 }
-.example5 .navbar-brand>img {
+.titlebox .navbar-brand>img {
   padding: 7px 14px;
 }
 
-/* EXAMPLE 9 - Center with Flexbox and Text*/
+/* Center with Flexbox and Text*/
 .brand-centered {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -362,7 +361,7 @@ html { height: 100%;}
 .hamburger.is-closed .hamb-top,
 .hamburger.is-closed .hamb-middle,
 .hamburger.is-closed .hamb-bottom {
-    background-color: #1a1a1a;
+    background-color: #960000;
 }
 .hamburger.is-closed .hamb-top {
     top: 5px;
@@ -388,7 +387,7 @@ html { height: 100%;}
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-middle,
 .hamburger.is-open .hamb-bottom {
-    background-color: #1a1a1a;
+    background-color: #960000;
 }
 .hamburger.is-open .hamb-top,
 .hamburger.is-open .hamb-bottom {
