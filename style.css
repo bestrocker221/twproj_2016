@@ -10,12 +10,33 @@
   padding: 15px;
   width: auto;
 }
+.title{
+
+}
+header{
+    padding-top:10px;
+    /*background: url('res/header.png') no-repeat;
+    background-position: right top;
+    background-size: contain;*/
+    background: linear-gradient(to bottom, rgb(191, 22, 22), rgba(0, 0, 0, 0))
+
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+    /*padding-top: 15px;*/
+
+}
+body,
+html { height: 100%;}
 
 @font-face {
   font-family: 'TrajanProRegular';
   src: url('fonts/TrajanProRegular.eot');
   src: local('TrajanProRegular'), url('fonts/TrajanProRegular.woff') format('woff'), url('fonts/TrajanProRegular.ttf') format('truetype');
 }
+
 /* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_13972">Text with this font applied</p> */
 .myTrajanFont {
   font-family: 'TrajanProRegular' !important;
@@ -89,14 +110,7 @@
 }
 
 
-body {
-    position: relative;
-    overflow-x: hidden;
-    padding-top: 15px;
 
-}
-body,
-html { height: 100%;}
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {background-color: transparent;}
@@ -125,7 +139,7 @@ html { height: 100%;}
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
-    background: #1a1a1a;
+    background: rgba(36, 38, 38, 0.77);
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
