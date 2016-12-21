@@ -312,6 +312,9 @@ html { height: 100%;}
 /*       Hamburger-Cross         */
 /*-------------------------------*/
 
+.myHamb:hover{
+
+}
 .hamburger {
     position: relative;
 /*    top: -46px;*/
