@@ -71,7 +71,7 @@
                         </button>
                     </div>
                     <!-- Notifiche -->
-                    <div class="col-lg-offset-7 col-lg-4 col-md-offset-5 col-md-6 col-sm-offset-5 col-sm-6 col-xs-offset-1 col-xs-10">
+                        <div class="col-lg-offset-7 col-lg-4 col-md-offset-5 col-md-6 col-sm-offset-5 col-sm-6 col-xs-offset-1 col-xs-10">
                         <div class="navbar-header">
                             <ul class="nav navbar-nav ">
                                 <li class="dropdown">
@@ -133,7 +133,7 @@
                     <!-- /#Notifiche -->
                 </div>
                 </nav>
-                <div class="row">
+                <div class="row" style="margin-top: 40px">
                     <!-- Page Content -->
                     <div id="page-content-wrapper">
                         <div class="container-fluid">
@@ -186,7 +186,22 @@
         $('[data-toggle="offcanvas"]').click(function () {
             $('#wrapper').toggleClass('toggled');
         });
+
+
     });
+    $(document).on("scroll", function (height) {
+        var h = $(document).scrollTop();
+        console.log("dal top ci sono: " + h);
+        if(h >= 94) {
+            $("#nav-options").css("top", "0");
+            $(".navbar-fixed-top").css({"top":"0"});
+        } else {
+            $("#nav-options").css("top",94-h);
+            $(".navbar-fixed-top").css({"top": 94-h});
+        }
+
+        //console.log(height);
+    })
 </script>
 
 </body>
