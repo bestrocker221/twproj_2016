@@ -2,16 +2,19 @@
   margin-top:0px;
 }
 #nav-title{
-    background-color: white;
-    border: 1px outset red;
-    border-radius: 20px;
+    background: none;
+    /*background-color: white;
+    /*border: 1px outset red;
+    border-radius: 20px;*/
 }
 
 #nav-options{
-    background: linear-gradient(to top, rgb(243, 151, 151), rgba(0, 0, 0, 0));
+
+    /*background: linear-gradient(to top, rgb(243, 151, 151), rgba(0, 0, 0, 0));*/
+    background-color: #F44336;
     margin-right:-15px;
     margin-left:-15px;
-    top:94px;
+    top:81px;
     position: fixed;
     width: 100%;
 }
@@ -42,12 +45,21 @@ hr{
 }
 
 header{
-    padding-top:10px;
-    /*background: url('res/header.png') no-repeat;
+    /*padding-top:10px;
+    background: url('res/header.png') no-repeat;
     background-position: right top;
     background-size: contain;*/
-    background: linear-gradient(to bottom, rgb(204, 0, 0), rgba(0, 0, 0, 0))
+    background: radial-gradient(white, #F44336);
 
+}
+
+.titlebox{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.titlebox>.navbar-default{
+    border:none;
 }
 
 body {
@@ -183,7 +195,7 @@ html { height: 100%;}
 }
 
 .navbar-fixed-top{
-    top: 93px;
+    top: 81px;
 }
 
 #sidebar-wrapper::-webkit-scrollbar {
