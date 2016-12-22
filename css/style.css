@@ -9,7 +9,6 @@
 }
 
 #nav-options{
-
     /*background: linear-gradient(to top, rgb(243, 151, 151), rgba(0, 0, 0, 0));*/
     background-color: #F44336;
     margin-right:-15px;
@@ -37,6 +36,30 @@
   width: auto;
 }
 
+#notification_list a:hover{
+    transition: none !important;
+    background-color: #ffbb88 !important;
+    border-radius: 0 !important;
+}
+
+.not-media{
+    margin-top: 5px;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+ul.message-dropdown {
+    padding: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+li.message-preview {
+    width: 275px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
 .navbar-nav>li {
     display: inline-block;   /* QUANTO TEMPO MI HA FATTO PERDERE QUESTO!!!!!!!! */
 }
@@ -44,6 +67,20 @@
 .title{
 
 }
+
+.notification-item{
+
+}
+.notification-item a:hover{
+
+    -webkit-transition: background-color 0.3s linear;
+    -moz-transition: background-color 0.3s linear;
+    -ms-transition: background-color 0.3s linear;
+    -o-transition: background-color 0.3s linear;
+    transition: background-color 0.3s linear;
+    background-color: lightblue;
+}
+
 #header-image{
     position: absolute;
     width: 50%;

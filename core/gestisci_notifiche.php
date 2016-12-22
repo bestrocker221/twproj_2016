@@ -8,11 +8,12 @@
 require "db_conn.php";
 
 //crea nuova notifica
-if(isset($_POST['id']) && isset($_POST['desc'])){
+if(isset($_POST['id']) && isset($_POST['desc']) && isset($_POST['title'])){
     $id = $_POST["id"];
     $desc = $_POST["desc"];
+    $title = $_POST['title'];
 
-    $sql = "INSERT INTO notifications (id_member,description) VALUES ('$id','$desc')";
+    $sql = "INSERT INTO notifications (id_member,title,description) VALUES ('$id','$title','$desc')";
     if($db->query($sql) === TRUE){
         echo "OK";
     } else {
@@ -23,7 +24,7 @@ if(isset($_POST['id']) && isset($_POST['desc'])){
 else if (isset($_GET["id"])){
     $id = $_GET['id'];
 
-    $sql = "SELECT description, date, showed FROM notifications WHERE id_member='$id' LIMIT 6";
+    $sql = "SELECT title,description, date, showed FROM notifications WHERE id_member='$id' ORDER BY date DESC LIMIT 6";
     $sql2 = "SELECT COUNT(*) FROM notifications WHERE id_member='$id'";
 
     $tot = array();
