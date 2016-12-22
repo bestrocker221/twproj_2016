@@ -35,6 +35,10 @@
     padding: 15px;
     width: auto;
 }
+#notification_list{
+    overflow-y: auto;
+    max-height: 320px;
+}
 
 #notification_list a:hover{
     transition: none !important;

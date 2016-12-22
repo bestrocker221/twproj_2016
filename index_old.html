@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/home.css">
+    <script type="application/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+<script>
+    $(function(){
+        $("#header").load("header.html");
+
+        $("#crea-notifica").on("click",function () {
+            /*
+            $.post("core/gestisci_notifiche.php", {"id" : "2", "desc":"prova notifica"},function (data) {
+                console.log("OK? " + data);
+            });
+            console.log("cerco notifiche..");*/
+            var $template = $("#not-template").clone();
+            console.log($template);
+
+        });
+
+        $(".dropdown").on("click.bs.dropdown", function (event) {
+           //importa tutte le notifiche "viste"
+            //se è stata generata prima di 2s fa allora fai alert altrimenti lasciale nella lista senza alert
+            console.log("notifiche viste");
+            var x = $(event.relatedTarget).text(); // Get the button text
+            alert("You clicked on: " + x);
+            //$.post("/core/gestisci_notifiche.php", {"id":"2"});
+        });
+
+        function checkNotifications() {
+            $.get("core/gestisci_notifiche.php", {"id": "2"}, function (data) {
+                //console.log(data);
+                var c = JSON.parse(data);
+                $("#total_not").text(c.total);
+
+                //Remove all old notifications
+                $(".sss").each(function () {
+                    $(this).remove();
+                });
+                //set the new ones
+                for(var n = 0 ; n < 6; n++){
+                    var k = document.createElement("li");
+                    //k.innerHTML = "<a href=\""+ n +"\">"+ c[n][0]+ ": " +n+"</a>";
+                    k.innerHTML = '<a href="">ciao' + n + '</a>';
+                    $(k).addClass("sss");
+                    $("#notification-separator").before(k);
+                }
+
+            });
+        }
+
+        checkNotifications();
+
+        setInterval(function () {
+            console.log("cerco notifiche..");
+            checkNotifications();
+        }, 2000);
+    });
+</script>
+<button type="button" class="btn" id="crea-notifica" >Crea</button>
+<div id="header"></div>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div id="carousel-tour" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-tour" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-tour" data-slide-to="1"></li>
+                        <li data-target="#carousel-tour" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="res/carousel_tour1.png" alt="">
+                        </div>
+
+                        <div class="item">
+                            <img src="res/carousel_tour2.png" alt="">
+                        </div>
+
+                        <div class="item">
+                            <img src="res/carousel_tour3.png" alt="">
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-tour" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Indietro</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-tour" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Avanti</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="..." alt="...">
+                <div class="caption">
+                    <h3>News 1</h3>
+                    <p>...</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="..." alt="...">
+                <div class="caption">
+                    <h3>News 2</h3>
+                    <p>...</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="..." alt="...">
+                <div class="caption">
+                    <h3>News 3</h3>
+                    <p>...</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Altre news</h3>
+            </div>
+            <div class="panel-body">
+                News 4
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="panel panel-primary">
+                    <h2 class="panel-heading">News</h2>
+                    <div class="list-group">
+                        <a class="list-group-item">news 1</a>
+                        <a class="list-group-item">news 1</a>
+                        <a class="list-group-item">news 1</a>
+                        <a class="list-group-item">news 1</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h3 class="panel-title">Eventi</h3>
+        <p class="panel-body">evento 1</p>
+    </section>
+
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="footer navbar-default navbar-fixed-bottom">
+                    <h4>Contatti</h4>
+                    <ul class="navbar-link">
+                        <li><a href="#">Segreteria studenti</a> </li>
+                        <li><a href="#">Segreteria studenti</a> </li>
+                        <li><a href="#">Segreteria studenti</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -20,6 +20,21 @@ if(isset($_POST['id']) && isset($_POST['desc']) && isset($_POST['title'])){
         echo "ERROR " . $db->error;
     }
 }
+//segna notifiche come già viste (gestisci metodo di richiesta)
+else if (false){
+
+    $id = $_SESSION['id'];
+
+    $id = 2;
+    $sql = "";
+    if($db->query($sql) === TRUE){
+        echo "OK";
+    } else {
+        echo "ERROR " . $db->error;
+    }
+}
+
+
 //riceve notifiche
 else if (isset($_GET["id"])){
     $id = $_GET['id'];
