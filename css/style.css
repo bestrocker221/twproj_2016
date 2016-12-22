@@ -1,3 +1,7 @@
+/**
+ * Created by CarloAlberto on 22/12/16.
+ */
+
 #navbar5 .navbar-left{
   margin-top:0px;
 }
@@ -35,6 +39,8 @@
   padding: 15px;
   width: auto;
 }
+
+
 #notification_list{
     overflow-y: auto;
     max-height: 320px;
@@ -44,6 +50,10 @@
     transition: none !important;
     background-color: #ffbb88 !important;
     border-radius: 0 !important;
+}
+
+.notification-not-viewed{
+    background-color: #e2f8ff;
 }
 
 .not-media{
@@ -179,8 +189,21 @@ html { height: 100%;}
           align-items: center;
 }
 
+/**
+    Some adjustement for screen-xs
+ */
+@media (max-width:767px){
+    .navbar-nav .open .dropdown-menu {
+        position: absolute ;
+        background-color: white;
+        margin-top: 9px;
+    }
 
-
+    .navbar-nav>li>.dropdown-menu {
+        z-index: 9999;
+        margin-left:0 !important;
+    }
+}
 
 
 /* CSS Transform Align Navbar Brand Text ... This could also be achieved with table / table-cells */
@@ -202,6 +225,7 @@ html { height: 100%;}
 
 .navbar-nav>li>.dropdown-menu {
 	z-index: 9999;
+    margin-left:-173px;
 }
 .img-responsive2 {
   margin-top:0;

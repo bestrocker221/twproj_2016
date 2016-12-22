@@ -1,5 +1,5 @@
 /**
- * Created by bsod on 22/12/16.
+ * Created by CarloAlberto on 22/12/16.
  */
 $(document).ready(function () {
 
@@ -14,8 +14,10 @@ $(document).ready(function () {
         hamburger_cross();
     });
 
+    /**
+     * Hamburger close/open
+     */
     function hamburger_cross() {
-
         if (isClosed == true) {
             //overlay.hide();
             trigger.removeClass('is-open');
@@ -51,22 +53,28 @@ $(document).ready(function () {
      */
     $(".menu-parent").on("shown.bs.dropdown", function (event) {
         //importa tutte le notifiche "viste"
-        //se è stata generata prima di 2s fa allora fai alert altrimenti lasciale nella lista senza alert
         console.log("notifiche viste");
+
         $.post("/core/gestisci_notifiche.php", {"id":"2"});
     });
 
+    /**
+     * retrieve notifications
+     */
     function checkNotifications() {
         $.get("/core/gestisci_notifiche.php", {"id": "2"}, function (data) {
             //console.log(data);
             var c = JSON.parse(data);
-            console.log(c);
-            $("#total_not").text(c.total);
 
+            if(c.total > 0) {
+                $("#total_not").text(c.total);
+            } else {
+                $("#total_not").text("");
+            }
             //Remove all old notifications
             $(".message-preview").each(function (index) {
                 if(index>0)
-                $(this).remove();
+                    $(this).remove();
             });
 
             /* old method
@@ -83,14 +91,28 @@ $(document).ready(function () {
             //1->desc
             //2->date
             //3->showed
+            //4->n click
+            //5->id-notifica
             for(var n = 0 ; n < 6; n++){
-                $template = $("#not-template").clone().attr('id','').removeAttr('hidden').show();
+                $template = $("#not-template").clone().attr('id',c[n][5]).removeAttr('hidden').show();
                 $("#not-title", $template).text(c[n][0]);
                 $("#not-date", $template).text(c[n][2]);
                 $("#not-body",$template).text(c[n][1]);
+                if(c[n][4] == 0) $template.addClass('notification-not-viewed');
+                $template.bind("click", function (e) {
+                    //notifica cliccata, invia +1 al server
+
+                    $.post("/core/gestisci_notifiche.php", {"id-notifica":$(this).attr('id')}, function (data) {
+                        $(this).removeClass("notification-not-viewed");
+                        console.log(data);
+                    });
+
+                    //inserisci location
+                    e.preventDefault();
+                });
+
                 $template.insertBefore("#view-all");
             }
-            console.log(new Date(c[1][2]).getMinutes());
 
         });
     }
@@ -98,7 +120,7 @@ $(document).ready(function () {
     checkNotifications();
 
     setInterval(function () {
-        console.log("cerco notifiche..");
+        //console.log("cerco notifiche..");
         checkNotifications();
     }, 2000);
 
@@ -110,7 +132,7 @@ $(document).ready(function () {
 $(document).on("scroll", function (height) {
     var h = $(document).scrollTop();
     var fixed_height = 81;
-    //console.log("dal top ci sono: " + h);
+
     if(h >= fixed_height) {
         $("#nav-options").css("top", "0");
         $(".navbar-fixed-top").css({"top":"0"});
@@ -118,5 +140,4 @@ $(document).on("scroll", function (height) {
         $("#nav-options").css("top",fixed_height-h);
         $(".navbar-fixed-top").css({"top": fixed_height-h});
     }
-    //console.log(height);
 });
