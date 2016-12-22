@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel='stylesheet prefetch' href='css/bootstrap.min.css'>
+    <link rel='stylesheet' href='css/font-awesome.min.css'>
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
-
 <header>
     <div class="container titlebox" >
         <nav class="navbar navbar-default" id="nav-title" style="margin-bottom: 0;">
@@ -83,8 +82,25 @@
                                         <span id="total_not" class="badge"></span>
                                         <ul id="notification_list" role="menu" class="dropdown-menu">
                                             <li hidden><a></a></li>
-                                            <li id="notification-separator" role="separator" class="divider"></li>
-                                            <li role="presentation"><a onclick="loadNotifications()">Visualizza tutte</a> </li>
+                                            <li class="message-preview">
+                                                <a href="">
+                                                    <div class="not-media">
+                                                        <h5 class="media-heading" id="not-title">
+                                                            <strong>Title</strong>
+                                                        </h5>
+                                                        <p class="small text-muted text-right" id="not-date">
+                                                            <i class="fa fa-clock-o"> Yesterday at 4:32 PM</i>
+                                                        </p>
+                                                        <p id="not-body">
+                                                            asdjoia jdaio jdiajeqwijw dasjd isdjsao djosjdiasjidjdsj jd sjdsjjs
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <!--
+                                             <li id="notification-separator" role="separator" class="divider"></li>
+                                             -->
+                                            <li role="presentation"><a href="notifications.html">Visualizza tutte</a> </li>
                                         </ul>
                                     </a>
                                 </li>
@@ -142,6 +158,8 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-9 col-lg-offset-1">
+                                    <button type="button" class="btn" id="crea-notifica" >Crea</button>
+
                                     <h1>Fancy Toggle Sidebar Navigation</h1>
                                     <p>Bacon ipsum dolor sit amet tri-tip shoulder tenderloin shankle. Bresaola tail pancetta ball tip doner meatloaf corned beef. Kevin pastrami tri-tip prosciutto ham hock pork belly bacon pork loin salami pork chop shank corned beef tenderloin meatball cow. Pork bresaola meatloaf tongue, landjaeger tail andouille strip steak tenderloin sausage chicken tri-tip. Pastrami tri-tip kielbasa sausage porchetta pig sirloin boudin rump meatball andouille chuck tenderloin biltong shank </p>
                                     <p>Pig meatloaf bresaola, spare ribs venison short loin rump pork loin drumstick jowl meatball brisket. Landjaeger chicken fatback pork loin doner sirloin cow short ribs hamburger shoulder salami pastrami. Pork swine beef ribs t-bone flank filet mignon, ground round tongue. Tri-tip cow turducken shank beef shoulder bresaola tongue flank leberkas ball tip.</p>
@@ -157,59 +175,12 @@
             </div>
         </div>
     </div>
-
     <!-- /#wrapper -->
 
+<!-- Including scripts -->
 <script src='js/jquery-3.1.1.min.js'></script>
 <script src='js/bootstrap.min.js'></script>
-<script type="application/javascript">
-
-    $(document).ready(function () {
-
-        var trigger = $('.hamburger'),
-            overlay = $('.overlay'),
-            isClosed = true;
-
-        trigger.click(function () {
-            hamburger_cross();
-        });
-
-        function hamburger_cross() {
-
-            if (isClosed == true) {
-                //overlay.hide();
-                trigger.removeClass('is-open');
-                trigger.addClass('is-closed');
-                isClosed = false;
-            } else {
-                //overlay.show();
-                trigger.removeClass('is-closed');
-                trigger.addClass('is-open');
-                isClosed = true;
-            }
-        }
-
-        $('[data-toggle="offcanvas"]').click(function () {
-            $('#wrapper').toggleClass('toggled');
-        });
-
-
-    });
-    $(document).on("scroll", function (height) {
-        var h = $(document).scrollTop();
-        var fixed_height = 81;
-        console.log("dal top ci sono: " + h);
-        if(h >= fixed_height) {
-            $("#nav-options").css("top", "0");
-            $(".navbar-fixed-top").css({"top":"0"});
-        } else {
-            $("#nav-options").css("top",fixed_height-h);
-            $(".navbar-fixed-top").css({"top": fixed_height-h});
-        }
-
-        //console.log(height);
-    })
-</script>
-
+<script type="application/javascript" src="js/home.js"></script>
+<!-- /# Finish scripts includes -->
 </body>
 </html>
