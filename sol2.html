@@ -7,9 +7,11 @@
 
     <link rel='stylesheet prefetch' href='css/bootstrap.min.css'>
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
+
 <header>
     <div class="container titlebox" >
         <nav class="navbar navbar-default" id="nav-title" style="margin-bottom: 0;">
@@ -82,7 +84,7 @@
                                         <ul id="notification_list" role="menu" class="dropdown-menu">
                                             <li hidden><a></a></li>
                                             <li id="notification-separator" role="separator" class="divider"></li>
-                                            <li role="presentation"><a href="notifications.html">Visualizza tutte</a> </li>
+                                            <li role="presentation"><a onclick="loadNotifications()">Visualizza tutte</a> </li>
                                         </ul>
                                     </a>
                                 </li>
@@ -155,10 +157,13 @@
             </div>
         </div>
     </div>
+
     <!-- /#wrapper -->
+
 <script src='js/jquery-3.1.1.min.js'></script>
 <script src='js/bootstrap.min.js'></script>
 <script type="application/javascript">
+
     $(document).ready(function () {
 
         var trigger = $('.hamburger'),

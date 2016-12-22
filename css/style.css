@@ -1,27 +1,40 @@
 #navbar5 .navbar-left{
-  margin-top:0px;
+    margin-top:0px;
 }
 #nav-title{
-    background-color: white;
+    background: none;
+    /*background-color: white;
+    /*border: 1px outset red;
+    border-radius: 20px;*/
 }
 
 #nav-options{
-    background: linear-gradient(to top, rgb(243, 151, 151), rgba(0, 0, 0, 0));
+
+    /*background: linear-gradient(to top, rgb(243, 151, 151), rgba(0, 0, 0, 0));*/
+    background-color: #F44336;
     margin-right:-15px;
     margin-left:-15px;
+    top:81px;
+    position: fixed;
+    width: 100%;
+}
+#nav-options ul a:hover {
+    transition: background-color 0.4s linear;
+    background-color: #D50000;
+    border-radius:5px;
 }
 
-#nav-options >a{
+#nav-options a{
     color: black;
 }
 .navbar-brand {
-  padding: 0px;
-  margin-top: 5px;
+    padding: 0px;
+    margin-top: 5px;
 }
 .navbar-brand>img {
-  height: 100%;
-  padding: 15px;
-  width: auto;
+    height: 100%;
+    padding: 15px;
+    width: auto;
 }
 
 .navbar-nav>li {
@@ -31,18 +44,39 @@
 .title{
 
 }
+#header-image{
+    position: absolute;
+    width: 50%;
+    height: auto;
+    right: 27%;
+}
 hr{
     margin-top: 0;
     margin-bottom:0;
 }
 
 header{
-    padding-top:10px;
-    /*background: url('res/header.png') no-repeat;
+    /*padding-top:10px;
+    background: url('res/header.png') no-repeat;
     background-position: right top;
     background-size: contain;*/
-    background: linear-gradient(to bottom, rgb(204, 0, 0), rgba(0, 0, 0, 0))
+    /*background: radial-gradient(white 50%, #F44336);*/
 
+    /*background: linear-gradient(to left, rgb(67, 198, 172), rgb(248, 255, 174))*/
+
+    opacity: 1;
+    background-color: rgb(254, 180, 123);
+    background-image: linear-gradient(to left, rgb(255, 126, 95), rgb(254, 180, 123))
+
+}
+
+.titlebox{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.titlebox>.navbar-default{
+    border:none;
 }
 
 body {
@@ -57,9 +91,9 @@ body,
 html { height: 100%;}
 
 @font-face {
-  font-family: 'TrajanProRegular';
-  src: url('../fonts/TrajanProRegular.eot');
-  src: local('TrajanProRegular'), url('../fonts/TrajanProRegular.woff') format('woff'), url('../fonts/TrajanProRegular.ttf') format('truetype');
+    font-family: 'TrajanProRegular';
+    src: url('../fonts/TrajanProRegular.eot');
+    src: local('TrajanProRegular'), url('../fonts/TrajanProRegular.woff') format('woff'), url('../fonts/TrajanProRegular.ttf') format('truetype');
 }
 
 /* use this class to attach this font to any element i.e.
@@ -71,37 +105,37 @@ html { height: 100%;}
 
 /*Logo with Text*/
 .titlebox .navbar-brand {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 .titlebox .navbar-brand>img {
-  padding: 7px 14px;
+    padding: 7px 14px;
 }
 
 /* Center with Flexbox and Text*/
 .brand-centered {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
 }
 .brand-centered .navbar-brand {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 
@@ -110,29 +144,29 @@ html { height: 100%;}
 
 /* CSS Transform Align Navbar Brand Text ... This could also be achieved with table / table-cells */
 .navbar-alignit .navbar-header {
-	  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  height: 50px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    height: 50px;
 }
 .navbar-alignit .navbar-brand {
-	top: 50%;
-	display: block;
-	position: relative;
-	height: auto;
-	-webkit-transform: translate(0,-50%);
-	        transform: translate(0,-50%);
-	margin-right: 15px;
-  margin-left: 15px;
+    top: 50%;
+    display: block;
+    position: relative;
+    height: auto;
+    -webkit-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .navbar-nav>li>.dropdown-menu {
-	z-index: 9999;
+    z-index: 9999;
 }
 .img-responsive2 {
-  margin-top:0;
-  display: inline-block;
-  max-width: 20%;
-  height: auto;
+    margin-top:0;
+    display: inline-block;
+    max-width: 20%;
+    height: auto;
 }
 
 
@@ -174,11 +208,12 @@ html { height: 100%;}
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    transition: width 0.5s ease;
+
 }
 
 .navbar-fixed-top{
-    top: 93px !important;
+    top: 81px;
 }
 
 #sidebar-wrapper::-webkit-scrollbar {
@@ -310,12 +345,16 @@ html { height: 100%;}
 /*       Hamburger-Cross         */
 /*-------------------------------*/
 
+.myHamb{
+    margin-top: 2px;
+    margin-left: -15px;
+}
 .myHamb:hover{
 
 }
 .hamburger {
     position: relative;
-/*    top: -46px;*/
+    /*    top: -46px;*/
     z-index: 999;
     display: block;
     width: 32px;
@@ -457,4 +496,8 @@ html { height: 100%;}
 .icon-size
 {
     font-size: 87px;
+}
+
+#table_id {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
