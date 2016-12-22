@@ -38,10 +38,12 @@ $(document).ready(function () {
      * Notifications
      */
     $("#crea-notifica").on("click",function () {
+
         $.post("/core/gestisci_notifiche.php", {"id" : "2","title":"Nuovo allenamento!" ,"desc":"giovedi alle 15"},function (data) {
             console.log("OK? " + data);
         });
         console.log("cerco notifiche..");
+
     });
 
     /**
@@ -51,8 +53,7 @@ $(document).ready(function () {
         //importa tutte le notifiche "viste"
         //se è stata generata prima di 2s fa allora fai alert altrimenti lasciale nella lista senza alert
         console.log("notifiche viste");
-
-        //$.post("/core/gestisci_notifiche.php", {"id":"2"});
+        $.post("/core/gestisci_notifiche.php", {"id":"2"});
     });
 
     function checkNotifications() {
@@ -63,28 +64,44 @@ $(document).ready(function () {
             $("#total_not").text(c.total);
 
             //Remove all old notifications
-            $(".message-preview").each(function () {
+            $(".message-preview").each(function (index) {
+                if(index>0)
                 $(this).remove();
             });
-            //set the new ones
+
+            /* old method
             for(var n = 0 ; n < 6; n++){
                 var k = document.createElement("li");
                 k.innerHTML = "<a href=\""+ n +"\">"+ c[n][0]+"->"+c[n][1]+ " date: " +c[n][2]+"</a>";
                 //k.innerHTML = '<a href="">ciao' + n + '</a>';
                 $(k).addClass("message-preview");
                 $("#notification-separator").before(k);
+            }*/
+
+            //c data index
+            //0->title
+            //1->desc
+            //2->date
+            //3->showed
+            for(var n = 0 ; n < 6; n++){
+                $template = $("#not-template").clone().attr('id','').removeAttr('hidden').show();
+                $("#not-title", $template).text(c[n][0]);
+                $("#not-date", $template).text(c[n][2]);
+                $("#not-body",$template).text(c[n][1]);
+                $template.insertBefore("#view-all");
             }
+            console.log(new Date(c[1][2]).getMinutes());
 
         });
     }
-/*
+
     checkNotifications();
 
     setInterval(function () {
         console.log("cerco notifiche..");
         checkNotifications();
     }, 2000);
-*/
+
 });
 
 /**
