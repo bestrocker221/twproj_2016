@@ -94,15 +94,20 @@ $(document).ready(function () {
 
         });
     }
-
+/*
     checkNotifications();
 
     setInterval(function () {
         console.log("cerco notifiche..");
         checkNotifications();
     }, 2000);
-
+*/
 });
+
+$("#tab_notifications").on('click', function () {
+    $("#page-content-wrapper").load("notifications.html");
+});
+
 
 /**
  * Function for fixing on top the navbars while scrolling down.
