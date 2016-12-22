@@ -26,6 +26,31 @@
     </div>
 </div>
 <script>
-    $("#table_id").DataTable();
+    $("#table_id").DataTable({
+        "language": {
+            "decimal":        "",
+            "emptyTable":     "Dati non disponibili",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "loadingRecords": "Caricamento...",
+            "processing":     "Elaborazione...",
+            "search":         "Cerca:",
+            "lengthMenu": "Mostra _MENU_ per pagina",
+            "zeroRecords": "Nessun risultato",
+            "info": "Pagina _PAGE_ di _PAGES_",
+            "infoEmpty": "Nessun risultato",
+            "infoFiltered": "(filtrato tra _MAX_ risultati totali)",
+            "paginate": {
+                "first":      "Primo",
+                "last":       "Ultimo",
+                "next":       "Avanti",
+                "previous":   "Indietro"
+            },
+            "aria": {
+                "sortAscending":  ": ordina ascendente",
+                "sortDescending": ": ordina discendente"
+            }
+        }
+    });
     $("#table_id").addClass("table table-striped table-bordered");
 </script>
