@@ -18,8 +18,13 @@
     position: fixed;
     width: 100%;
 }
+#nav-options ul a:hover {
+    transition: background-color 0.4s linear;
+    background-color: #D50000;
+    border-radius:5px;
+}
 
-#nav-options >a{
+#nav-options a{
     color: black;
 }
 .navbar-brand {
@@ -39,6 +44,12 @@
 .title{
 
 }
+#header-image{
+    position: absolute;
+    width: 50%;
+    height: auto;
+    right: 27%;
+}
 hr{
     margin-top: 0;
     margin-bottom:0;
@@ -49,7 +60,13 @@ header{
     background: url('res/header.png') no-repeat;
     background-position: right top;
     background-size: contain;*/
-    background: radial-gradient(white, #F44336);
+    /*background: radial-gradient(white 50%, #F44336);*/
+
+    /*background: linear-gradient(to left, rgb(67, 198, 172), rgb(248, 255, 174))*/
+
+    opacity: 1;
+    background-color: rgb(254, 180, 123);
+    background-image: linear-gradient(to left, rgb(255, 126, 95), rgb(254, 180, 123))
 
 }
 
@@ -191,7 +208,8 @@ html { height: 100%;}
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    transition: width 0.5s ease;
+
 }
 
 .navbar-fixed-top{
@@ -327,6 +345,10 @@ html { height: 100%;}
 /*       Hamburger-Cross         */
 /*-------------------------------*/
 
+.myHamb{
+    margin-top: 2px;
+    margin-left: -15px;
+}
 .myHamb:hover{
 
 }
