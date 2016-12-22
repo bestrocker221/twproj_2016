@@ -3,6 +3,7 @@
  */
 $(document).ready(function () {
 
+
     /**
      * Gestione sidebar and toggling
      */
@@ -12,6 +13,21 @@ $(document).ready(function () {
 
     trigger.click(function () {
         hamburger_cross();
+    });
+
+    $(window).resize(function(){
+        if ($(window).width() <= 766){
+            console.log("FIRE!");
+            if(isClosed){
+                hamburger_cross();
+                $("#wrapper").removeClass("toggled");
+            }
+        } else if ($(window).width() >= 1200){
+            if(!isClosed){
+                hamburger_cross();
+                $("#wrapper").addClass("toggled");
+            }
+        }
     });
 
     /**
