@@ -9,24 +9,14 @@
                     <th>Data</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>Tizio di calcio</td>
-                    <td>Partita annullata</td>
-                    <td>5 minuti fa</td>
-                </tr>
-                <tr>
-                    <td>Row 2 Data 1</td>
-                    <td>Row 1 Data 2</td>
-                    <td>Row 1 Data 2</td>
-                </tr>
-                </tbody>
+
             </table>
         </div>
     </div>
 </div>
 <script>
-    $("#table_id").DataTable({
+    $("#table_id").addClass("table table-striped table-bordered");
+    var t = $("#table_id").DataTable({
         "language": {
             "decimal":        "",
             "emptyTable":     "Dati non disponibili",
@@ -52,5 +42,14 @@
             }
         }
     });
-    $("#table_id").addClass("table table-striped table-bordered");
+    $.get("/core/gestisci_notifiche.php", {"id": "2"}, function (data) {
+        var json = JSON.parse(data);
+        for (var n=0; n < 6; n++) {
+            t.row.add([
+                json[n][0],
+                json[n][1],
+                json[n][2]
+            ]).draw(false);
+        }
+    });
 </script>
