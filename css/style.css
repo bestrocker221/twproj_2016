@@ -1,5 +1,9 @@
+/**
+ * Created by CarloAlberto on 22/12/16.
+ */
+
 #navbar5 .navbar-left{
-    margin-top:0px;
+  margin-top:0px;
 }
 #nav-title{
     background: none;
@@ -27,14 +31,16 @@
     color: black;
 }
 .navbar-brand {
-    padding: 0px;
-    margin-top: 5px;
+  padding: 0px;
+  margin-top: 5px;
 }
 .navbar-brand>img {
-    height: 100%;
-    padding: 15px;
-    width: auto;
+  height: 100%;
+  padding: 15px;
+  width: auto;
 }
+
+
 #notification_list{
     overflow-y: auto;
     max-height: 320px;
@@ -44,6 +50,10 @@
     transition: none !important;
     background-color: #ffbb88 !important;
     border-radius: 0 !important;
+}
+
+.notification-not-viewed{
+    background-color: #e2f8ff;
 }
 
 .not-media{
@@ -132,9 +142,9 @@ body,
 html { height: 100%;}
 
 @font-face {
-    font-family: 'TrajanProRegular';
-    src: url('../fonts/TrajanProRegular.eot');
-    src: local('TrajanProRegular'), url('../fonts/TrajanProRegular.woff') format('woff'), url('../fonts/TrajanProRegular.ttf') format('truetype');
+  font-family: 'TrajanProRegular';
+  src: url('../fonts/TrajanProRegular.eot');
+  src: local('TrajanProRegular'), url('../fonts/TrajanProRegular.woff') format('woff'), url('../fonts/TrajanProRegular.ttf') format('truetype');
 }
 
 /* use this class to attach this font to any element i.e.
@@ -146,68 +156,82 @@ html { height: 100%;}
 
 /*Logo with Text*/
 .titlebox .navbar-brand {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .titlebox .navbar-brand>img {
-    padding: 7px 14px;
+  padding: 7px 14px;
 }
 
 /* Center with Flexbox and Text*/
 .brand-centered {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 .brand-centered .navbar-brand {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
+/**
+    Some adjustement for screen-xs
+ */
+@media (max-width:767px){
+    .navbar-nav .open .dropdown-menu {
+        position: absolute ;
+        background-color: white;
+        margin-top: 9px;
+    }
 
-
+    .navbar-nav>li>.dropdown-menu {
+        z-index: 9999;
+        margin-left:0 !important;
+    }
+}
 
 
 /* CSS Transform Align Navbar Brand Text ... This could also be achieved with table / table-cells */
 .navbar-alignit .navbar-header {
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    height: 50px;
+	  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  height: 50px;
 }
 .navbar-alignit .navbar-brand {
-    top: 50%;
-    display: block;
-    position: relative;
-    height: auto;
-    -webkit-transform: translate(0,-50%);
-    transform: translate(0,-50%);
-    margin-right: 15px;
-    margin-left: 15px;
+	top: 50%;
+	display: block;
+	position: relative;
+	height: auto;
+	-webkit-transform: translate(0,-50%);
+	        transform: translate(0,-50%);
+	margin-right: 15px;
+  margin-left: 15px;
 }
 
 .navbar-nav>li>.dropdown-menu {
-    z-index: 9999;
+	z-index: 9999;
+    margin-left:-173px;
 }
 .img-responsive2 {
-    margin-top:0;
-    display: inline-block;
-    max-width: 20%;
-    height: auto;
+  margin-top:0;
+  display: inline-block;
+  max-width: 20%;
+  height: auto;
 }
 
 
@@ -395,7 +419,7 @@ html { height: 100%;}
 }
 .hamburger {
     position: relative;
-    /*    top: -46px;*/
+/*    top: -46px;*/
     z-index: 999;
     display: block;
     width: 32px;

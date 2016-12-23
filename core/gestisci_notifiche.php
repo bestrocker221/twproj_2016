@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: bsod
+ * User: CarloAlberto
  * Date: 19/12/16
  * Time: 19:00
  */
@@ -21,12 +21,22 @@ if(isset($_POST['id']) && isset($_POST['desc']) && isset($_POST['title'])){
     }
 }
 //segna notifiche come già viste (gestisci metodo di richiesta)
-else if (false){
+else if (isset($_POST['id'])){
 
-    $id = $_SESSION['id'];
+    //$id = $_SESSION['id'];
 
-    $id = 2;
-    $sql = "";
+    $id = $_POST['id'];
+    $sql = "UPDATE notifications SET showed='1' WHERE id_member='$id'";
+    if($db->query($sql) === TRUE){
+        echo "OK";
+    } else {
+        echo "ERROR " . $db->error;
+    }
+}
+//aggiunge +1 alla visualizzazione della notifica (SISTEMA CON SESSION)
+else if(isset($_POST['id-notifica'])){
+    $id_notifica = $_POST['id-notifica'];
+    $sql = "UPDATE notifications SET clicked=clicked + '1' WHERE id='$id_notifica'";
     if($db->query($sql) === TRUE){
         echo "OK";
     } else {
@@ -34,13 +44,12 @@ else if (false){
     }
 }
 
-
 //riceve notifiche
 else if (isset($_GET["id"])){
     $id = $_GET['id'];
 
-    $sql = "SELECT title,description, date, showed FROM notifications WHERE id_member='$id' ORDER BY date DESC LIMIT 6";
-    $sql2 = "SELECT COUNT(*) FROM notifications WHERE id_member='$id'";
+    $sql = "SELECT title,description, date, showed, clicked,id FROM notifications WHERE id_member='$id' ORDER BY date DESC LIMIT 6";
+    $sql2 = "SELECT COUNT(*) FROM notifications WHERE id_member='$id' and showed='0'";
 
     $tot = array();
     if(!$db){
