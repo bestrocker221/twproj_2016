@@ -1,50 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/home.css">
-    <script type="application/javascript" src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notifiche</title>
-</head>
-<body>
-<script>
-    $(function(){
-        $("#header").load("header.html");
-    });
-</script>
-<div id="header"></div>
-
 <div class="container">
     <div class="row">
-        <div class="table-responsive">
-            <table class="table table-striped">
+        <div class="col-lg-9 col-lg-offset-1">
+            <table id="table_id" class="display">
                 <thead>
-                    <tr>
-                        <th>Notifica</th>
-                        <th>Messaggio</th>
-                    </tr>
+                <tr>
+                    <th>Mittente</th>
+                    <th>Messaggio</th>
+                    <th>Data</th>
+                </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>ll</td>
-                        <td>tt</td>
-                    </tr>
-                    <tr>
-                        <td>kk</td>
-                        <td>tt</td>
-                    </tr>
-                    <tr>
-                        <td>ll</td>
-                        <td>kk</td>
-                    </tr>
-                </tbody>
+
             </table>
         </div>
     </div>
 </div>
-
-</body>
-</html>
+<script>
+    $("#table_id").addClass("table table-striped table-bordered");
+    var t = $("#table_id").DataTable({
+        "language": {
+            "decimal":        "",
+            "emptyTable":     "Dati non disponibili",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "loadingRecords": "Caricamento...",
+            "processing":     "Elaborazione...",
+            "search":         "Cerca:",
+            "lengthMenu": "Mostra _MENU_ per pagina",
+            "zeroRecords": "Nessun risultato",
+            "info": "Pagina _PAGE_ di _PAGES_",
+            "infoEmpty": "Nessun risultato",
+            "infoFiltered": "(filtrato tra _MAX_ risultati totali)",
+            "paginate": {
+                "first":      "Primo",
+                "last":       "Ultimo",
+                "next":       "Avanti",
+                "previous":   "Indietro"
+            },
+            "aria": {
+                "sortAscending":  ": ordina ascendente",
+                "sortDescending": ": ordina discendente"
+            }
+        }
+    });
+    $.get("/core/gestisci_notifiche.php", {"id": "2"}, function (data) {
+        var json = JSON.parse(data);
+        for (var n=0; n < 6; n++) {
+            t.row.add([
+                json[n][0],
+                json[n][1],
+                json[n][2]
+            ]).draw(false);
+        }
+    });
+</script>
