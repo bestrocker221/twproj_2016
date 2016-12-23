@@ -143,7 +143,7 @@ $(document).ready(function () {
 });
 
 $("#tab_notifications").on('click', function () {
-    $("#page-content-wrapper").load("notifications.html");
+    $("#main-content").load("notifications.html");
 });
 
 

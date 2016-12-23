@@ -44,11 +44,11 @@ else if(isset($_POST['id-notifica'])){
     }
 }
 
-//riceve notifiche
+//riceve notifiche --> aggiusta per richieste notifiche (add total)
 else if (isset($_GET["id"])){
     $id = $_GET['id'];
 
-    $sql = "SELECT title,description, date, showed, clicked,id FROM notifications WHERE id_member='$id' ORDER BY date DESC LIMIT 6";
+    $sql = "SELECT title,description, date, showed, clicked,id FROM notifications WHERE id_member='$id' ORDER BY date DESC";
     $sql2 = "SELECT COUNT(*) FROM notifications WHERE id_member='$id' and showed='0'";
 
     $tot = array();

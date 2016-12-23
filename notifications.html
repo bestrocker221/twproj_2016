@@ -1,20 +1,34 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-lg-9 col-lg-offset-1">
-            <table id="table_id" class="display">
-                <thead>
-                <tr>
-                    <th>Mittente</th>
-                    <th>Messaggio</th>
-                    <th>Data</th>
-                </tr>
-                </thead>
-
-            </table>
-        </div>
+        <table id="table_id" class="display">
+            <thead>
+            <tr>
+                <th>Mittente</th>
+                <th>Messaggio</th>
+                <th>Data</th>
+            </tr>
+            </thead>
+        </table>
     </div>
 </div>
 <script>
+
+    /**
+     * Append "Notifiche" breadcrumb on navigation-breadcrumbs
+     * @type {Element}
+     */
+    if($("#navigation-breadcrumb li").last().text() != "Notifiche") {
+        var c = document.createElement("li");
+        var link = document.createElement("a");
+        link.href = "#";
+        link.innerHTML = "Notifiche";
+        c.appendChild(link);
+        $("#navigation-breadcrumb").append(c);
+    }
+
+    /**
+     * Set Table property
+     */
     $("#table_id").addClass("table table-striped table-bordered");
     var t = $("#table_id").DataTable({
         "language": {
@@ -44,7 +58,7 @@
     });
     $.get("/core/gestisci_notifiche.php", {"id": "2"}, function (data) {
         var json = JSON.parse(data);
-        for (var n=0; n < 6; n++) {
+        for (var n=0; n < Object.keys(json).length-1; n++) {
             t.row.add([
                 json[n][0],
                 json[n][1],
