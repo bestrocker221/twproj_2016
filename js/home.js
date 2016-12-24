@@ -140,6 +140,11 @@ $(document).ready(function () {
         checkNotifications();
     }, 2000);
 
+    /**
+     * Loading Footer
+     */
+    $("#footer-content").load("footer.html");
+
 });
 
 $("#tab_notifications").on('click', function () {

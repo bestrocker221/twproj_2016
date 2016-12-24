@@ -578,7 +578,7 @@ html { height: 100%;}
     text-align: left;
     font: bold 16px sans-serif;
 
-    padding: 55px 50px;
+    padding: 40px 40px;
     margin-top: 80px;
 }
 
@@ -592,14 +592,14 @@ html { height: 100%;}
 /* Footer left */
 
 .footer-distributed .footer-left{
-    width: 40%;
+    width: 49%;
 }
 
 /* The company logo */
 
 .footer-distributed h3{
     color:  #ffffff;
-    font: normal 36px 'Cookie', cursive;
+    font: normal 21px 'Cookie', cursive;
     margin: 0;
 }
 
@@ -625,7 +625,7 @@ html { height: 100%;}
 .footer-distributed .footer-company-name{
     color:  #8f9296;
     font-size: 14px;
-    font-weight: normal;
+    font-weight: bold;
     margin: 0;
 }
 
@@ -635,14 +635,19 @@ html { height: 100%;}
 /* ************************** */
 
 footer{
-
+    background: url("../res/illustration.png") center;
     position:relative;
     bottom:0;
     width:100%;
 }
 
+.footer-links a:hover{
+    /*color: #00188b;*/
+    color: #7b0000
+}
+
 .footer-distributed .footer-center{
-    width: 35%;
+    width: 49%;
 }
 
 .footer-distributed .footer-center i{
@@ -678,12 +683,14 @@ footer{
 }
 
 .footer-distributed .footer-center p a{
-    color:  #5383d3;
-    text-decoration: none;;
+    color:  #ca0000;
+    text-decoration: underline;
 }
 
+.footer-distributed .footer-center p a:hover{
+    color: #7b0000;
 
-
+}
 .footer-distributed .footer-right{
     width: 20%;
 }
@@ -747,3 +754,9 @@ footer{
     }
 
 }
+
+/*********************************
+
+            LOGIN
+
+ *********************************/

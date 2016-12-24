@@ -1,15 +1,107 @@
 div{
     padding-top: 5px;
 }
+.panel{
+    border-radius: 28px !important;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Cinzel-Regular'), url(https://fonts.gstatic.com/s/cinzel/v4/zOdksD_UUTk1LJF9z4tURA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+html,body{
+    margin: 0;
+    height: 100%;
+    background: url("../res/sigillo.png"),url('/res/illustration.png');
+    background-position:  bottom left, left center;
+    background-repeat: no-repeat, no-repeat ;
+    background-size: 230px, auto;
+
+
+}
+
+.illustrationClass {
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 230px;
+}
+.illustrationClass {
+    background-image: url("../res/sigillo.png");
+}
+
+#brandname {
+    font-family: 'Cinzel', serif;
+    position: fixed;
+    bottom: 10px;
+    left:50px;
+    color: white;
+    font-family: Cinzel, serif;
+    font-size: 2.5em;
+}
+#brandname .nome{
+    padding-top: 0;
+    font-size: 0.9em;
+}
+#brandname p.titoletto {
+    font-size: 0.6em;
+    line-height: 6px;
+    padding-top: 0;
+}
+
+@media only screen and (max-width: 1050px) {
+    #brandname {
+        font-size: 1.4em;
+        /*position: absolute;
+        bottom: auto;
+        top: 35px;
+        left: 50px;
+        right: auto;
+        width: auto;
+        color: #555;
+        z-index: 1;
+        font-size: 1.4em;
+        padding-top: 15px;
+        padding-left: 0px;
+        padding-right: 20px;
+        padding-bottom: 12px;*/
+
+    }
+}
+@media only screen and (max-width: 600px) {
+    #brandname {
+        font-size: 1.6em;
+        left: 0;
+    }
+}
+
+@media only screen and (max-width:319px){
+
+    #brandname {
+        font-size: 1em;
+        /*
+        padding-top: 15px;
+        padding-left: 0px;
+        background-position: center top;
+        background-image: none;*/
+    }
+}
+
+
 .panel-login{
     border-color: #ccc;
     -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 10px 10px 30px 13px rgba(0,0,0,0.2) !important;
+    /*box-shadow: 8px 8px 30px #ccc !important;*/
 }
 .panel-login>.panel-heading {
     color: #00415d;
-    background-color: #fff;
+    /*background-color: #fff;*/
     border-color: #fff;
     text-align: center;
 }
@@ -51,8 +143,10 @@ Input behind panel login
 }
 
 .group-login{
+    /*
     box-shadow: 5px 5px 5px #ccc;
     border: 1px solid #ccc;
+    */
     border-radius: 5px;
 
 }
