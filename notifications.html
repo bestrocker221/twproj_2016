@@ -3,6 +3,7 @@
         <table id="table_id" class="display">
             <thead>
             <tr>
+                <th>Titolo</th>
                 <th>Mittente</th>
                 <th>Messaggio</th>
                 <th>Data</th>
@@ -56,13 +57,17 @@
             }
         }
     });
+    /**
+     * Add Table data
+     */
     $.get("/core/gestisci_notifiche.php", {"id": "2"}, function (data) {
         var json = JSON.parse(data);
         for (var n=0; n < Object.keys(json).length-1; n++) {
             t.row.add([
                 json[n][0],
                 json[n][1],
-                json[n][2]
+                json[n][2],
+                json[n][3]
             ]).draw(false);
         }
     });
