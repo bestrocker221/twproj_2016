@@ -775,7 +775,7 @@ footer{
 
 /*********************************
 
-            PRELOAD
+            LOGIN
 
  *********************************/
 .no-js #loader { display: none;  }
@@ -788,4 +788,23 @@ footer{
     height: 100%;
     z-index: 9999;
     background: url("/res/Preloader_7.gif") center no-repeat #fff;
+}
+
+/*********************************
+
+            TABLE
+
+ *********************************/
+tr:hover td{
+    background-color: #ffbb88;
+}
+
+/*********************************
+
+            MODAL
+
+ *********************************/
+
+.modal {
+    text-align: center;
 }
