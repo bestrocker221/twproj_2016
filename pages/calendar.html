@@ -1,0 +1,86 @@
+<!-- Home & Calendar -->
+<script src='/js/jquery.min.js'></script>
+<link href='/css/fullcalendar.css' rel='stylesheet' />
+<link href='/css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='/js/calendar/fullcalendar.min.js'></script>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog" hidden>
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#calendar').fullCalendar({
+
+            <!--Header Section Including Previous,Next and Today-->
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,basicWeek,basicDay'
+            },
+
+            <!--Default Date-->
+            defaultDate: $.now(),
+
+            <!--Event Section-->
+            eventLimit: true, // allow "more" link when too many events
+            events: {
+                url:'/core/events.php',
+                cache:true
+            },
+
+            eventRender: function (event, element) {
+                element.attr("href","javascript:void(0);");
+                element.click(function () {
+                    jQuery.noConflict();
+                    console.log("premuto su: " + element.html());
+                    console.log(element.find(".fc-title").html());
+
+                    $template = $("#myModal").clone().removeAttr('hidden').show();
+                    $(".modal-header", $template).text("CIAO!!!");
+                    $(".modal-body", $template).text(element.find(".fc-title").html());
+                    //$(".modal-footer",$template).text(FOOTER);
+                    $($template).modal('show');
+                })
+            }
+        });
+
+    });
+</script>
+
+<style>
+    #calendar {
+        max-width: 500px;
+        float: right;
+        margin: 0 auto;
+    }
+    #calendar-title{
+        max-width: 500px;
+        float: right;
+        margin: 0 auto;
+    }
+</style>
+
+
+<div>
+
+    <div id='calendar'></div>
+</div>
+<!-- /#Home & Calendar -->
