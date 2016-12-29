@@ -29,7 +29,7 @@ $(document).ready(function () {
 
     $(window).resize(function(){
         if ($(window).width() <= 766){
-            console.log("FIRE!");
+            //console.log("FIRE!");
             if(isClosed){
                 hamburger_cross();
                 $("#wrapper").removeClass("toggled");
@@ -164,7 +164,7 @@ $(window).on("load", function() {
 });
 
 $("#tab_notifications").on('click', function () {
-    $("#main-content").load("notifications.html");
+    $("#main-content").load("/pages/notifications.html");
 });
 
 
