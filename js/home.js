@@ -145,6 +145,8 @@ $(document).ready(function () {
      */
     $("#footer-content").load("footer.html");
 
+    $("#cal-content").load("/pages/calendar.html");
+
 });
 
 $("#tab_notifications").on('click', function () {
