@@ -50,9 +50,10 @@
                 element.attr("href","javascript:void(0);");
                 element.click(function () {
                     jQuery.noConflict();
+                    /*
                     console.log("premuto su: " + element.html());
                     console.log(element.find(".fc-title").html());
-
+                    */
                     $template = $("#myModal").clone().removeAttr('hidden').show();
                     $(".modal-header", $template).text("CIAO!!!");
                     $(".modal-body", $template).text(element.find(".fc-title").html());
@@ -66,16 +67,7 @@
 </script>
 
 <style>
-    #calendar {
-        max-width: 500px;
-        float: right;
-        margin: 0 auto;
-    }
-    #calendar-title{
-        max-width: 500px;
-        float: right;
-        margin: 0 auto;
-    }
+
 </style>
 
 

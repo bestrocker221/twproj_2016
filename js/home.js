@@ -1,7 +1,19 @@
 /**
  * Created by CarloAlberto on 22/12/16.
  */
+
+
+/**
+ * .ready executes when html DOM has been parsed
+ */
 $(document).ready(function () {
+
+    /**
+     * Load calendar & home page
+     */
+    $("#cal-content").load("/pages/calendar.html");
+
+
 
 
     /**
@@ -65,7 +77,7 @@ $(document).ready(function () {
     });
 
     /**
-     * dropdown click event on notifications button
+     * dropdown click event on notifications button (CHANGE ID)
      */
     $(".menu-parent").on("shown.bs.dropdown", function (event) {
         //importa tutte le notifiche "viste"
@@ -75,7 +87,7 @@ $(document).ready(function () {
     });
 
     /**
-     * retrieve notifications
+     * retrieve notifications (CHANGE ID)
      */
     function checkNotifications() {
         $.get("/core/gestisci_notifiche.php", {"id": "2"}, function (data) {
@@ -93,15 +105,6 @@ $(document).ready(function () {
                     $(this).remove();
             });
 
-            /* old method
-            for(var n = 0 ; n < 6; n++){
-                var k = document.createElement("li");
-                k.innerHTML = "<a href=\""+ n +"\">"+ c[n][0]+"->"+c[n][1]+ " date: " +c[n][2]+"</a>";
-                //k.innerHTML = '<a href="">ciao' + n + '</a>';
-                $(k).addClass("message-preview");
-                $("#notification-separator").before(k);
-            }*/
-
             //c data index
             //0->title
             //1->desc
@@ -114,7 +117,8 @@ $(document).ready(function () {
                 $("#not-title", $template).text(c[n][0]);
                 $("#not-date", $template).text(c[n][2]);
                 $("#not-body",$template).text(c[n][1]);
-                if(c[n][4] == 0) $template.addClass('notification-not-viewed');
+                if(c[n][4] == 0)
+                    $template.addClass('notification-not-viewed');
                 $template.bind("click", function (e) {
                     //notifica cliccata, invia +1 al server
 
@@ -140,12 +144,22 @@ $(document).ready(function () {
         checkNotifications();
     }, 2000);
 
+
+});
+
+/**
+ * .on("load") executes when all the page (img included) is loaded.
+ */
+$(window).on("load", function() {
+
     /**
      * Loading Footer
      */
     $("#footer-content").load("footer.html");
 
-    $("#cal-content").load("/pages/calendar.html");
+
+    // Animate loader off screen
+    $(".se-pre-con").delay(700).fadeOut("slow");
 
 });
 
