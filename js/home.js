@@ -87,6 +87,12 @@ $(document).ready(function () {
     });
 
     /**
+     * Load moadal
+     */
+    $(document.body).append("<div id='result-modal'></div>");
+    $("#result-modal").load("modal.html");
+
+    /**
      * retrieve notifications (CHANGE ID)
      */
     function checkNotifications() {
@@ -129,6 +135,10 @@ $(document).ready(function () {
 
                     //inserisci location
                     e.preventDefault();
+
+                    $(".modal-title").html($(this).find("strong").text());
+                    $(".modal-body").html($(this).find("p:odd").text());
+                    $("#myModal").modal('show');
                 });
 
                 $template.insertBefore("#view-all");
