@@ -795,7 +795,7 @@ footer{
             TABLE
 
  *********************************/
-tr:hover td{
+#table_id tr:hover td{
     background-color: #ffbb88;
 }
 
