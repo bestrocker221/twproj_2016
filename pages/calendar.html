@@ -27,6 +27,12 @@
 
 <script>
     $(document).ready(function() {
+        /**
+         * Load moadal
+         */
+        $(document.body).append("<div id='result-modal'></div>");
+        $("#result-modal").load("modal.html");
+
         $('#calendar').fullCalendar({
 
             <!--Header Section Including Previous,Next and Today-->
@@ -52,8 +58,7 @@
                 element.click(function () {
 
 
-                    $(document.body).append("<div id='result-modal'></div>");
-                    $("#result-modal").load("modal.html");
+
                         /*$template = $("#myModal").clone().removeAttr('hidden').show();
                         $(".modal-header", $template).text("CIAO!!!");
                         $(".modal-body", $template).text(element.find(".fc-title").html());
