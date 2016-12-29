@@ -144,8 +144,32 @@ $(document).ready(function () {
         checkNotifications();
     }, 2000);
 
+    $("#news-ul").bootstrapNews({
+        newsPerPage: 4,
+        autoplay: false,
+
+        onToDo: function () {
+            //console.log(this);
+        }
+    });
+
 
 });
+
+/**
+ * Append text (current page) breadcrumb on navigation-breadcrumbs
+ * @type {Element}
+ */
+function addToBreadcrumbs(text) {
+    if($("#navigation-breadcrumb li").last().text() != text) {
+        var c = document.createElement("li");
+        var link = document.createElement("a");
+        link.href = "#";
+        link.innerHTML = text;
+        c.appendChild(link);
+        $("#navigation-breadcrumb").append(c);
+    }
+}
 
 /**
  * .on("load") executes when all the page (img included) is loaded.
@@ -155,16 +179,24 @@ $(window).on("load", function() {
     /**
      * Loading Footer
      */
-    $("#footer-content").load("footer.html");
-
+    $("#footer-content").load("/pages/footer.html");
 
     // Animate loader off screen
     $(".se-pre-con").delay(700).fadeOut("slow");
 
 });
 
+/**
+ * Buttons callbacks bindings
+ */
 $("#tab_notifications").on('click', function () {
     $("#main-content").load("/pages/notifications.html");
+});
+
+$("#profile-btn").on('click', function () {
+    addToBreadcrumbs("Profile");
+    $("#main-content").load("/pages/profile.html");
+
 });
 
 

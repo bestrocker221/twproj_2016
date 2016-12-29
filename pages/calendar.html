@@ -5,30 +5,10 @@
 <script src='/js/calendar/fullcalendar.min.js'></script>
 
 
-<!-- Modal
-<div id="myModal" class="modal fade" role="dialog" hidden>
-    <div class="modal-dialog">
-        <!-- Modal content
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"></h4>
-            </div>
-            <div class="modal-body">
-                <p></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
--->
-
 <script>
     $(document).ready(function() {
         /**
-         * Load moadal
+         * Load modal
          */
         $(document.body).append("<div id='result-modal'></div>");
         $("#result-modal").load("modal.html");
@@ -58,17 +38,9 @@
                 element.attr("href","javascript:void(0);");
                 element.click(function () {
 
-
-
-                        /*$template = $("#myModal").clone().removeAttr('hidden').show();
-                        $(".modal-header", $template).text("CIAO!!!");
-                        $(".modal-body", $template).text(element.find(".fc-title").html());
-                        //$(".modal-footer",$template).text(FOOTER);
-                        $($template).modal('show');*/
                     $(" .modal-title").html("CIAO!!!");
                     $(" .modal-body").html(element.find(".fc-title").html());
                     $("#myModal").modal('show');
-
 
                 })
             }
@@ -77,12 +49,7 @@
     });
 </script>
 
-<style>
-
-</style>
-
-
-<div>
+<div style="text-align: center">
     <div id='calendar'></div>
 </div>
 <!-- /#Home & Calendar -->

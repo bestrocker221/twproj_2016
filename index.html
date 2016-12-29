@@ -123,7 +123,7 @@
                                                         <p class="text-left text-center"><strong>Scola Carlo Alberto</strong></p>
                                                         <p class="text-left small text-center"><a href="mailto:carloalberto.scola@studio.unibo.it">carloalberto.scola@studio.unibo.it</a></p>
                                                         <p class="text-left">
-                                                            <a href="#" class="btn btn-primary btn-block btn-sm">Profilo</a>
+                                                            <a id="profile-btn" href="#" class="btn btn-primary btn-block btn-sm">Profilo</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -167,21 +167,66 @@
                                     </ul>
                                 </div>
                                 <!-- /#Breadcrumbs -->
+
                                 <button type="button" class="btn" id="crea-notifica" >Crea</button>
+
                                 <!-- Interchangeable content -->
                                 <div id="main-content" class="row">
-                                    <div class="col-md-4 col-lg-5">
-                                        assdasdasdaads
-                                    </div>
-                                    <div class="col-md-6 col-lg-7">
+
+                                    <div class="col-md-7 col-lg-7">
                                         <div class="row">
-                                            <div id="calendar-title" class="row text-center">testo</div>
+                                            <h1>Benvenuto us3r!</h1>
                                         </div>
-                                        <div class="row">
-                                            <div id="cal-content"></div>
+                                        <!-- News -->
+                                        <div class="row panel panel-default">
+                                            <div class="panel-heading text-left" style="font-family: 'Cinzel', serif;font-size: 22px;">
+                                                <span class="glyphicon glyphicon-list-alt"></span>
+                                                <b style="margin-left: 10px;">News</b>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <ul id="news-ul" style="overflow-y: auto; height: 270px;" >
+                                                            <li id="news-li-template" class="news-item">
+                                                                <p id="news-li-p"></p>
+                                                                <a href="#" hidden>Leggi tutto...</a>
+                                                                <p class="small text-muted text-right" >
+                                                                    <i class="fa fa-clock-o" id="news-li-data"> date</i>
+                                                                </p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-footer">
+                                                <ul class="pagination pull-right" style="margin: 0px;"></ul>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                        <!-- /#News -->
+                                    </div>
+
+
+                                    <!-- Calendar -->
+                                    <div class="col-md-5 col-lg-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div id="calendar-title" class="row text-center">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                    <b>Da ricordare..</b>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row" style="text-align: center;">
+                                                    <div id="cal-content" style="display: inline-flex;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-footer"></div>
                                         </div>
                                     </div>
+                                    <!-- /#Calendar -->
                                 </div>
+
                                 <!-- /#Interchangeable content -->
                             </div>
                         </div>
@@ -203,6 +248,9 @@
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.bootstrap.min.js"></script>
 <script src='js/calendar/moment.js'></script>
+
+<script src="js/jquery.bootstrap.newsbox.min.js"></script>
+
 <script src="js/home.js"></script>
 <!-- /# Finish scripts includes -->
 </body>

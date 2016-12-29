@@ -756,21 +756,22 @@ footer{
 
 }
 
-/*
+/****************************
 
         CALENDAR
 
- */
+ ****************************/
 
 #calendar {
-    max-width: 500px;
+    max-width: 310px;
     float: right;
-    margin: 0 auto;
+    display: inline-block;
+    /*margin-right: 19px;*/
 }
 #calendar-title{
-    max-width: 500px;
-    float: right;
-    margin: 0 auto;
+    font-family: 'Cinzel', serif;
+    font-size:22px;
+    /*margin-bottom: 15px;*/
 }
 
 /*********************************
@@ -807,4 +808,24 @@ footer{
 
 .modal {
     text-align: center;
+}
+
+
+.news-title{
+    font-family: 'Cinzel', serif;
+    font-size:22px;
+    margin-bottom: 20px;
+}
+
+/*******************
+
+        NEWS
+
+ ******************/
+
+.news-item
+{
+    padding:4px 4px;
+    margin:0px;
+    border-bottom:1px dotted #555;
 }
