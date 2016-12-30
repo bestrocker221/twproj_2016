@@ -7,9 +7,10 @@
  */
 require '../db_conn.php';
 
+//$id = $_SESSION['member-id'];
+
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-    //$id = $_SESSION['member-id'];
     $id = 6;
 
     $sqlA = "SELECT * from Events";
@@ -49,5 +50,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     echo $tot;
 } else if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
-    $sql = "INSERT INTO";
+    $id = 6;
+
+    if(isset($_POST['id-event'])) {
+        $id_ev = htmlspecialchars($_POST['id-event']);
+
+        $sql = "INSERT INTO follow_Ev (ID_EV,ID_Member) VALUES ('$id_ev','$id')";
+        if($db->query($sql) === true){
+
+            $sqlB = "UPDATE Events SET n_partec=n_partec+'1' WHERE ID_EV='$id_ev'";
+            if($db->query($sqlB) === true){
+                echo "tutte e due le query eseguite correttamente";
+            }
+
+        } else {
+            echo "ERROR " . $db->errno;
+        }
+    }
+
 }
