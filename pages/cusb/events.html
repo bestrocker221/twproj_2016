@@ -31,20 +31,15 @@ $(document).ready(function () {
                 ])
                 .draw()
                 .node();
+
+            $(rowNode).attr('id', json[n]["id_ev"]);
+
             if(json[n]['iscritto'] == "yes"){
                 $( rowNode )
                     .addClass("tr-row-disabled")
                     .animate( { color: 'black' } );
 
             }
-
-
-            /*
-            t_data.row.add([
-                json[n]["description"],
-                json[n]["date"],
-                json[n]["n_partec"]
-            ]).draw();*/
         }
     });
 
