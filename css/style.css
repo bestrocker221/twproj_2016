@@ -807,7 +807,9 @@ footer{
     /*margin-bottom: 15px;*/
 }
 
-.fc-bg td:hover, .fc-content-skeleton > table > thead > tr > td:hover, .fc-content-skeleton > table > tbody > tr > td:hover{
+.fc-bg td:hover,
+.fc-content-skeleton > table > thead > tr > td:hover,
+.fc-content-skeleton > table > tbody > tr > td:hover{
     background-color: #ffbb88;
 }
 

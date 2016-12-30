@@ -8,48 +8,63 @@
  */
 $(document).ready(function () {
 
-    /**
-     * Load calendar & home page
-     */
-    $("#cal-content").load("/pages/calendar.html");
 
 
     /**
-     * Carico news
+     * Load unibo home
      */
+    function loadHome() {
+        $("#main-content").load("/pages/home-unibo.html", function (e) {
+            /**
+             * Load calendar & home page
+             */
+            $("#cal-content").load("/pages/calendar.html");
 
-    $.get("/core/news-manager.php", function (data) {
-        var c = JSON.parse(data);
+            /**
+             * Carico news
+             */
 
-        //legend
-        //c[0] id
-        //c[1] text
-        //c[2] date
-        for(var n=0; n< c.length; n++) {
-            $template = $("#news-li-template").clone().attr('id', c[n]["id"]).removeClass('no-active').show();
-            $("#id", $template).text(c[n]["id"]);
-            $("#news-li-p", $template).text(c[n]["text"]);
-            $("#news-li-data", $template).text(c[n]["date"]);
+            $.get("/core/news-manager.php", function (data) {
+                var c = JSON.parse(data);
 
-            //bind? TODO?
+                //legend
+                //c[0] id
+                //c[1] text
+                //c[2] date
+                for(var n=0; n< c.length; n++) {
+                    $template = $("#news-li-template").clone().attr('id', c[n]["id"]).removeClass('no-active').show();
+                    $("#id", $template).text(c[n]["id"]);
+                    $("#news-li-p", $template).text(c[n]["text"]);
+                    $("#news-li-data", $template).text(c[n]["date"]);
+
+                    //bind? TODO?
 
 
-            $template.insertAfter("#news-li-template");
-        }
+                    $template.insertAfter("#news-li-template");
+                }
 
-        $("#news-li-template").remove();
+                $("#news-li-template").remove();
 
-        $("#news-ul").bootstrapNews({
-            newsPerPage: 3,
-            autoplay: true,
+                $("#news-ul").bootstrapNews({
+                    newsPerPage: 3,
+                    autoplay: true,
 
-            onToDo: function () {
-                console.log(this);
-            }
+                    onToDo: function () {
+                        console.log(this);
+                    }
+                });
+            });
         });
+    }
+
+    loadHome();
+
+
+    $("#home-btn").bind('click', function (e) {
+       loadHome();
+       e.preventDefault();
+        removeAllBreadcrubsAfter("Home");
     });
-
-
 
     /**
      * Gestione sidebar and toggling
@@ -203,6 +218,16 @@ function addToBreadcrumbs(text) {
         c.appendChild(link);
         $("#navigation-breadcrumb").append(c);
     }
+}
+
+function removeAllBreadcrubsAfter(text){
+    while($("#navigation-breadcrumb li").last().text() != text){
+        $("#navigation-breadcrumb li").last().remove();
+    }
+}
+
+function returnToHome(){
+    removeAllBreadcrubsAfter("Home");
 }
 
 /**
