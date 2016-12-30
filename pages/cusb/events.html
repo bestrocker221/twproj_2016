@@ -28,9 +28,9 @@ $(document).ready(function () {
             var subscribed;
             if(json[n]['iscritto'] == "yes"){
                 subscribed = "<span class='glyphicon glyphicon-ok'></span>";
-                $( rowNode )
+                /*$(rowNode)
                     .addClass("tr-row-disabled")
-                    .animate( { color: 'black' } );
+                    .animate( { color: 'black' } );*/
             } else {
                 subscribed = "<span class='glyphicon glyphicon-remove'></span>";
             }
@@ -60,8 +60,8 @@ $(document).ready(function () {
 
         var button = "<button id='subscribe' type='button' class='btn btn-success' data-dismiss='modal'>Iscriviti</button>";
 
-        row_id = t_data.rowNode(this).attr('id');
-        console.log(row_id);
+        console.log(t_data.row(this).id());
+
         $(".modal-title").html(t_data.row(this).data()[0]);
         $(".modal-body").html("testo");
         $(".modal-footer").html(button +
@@ -70,8 +70,8 @@ $(document).ready(function () {
     });
 
     $("#subscribe").on('click', function () {
-        console.log(row_id);
-        $.post("/core/cusb/event-manager.php", {"id-event":row_id});
+        //console.log(row_id);
+        //$.post("/core/cusb/event-manager.php", {"id-event":row_id});
     });
 
 });
