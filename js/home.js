@@ -188,8 +188,6 @@ $(document).ready(function () {
         //console.log("cerco notifiche..");
         checkNotifications();
     }, 2000);
-
-
 });
 
 /**
@@ -232,7 +230,10 @@ $("#tab_notifications").on('click', function () {
 $("#profile-btn").on('click', function () {
     addToBreadcrumbs("Profile");
     $("#main-content").load("/pages/profile.html");
+});
 
+$("#cusb").on('click',function () {
+    $("#main-content").load("events.html");
 });
 
 
