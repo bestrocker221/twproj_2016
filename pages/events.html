@@ -72,12 +72,16 @@ $(document).ready(function () {
      * Set rows event
      */
     $("#table_id tbody").on("click", "tr", function () {
-        // ADD IF
-        var subscribe = "<button type='button' class='btn btn-success' data-dismiss='modal'>Iscriviti</button>";
-        var cancel_sub = "<button type='button' class='btn btn-danger' data-dismiss='modal'>Annulla iscrizione</button>"
+        var subscribed = 1;
+        var button;
+        if (subscribed == 1) {
+            button = "<button type='button' class='btn btn-success' data-dismiss='modal'>Iscriviti</button>";
+        } else {
+            button = "<button type='button' class='btn btn-danger' data-dismiss='modal'>Annulla iscrizione</button>";
+        }
         $(".modal-title").html(t_data.row(this).data()[0]);
         $(".modal-body").html("testo");
-        $(".modal-footer").html(subscribe + cancel_sub +
+        $(".modal-footer").html(button +
             "<button type='button' class='btn btn-default' data-dismiss='modal'>Chiudi</button>");
         $("#myModal").modal('show');
     });
