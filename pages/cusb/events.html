@@ -3,10 +3,9 @@
         <table id="table_id" class="display">
             <thead>
             <tr>
-                <th>Titolo</th>
-                <th>Link</th>
-                <th>Data inizio</th>
-                <th>Data fine</th>
+                <th>Descrizione</th>
+                <th>Data</th>
+                <th>Numero partecipanti</th>
             </tr>
             </thead>
         </table>
@@ -21,14 +20,13 @@ $(document).ready(function () {
     /**
      * Add Table data
      */
-    $.get("/core/events.php", function (data) {
+    $.get("/core/cusb/event-manager.php", function (data) {
         var json = JSON.parse(data);
         for (var n = 0; n < json.length ; n++) {
             t_data.row.add([
-                json[n]["title"],
-                json[n]["url"],
-                json[n]["start"],
-                json[n]["end"]
+                json[n]["description"],
+                json[n]["date"],
+                json[n]["n_partec"]
             ]).draw(false);
         }
     });
