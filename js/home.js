@@ -45,7 +45,7 @@ $(document).ready(function () {
                     autoplay: true,
 
                     onToDo: function () {
-                        console.log(this);
+                        //console.log(this);
                     }
                 });
             });
@@ -274,7 +274,6 @@ function cusb_main_ref() {
         bindEventBreadcrumb("Cusb",cusb_main_ref);
 
         $("#events-link").on('click', function (e) {
-            console.log("porcio ido");
             addToBreadcrumbs("Eventi");
             $("#main-content").load("/pages/cusb/events.html", function (e) {
                 //bindEventBreadcrumb("Eventi",cusb_main_ref);

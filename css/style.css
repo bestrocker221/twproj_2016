@@ -839,6 +839,11 @@ footer{
     background-color: #ffbb88;
 }
 
+.tr-row-disabled{
+    background-color: #b7aaaa !important;
+    opacity: 0.8;
+}
+
 /*********************************
 
             MODAL

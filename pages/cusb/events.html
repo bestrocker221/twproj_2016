@@ -23,11 +23,28 @@ $(document).ready(function () {
     $.get("/core/cusb/event-manager.php", function (data) {
         var json = JSON.parse(data);
         for (var n = 0; n < json.length ; n++) {
+            var rowNode = t_data
+                .row.add([
+                    json[n]["description"],
+                    json[n]["date"],
+                    json[n]["n_partec"]
+                ])
+                .draw()
+                .node();
+            if(json[n]['iscritto'] == "yes"){
+                $( rowNode )
+                    .addClass("tr-row-disabled")
+                    .animate( { color: 'black' } );
+
+            }
+
+
+            /*
             t_data.row.add([
                 json[n]["description"],
                 json[n]["date"],
                 json[n]["n_partec"]
-            ]).draw(false);
+            ]).draw();*/
         }
     });
 
