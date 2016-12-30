@@ -14,18 +14,7 @@
 </div>
 <script>
 
-    /**
-     * Append "Notifiche" breadcrumb on navigation-breadcrumbs
-     * @type {Element}
-     */
-    if($("#navigation-breadcrumb li").last().text() != "Notifiche") {
-        var c = document.createElement("li");
-        var link = document.createElement("a");
-        link.href = "#";
-        link.innerHTML = "Notifiche";
-        c.appendChild(link);
-        $("#navigation-breadcrumb").append(c);
-    }
+    addToBreadcrumbs("Notifiche");
 
     /**
      * Set Table property

@@ -28,7 +28,7 @@
 }
 
 #nav-options a{
-    color: black;
+    color: #333333;
 }
 .navbar-brand {
   padding: 0px;
@@ -40,6 +40,19 @@
   width: auto;
 }
 
+a#member-email:hover{
+    transition: none !important;
+    background: none !important;
+    font-weight: bold;
+}
+a#profile-btn:hover{
+    background-color: blue !important;
+    font-weight: bold;
+}
+
+a#logout-btn:hover{
+    font-weight: bold;
+}
 
 #notification_list{
     overflow-y: auto;
@@ -54,6 +67,10 @@
 
 .notification-not-viewed{
     background-color: #e2f8ff;
+}
+
+.no-active{
+    display: none !important;
 }
 
 .not-media{
@@ -203,7 +220,23 @@ html { height: 100%;}
         z-index: 90;
         margin-left:0 !important;
     }
+
+    #logo-nav{
+        display: none !important;
+    }
+
 }
+@media (max-width:1080px){
+    #logo-nav{
+        font-size: 12px !important;
+    }
+}
+@media (max-width:850px){
+    #logo-nav{
+        font-size: 10px !important;
+    }
+}
+
 
 
 /* CSS Transform Align Navbar Brand Text ... This could also be achieved with table / table-cells */
@@ -335,6 +368,7 @@ html { height: 100%;}
     transition: width .2s ease-in;
 
 }
+
 .sidebar-nav li:first-child a {
     color: #fff;
     background-color: #1a1a1a;
@@ -370,7 +404,6 @@ html { height: 100%;}
     -moz-transition:  width .2s ease-in;
     -ms-transition:  width .2s ease-in;
     transition: width .2s ease-in;
-
 }
 
 .sidebar-nav li a {
@@ -756,21 +789,22 @@ footer{
 
 }
 
-/*
+/****************************
 
         CALENDAR
 
- */
+ ****************************/
 
 #calendar {
-    max-width: 500px;
+    max-width: 310px;
     float: right;
-    margin: 0 auto;
+    display: inline-block;
+    /*margin-right: 19px;*/
 }
 #calendar-title{
-    max-width: 500px;
-    float: right;
-    margin: 0 auto;
+    font-family: 'Cinzel', serif;
+    font-size:22px;
+    /*margin-bottom: 15px;*/
 }
 
 .fc-bg td:hover, .fc-content-skeleton > table > thead > tr > td:hover, .fc-content-skeleton > table > tbody > tr > td:hover{
@@ -811,4 +845,24 @@ footer{
 
 .modal {
     text-align: center;
+}
+
+
+.news-title{
+    font-family: 'Cinzel', serif;
+    font-size:22px;
+    margin-bottom: 20px;
+}
+
+/*******************
+
+        NEWS
+
+ ******************/
+
+.news-item
+{
+    padding:4px 4px;
+    margin:0px;
+    border-bottom:1px dotted #555;
 }
