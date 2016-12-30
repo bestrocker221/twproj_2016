@@ -1,0 +1,84 @@
+<div class="container-fluid">
+    <div class="row">
+        <table id="table_id" class="display">
+            <thead>
+            <tr>
+                <th>Sport</th>
+                <th>Numero giocatori</th>
+                <th>Data</th>
+                <th>Campo</th>
+                <th>Organizzatore</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        addToBreadcrumbs("Tornei");
+
+        /**
+         * Set Table property
+         */
+        $("#table_id").addClass("table table-striped table-bordered");
+        var t_data = $("#table_id").DataTable({
+            "language": {
+                "decimal": "",
+                "emptyTable": "Dati non disponibili",
+                "infoPostFix": "",
+                "thousands": ",",
+                "loadingRecords": "Caricamento...",
+                "processing": "Elaborazione...",
+                "search": "Cerca:",
+                "lengthMenu": "Mostra _MENU_ per pagina",
+                "zeroRecords": "Nessun risultato",
+                "info": "Pagina _PAGE_ di _PAGES_",
+                "infoEmpty": "Nessun risultato",
+                "infoFiltered": "(filtrato tra _MAX_ risultati totali)",
+                "paginate": {
+                    "first": "Primo",
+                    "last": "Ultimo",
+                    "next": "Avanti",
+                    "previous": "Indietro"
+                },
+                "aria": {
+                    "sortAscending": ": ordina ascendente",
+                    "sortDescending": ": ordina discendente"
+                }
+            }
+        });
+
+        /**
+         * Add Table data
+         */
+        $.get("/core/events.php", function (data) {
+            var json = JSON.parse(data);
+            for (var n = 0; n < Object.keys(json).length - 1; n++) {
+                t_data.row.add([
+                    json[n]["title"],
+                    json[n]["url"],
+                    json[n]["start"],
+                    json[n]["end"]
+                ]).draw(false);
+            }
+        });
+
+        /**
+         * Load modal from file
+         */
+        $(document.body).append("<div id='result-modal'></div>");
+        $("#result-modal").load("modal.html");
+
+        /**
+         * Set rows event
+         */
+        $("#table_id tbody").on("click", "tr", function () {
+            var button = "<button type='button' class='btn btn-success' data-dismiss='modal'>Iscriviti</button>";
+            $(".modal-title").html(t_data.row(this).data()[0]);
+            $(".modal-body").html("testo");
+            $(".modal-footer").html(button +
+                "<button type='button' class='btn btn-default' data-dismiss='modal'>Chiudi</button>");
+            $("#myModal").modal('show');
+        });
+    });
+</script>

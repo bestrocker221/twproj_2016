@@ -901,3 +901,14 @@ footer{
 .caption h4 {
     margin-top: 30%;
 }
+
+/*****************
+
+    BREADCRUMBS
+
+ *****************/
+
+#navigation-breadcrumb {
+    background-color: transparent;
+    border-bottom: 10px red;
+}
