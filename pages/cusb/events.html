@@ -62,7 +62,7 @@ $(document).ready(function () {
 
         //node id retrieve
         var node = t_data.row(this).node();
-        console.log($(node).attr('id'));
+        row_id = $(node).attr('id');
 
         $(".modal-title").html(t_data.row(this).data()[0]);
         $(".modal-body").html("testo");
@@ -71,9 +71,9 @@ $(document).ready(function () {
         $("#myModal").modal('show');
     });
 
-    $("#subscribe").on('click', function () {
-        //console.log(row_id);
-        //$.post("/core/cusb/event-manager.php", {"id-event":row_id});
+    $(document).on('click', '#subscribe', function () {
+        console.log(row_id);
+        $.post("/core/cusb/event-manager.php", {"id-event":row_id});
     });
 
 });
