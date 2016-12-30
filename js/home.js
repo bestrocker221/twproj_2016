@@ -258,6 +258,8 @@ $("#profile-btn").on('click', function () {
 });
 
 $("#cusb").on('click',function () {
+    returnToHome();
+    addToBreadcrumbs("Cusb");
     $("#main-content").load("home.html");
 });
 
