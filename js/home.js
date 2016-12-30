@@ -160,21 +160,21 @@ $(document).ready(function () {
                 $("#not-body",$template).text(c[n][1]);
                 if(c[n][4] == 0)
                     $template.addClass('notification-not-viewed');
-                $template.bind("click", function (e) {
-                    //notifica cliccata, invia +1 al server
+                    $template.bind("click", function (e) {
+                        //notifica cliccata, invia +1 al server
 
-                    $.post("/core/gestisci_notifiche.php", {"id-notifica":$(this).attr('id')}, function (data) {
-                        $(this).removeClass("notification-not-viewed");
-                        console.log(data);
+                        $.post("/core/gestisci_notifiche.php", {"id-notifica":$(this).attr('id')}, function (data) {
+                            $(this).removeClass("notification-not-viewed");
+                            console.log(data);
+                        });
+
+                        //inserisci location
+                        e.preventDefault();
+
+                        $(".modal-title").html($(this).find("strong").text());
+                        $(".modal-body").html($(this).find("p:odd").text());
+                        $("#myModal").modal('show');
                     });
-
-                    //inserisci location
-                    e.preventDefault();
-
-                    $(".modal-title").html($(this).find("strong").text());
-                    $(".modal-body").html($(this).find("p:odd").text());
-                    $("#myModal").modal('show');
-                });
 
                 $template.insertBefore("#view-all");
             }

@@ -368,6 +368,7 @@ html { height: 100%;}
     transition: width .2s ease-in;
 
 }
+
 .sidebar-nav li:first-child a {
     color: #fff;
     background-color: #1a1a1a;
@@ -403,7 +404,6 @@ html { height: 100%;}
     -moz-transition:  width .2s ease-in;
     -ms-transition:  width .2s ease-in;
     transition: width .2s ease-in;
-
 }
 
 .sidebar-nav li a {
