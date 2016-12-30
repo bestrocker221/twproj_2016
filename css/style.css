@@ -28,7 +28,7 @@
 }
 
 #nav-options a{
-    color: black;
+    color: #333333;
 }
 .navbar-brand {
   padding: 0px;
@@ -203,7 +203,23 @@ html { height: 100%;}
         z-index: 90;
         margin-left:0 !important;
     }
+
+    #logo-nav{
+        display: none !important;
+    }
+
 }
+@media (max-width:1080px){
+    #logo-nav{
+        font-size: 12px !important;
+    }
+}
+@media (max-width:850px){
+    #logo-nav{
+        font-size: 10px !important;
+    }
+}
+
 
 
 /* CSS Transform Align Navbar Brand Text ... This could also be achieved with table / table-cells */
