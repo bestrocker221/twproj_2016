@@ -60,7 +60,9 @@ $(document).ready(function () {
 
         var button = "<button id='subscribe' type='button' class='btn btn-success' data-dismiss='modal'>Iscriviti</button>";
 
-        console.log(t_data.row(this).id());
+        //node id retrieve
+        var node = t_data.row(this).node();
+        console.log($(node).attr('id'));
 
         $(".modal-title").html(t_data.row(this).data()[0]);
         $(".modal-body").html("testo");
