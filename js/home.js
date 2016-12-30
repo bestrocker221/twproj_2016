@@ -220,6 +220,17 @@ function addToBreadcrumbs(text) {
     }
 }
 
+function bindEventBreadcrumb(text, func){
+    //console.log("entro.. testo: " + text, " funzione -> " + func);
+    getBreadcrumb(text).bind('click',func);
+}
+
+function getBreadcrumb(text){
+    /*console.log("T:"+text);
+    console.log("preso elemento-->" + $("#navigation-breadcrumb li:contains('"+text+"')") );*/
+    return $("#navigation-breadcrumb li:contains('"+text+"')");
+}
+
 function removeAllBreadcrubsAfter(text){
     while($("#navigation-breadcrumb li").last().text() != text){
         $("#navigation-breadcrumb li").last().remove();
@@ -257,11 +268,45 @@ $("#profile-btn").on('click', function () {
     $("#main-content").load("/pages/profile.html");
 });
 
-$("#cusb").on('click',function () {
+
+function cusb_main_ref() {
     returnToHome();
     addToBreadcrumbs("Cusb");
-    $("#main-content").load("home.html");
+
+    $("#main-content").load("/pages/home-cusb.html", function (e) {
+
+        bindEventBreadcrumb("Cusb",cusb_main_ref);
+
+        $("#events-link").on('click', function (e) {
+            console.log("porcio ido");
+            addToBreadcrumbs("Eventi");
+            $("#main-content").load("/pages/events.html", function (e) {
+                //bindEventBreadcrumb("Eventi",cusb_main_ref);
+            });
+            e.preventDefault();
+        });
+
+        $("#tournaments-link").on('click', function (e) {
+            console.log("porcio ido");
+            addToBreadcrumbs("Tornei");
+            $("#main-content").load("/pages/tournaments.html");
+            e.preventDefault();
+        });
+
+        $("#training-link").on('click', function (e) {
+            console.log("porcio ido");
+            addToBreadcrumbs("Allenamenti");
+            $("#main-content").load("/pages/trainings.html");
+            e.preventDefault();
+        });
+    });
+}
+
+
+$("#cusb").on('click',function () {
+    cusb_main_ref();
 });
+
 
 
 /**
