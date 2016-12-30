@@ -40,6 +40,19 @@
   width: auto;
 }
 
+a#member-email:hover{
+    transition: none !important;
+    background: none !important;
+    font-weight: bold;
+}
+a#profile-btn:hover{
+    background-color: blue !important;
+    font-weight: bold;
+}
+
+a#logout-btn:hover{
+    font-weight: bold;
+}
 
 #notification_list{
     overflow-y: auto;
@@ -54,6 +67,10 @@
 
 .notification-not-viewed{
     background-color: #e2f8ff;
+}
+
+.no-active{
+    display: none !important;
 }
 
 .not-media{

@@ -14,6 +14,41 @@ $(document).ready(function () {
     $("#cal-content").load("/pages/calendar.html");
 
 
+    /**
+     * Carico news
+     */
+
+    $.get("/core/news-manager.php", function (data) {
+        var c = JSON.parse(data);
+
+        //legend
+        //c[0] id
+        //c[1] text
+        //c[2] date
+        for(var n=0; n< c.length; n++) {
+            $template = $("#news-li-template").clone().attr('id', c[n]["id"]).removeClass('no-active').show();
+            $("#id", $template).text(c[n]["id"]);
+            $("#news-li-p", $template).text(c[n]["text"]);
+            $("#news-li-data", $template).text(c[n]["date"]);
+
+            //bind? TODO?
+
+
+            $template.insertAfter("#news-li-template");
+        }
+
+        $("#news-li-template").remove();
+
+        $("#news-ul").bootstrapNews({
+            newsPerPage: 3,
+            autoplay: true,
+
+            onToDo: function () {
+                console.log(this);
+            }
+        });
+    });
+
 
 
     /**
@@ -153,15 +188,6 @@ $(document).ready(function () {
         //console.log("cerco notifiche..");
         checkNotifications();
     }, 2000);
-
-    $("#news-ul").bootstrapNews({
-        newsPerPage: 4,
-        autoplay: false,
-
-        onToDo: function () {
-            //console.log(this);
-        }
-    });
 
 
 });
