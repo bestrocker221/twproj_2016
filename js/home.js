@@ -1,9 +1,4 @@
 /**
- * Created by CarloAlberto on 22/12/16.
- */
-
-
-/**
  * .ready executes when html DOM has been parsed
  */
 $(document).ready(function () {
@@ -203,6 +198,7 @@ $(document).ready(function () {
         //console.log("cerco notifiche..");
         checkNotifications();
     }, 2000);
+
 });
 
 /**
@@ -273,14 +269,14 @@ function cusb_main_ref() {
     returnToHome();
     addToBreadcrumbs("Cusb");
 
-    $("#main-content").load("/pages/home-cusb.html", function (e) {
+    $("#main-content").load("/pages/cusb/home-cusb.html", function (e) {
 
         bindEventBreadcrumb("Cusb",cusb_main_ref);
 
         $("#events-link").on('click', function (e) {
             console.log("porcio ido");
             addToBreadcrumbs("Eventi");
-            $("#main-content").load("/pages/events.html", function (e) {
+            $("#main-content").load("/pages/cusb/events.html", function (e) {
                 //bindEventBreadcrumb("Eventi",cusb_main_ref);
             });
             e.preventDefault();
@@ -289,14 +285,14 @@ function cusb_main_ref() {
         $("#tournaments-link").on('click', function (e) {
             console.log("porcio ido");
             addToBreadcrumbs("Tornei");
-            $("#main-content").load("/pages/tournaments.html");
+            $("#main-content").load("/pages/cusb/tournaments.html");
             e.preventDefault();
         });
 
         $("#training-link").on('click', function (e) {
             console.log("porcio ido");
             addToBreadcrumbs("Allenamenti");
-            $("#main-content").load("/pages/trainings.html");
+            $("#main-content").load("/pages/cusb/trainings.html");
             e.preventDefault();
         });
     });
@@ -324,3 +320,45 @@ $(document).on("scroll", function (height) {
         $(".navbar-fixed-top").css({"top": fixed_height-h});
     }
 });
+
+/**
+ * Set Table property
+ */
+var t_data = 0;
+function initTable() {
+    $("#table_id").addClass("table table-striped table-bordered");
+    t_data = $("#table_id").DataTable({
+        "language": {
+            "decimal": "",
+            "emptyTable": "Dati non disponibili",
+            "infoPostFix": "",
+            "thousands": ",",
+            "loadingRecords": "Caricamento...",
+            "processing": "Elaborazione...",
+            "search": "Cerca:",
+            "lengthMenu": "Mostra _MENU_ per pagina",
+            "zeroRecords": "Nessun risultato",
+            "info": "Pagina _PAGE_ di _PAGES_",
+            "infoEmpty": "Nessun risultato",
+            "infoFiltered": "(filtrato tra _MAX_ risultati totali)",
+            "paginate": {
+                "first": "Primo",
+                "last": "Ultimo",
+                "next": "Avanti",
+                "previous": "Indietro"
+            },
+            "aria": {
+                "sortAscending": ": ordina ascendente",
+                "sortDescending": ": ordina discendente"
+            }
+        }
+    });
+}
+
+/**
+ * Load modal from file
+ */
+function loadModal() {
+    $(document.body).append("<div id='result-modal'></div>");
+    $("#result-modal").load("modal.html");
+}
