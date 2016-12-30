@@ -37,9 +37,9 @@ if($result->num_rows > 0){
             $temp['iscritto'] = "yes";
             unset($temp2[$$temp['id_ev']]);
         }
-        array_push($atot, $temp);
+        array_push($tot, $temp);
     }
-    $tot['list'] = $atot;
+    //$tot['list'] = $atot;
 } else {
     echo "ERROR " . $db->errno;
     echo "num row" . $result->num_rows;
