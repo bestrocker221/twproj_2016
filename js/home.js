@@ -258,7 +258,7 @@ $("#profile-btn").on('click', function () {
 });
 
 $("#cusb").on('click',function () {
-    $("#main-content").load("events.html");
+    $("#main-content").load("home.html");
 });
 
 
