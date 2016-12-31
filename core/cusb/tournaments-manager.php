@@ -56,12 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $id = 6;
 
     if(isset($_POST['id-tourn'])) {
-        $id_ev = htmlspecialchars($_POST['id-event']);
+        $id_tourn = htmlspecialchars($_POST['id-tourn']);
 
-        $sql = "INSERT INTO follow_Ev (ID_EV,ID_Member) VALUES ('$id_ev','$id')";
+        $sql = "INSERT INTO Tourn_Subsc (ID_torneo,ID_Member) VALUES ('$id_tourn','$id')";
         if($db->query($sql) === true){
 
-            $sqlB = "UPDATE Events SET n_partec=n_partec+'1' WHERE ID_EV='$id_ev'";
+            $sqlB = "UPDATE Tournaments SET n_player=n_player+'1' WHERE ID_torneo='$id_tourn'";
             if($db->query($sqlB) === true){
                 echo "tutte e due le query eseguite correttamente";
             }

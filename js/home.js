@@ -115,9 +115,9 @@ $(document).ready(function () {
     $("#crea-notifica").on("click",function () {
 
         $.post("/core/gestisci_notifiche.php", {"id" : "2","title":"Nuovo allenamento!" ,"desc":"giovedi alle 15"},function (data) {
-            console.log("OK? " + data);
+            //console.log("OK? " + data);
         });
-        console.log("cerco notifiche..");
+        //console.log("cerco notifiche..");
 
     });
 
@@ -218,7 +218,10 @@ function addToBreadcrumbs(text) {
 
 function bindEventBreadcrumb(text, func){
     //console.log("entro.. testo: " + text, " funzione -> " + func);
-    getBreadcrumb(text).bind('click',func);
+    getBreadcrumb(text).bind('click',function (e) {
+        func();
+        e.preventDefault();
+    });
 }
 
 function getBreadcrumb(text){
@@ -264,6 +267,13 @@ $("#profile-btn").on('click', function () {
     $("#main-content").load("/pages/profile.html");
 });
 
+function loadEventPage() {
+
+
+    $("#main-content").load("/pages/cusb/events.html", function (e) {
+
+    });
+}
 
 function cusb_main_ref() {
     returnToHome();
@@ -275,21 +285,17 @@ function cusb_main_ref() {
 
         $("#events-link").on('click', function (e) {
             addToBreadcrumbs("Eventi");
-            $("#main-content").load("/pages/cusb/events.html", function (e) {
-                //bindEventBreadcrumb("Eventi",cusb_main_ref);
-            });
-            e.preventDefault();
+            bindEventBreadcrumb("Eventi",loadEventPage);
+            loadEventPage();
         });
 
         $("#tournaments-link").on('click', function (e) {
-            console.log("porcio ido");
             addToBreadcrumbs("Tornei");
             $("#main-content").load("/pages/cusb/tournaments.html");
             e.preventDefault();
         });
 
         $("#training-link").on('click', function (e) {
-            console.log("porcio ido");
             addToBreadcrumbs("Allenamenti");
             $("#main-content").load("/pages/cusb/trainings.html");
             e.preventDefault();
@@ -326,6 +332,40 @@ $(document).on("scroll", function (height) {
 var t_data = 0;
 function initTable() {
     $("#table_id").addClass("table table-striped table-bordered");
+
+    if ( $.fn.dataTable.isDataTable( '#table_id' ) ) {
+        t_data = $('#table_id').DataTable();
+    }
+    else {
+        t_data = $('#table_id').DataTable({
+                "language": {
+                    "decimal": "",
+                    "emptyTable": "Dati non disponibili",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "loadingRecords": "Caricamento...",
+                    "processing": "Elaborazione...",
+                    "search": "Cerca:",
+                    "lengthMenu": "Mostra _MENU_ per pagina",
+                    "zeroRecords": "Nessun risultato",
+                    "info": "Pagina _PAGE_ di _PAGES_",
+                    "infoEmpty": "Nessun risultato",
+                    "infoFiltered": "(filtrato tra _MAX_ risultati totali)",
+                    "paginate": {
+                        "first": "Primo",
+                        "last": "Ultimo",
+                        "next": "Avanti",
+                        "previous": "Indietro"
+                    },
+                    "aria": {
+                        "sortAscending": ": ordina ascendente",
+                        "sortDescending": ": ordina discendente"
+                    }
+                }
+            }
+         );
+    }
+    /*
     t_data = $("#table_id").DataTable({
         "language": {
             "decimal": "",
@@ -350,8 +390,8 @@ function initTable() {
                 "sortAscending": ": ordina ascendente",
                 "sortDescending": ": ordina discendente"
             }
-        }
-    });
+        }*/
+
 }
 
 /**

@@ -1,3 +1,18 @@
+<?php
+require_once 'core/functions.php';
+require_once 'core/cookie_check.php';
+secure_session_start();
+$tmp = preg_split("_&&_", $_COOKIE['session']);
+$tmp[0] = urldecode($tmp[0]);
+echo str_replace("_", "",$tmp[0]);
+echo "</br>";
+echo str_replace("_", "",$tmp[1]);
+if (controllo_cookie_member()){
+    header("location: /index.php");
+} else {
+    echo "user: lampa@dina.it</br>pwd: lampadina";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +23,19 @@
     <script type="application/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/sha512.js"></script>
     <title>Login</title>
 </head>
-<body   >
+<body>
+<script>
+    $(document).ready(function () {
+        $("#login-submit").bind("click", function (e) {
+
+            $("#password-login").val(hex_sha512($("#password-login").val()));
+            $("#login-form").submit();
+        })
+    });
+</script>
     <div class="container" style="padding-top: 60px;">
         <div class="row" >
             <div class="col-md-6 col-md-offset-3 col-sm-offset-3 col-sm-6 col-xs-offset-3 col-xs-6 group-login">
@@ -28,7 +53,7 @@
                         <div class="row" id="pwd-container">
                             <div class="col-lg-12">
                                 <!-- LOGIN FORM -->
-                                <form class="form-horizontal" id="login-form" action="#" method="post" role="form" style="display:block;">
+                                <form class="form-horizontal" id="login-form" action="/core/check_login.php" method="post" role="form" style="display:block;">
                                     <div id="row-user" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                         <label for="username" hidden>Username</label>
@@ -48,7 +73,7 @@
                                         <div class="row">
                                             <div class="col-sm-6 col-sm-offset-3">
                                                 <label for="login-submit" hidden>Log in</label>
-                                                <input type="submit" name="login-submit" id="login-submit" tabindex="3" class="form-control btn btn-login" value="Log in">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="3" class="form-control btn btn-login" value="Log in" >
                                             </div>
                                         </div>
                                     </div>

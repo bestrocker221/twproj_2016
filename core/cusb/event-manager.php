@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $result = $db->query($sqlA);
     if ($result->num_rows > 0) {
-        $atot = array();
         while ($row = $result->fetch_assoc()) {
             $temp = array();
             $temp['id_ev'] = $row['ID_EV'];
@@ -41,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
             array_push($tot, $temp);
         }
-        //$tot['list'] = $atot;
     } else {
         echo "ERROR " . $db->errno;
         echo "num row" . $result->num_rows;
