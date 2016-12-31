@@ -24,19 +24,14 @@ $(document).ready(function () {
     $.get("/core/cusb/event-manager.php", function (data) {
         var json = JSON.parse(data);
         for (var n = 0; n < json.length ; n++) {
-            var rowNode;
             var subscribed;
-
             if(json[n]['iscritto'] == "yes"){
                 subscribed = "<span class='glyphicon glyphicon-ok'></span>";
-                /*$(rowNode)
-                    .addClass("tr-row-disabled")
-                    .animate( { color: 'black' } );*/
             } else {
                 subscribed = "<span class='glyphicon glyphicon-remove'></span>";
             }
 
-            rowNode = t_data
+            var rowNode = t_data
                 .row.add([
                     json[n]["description"],
                     json[n]["date"],
@@ -82,6 +77,10 @@ $(document).ready(function () {
         $("#myModal").modal('show');
     });
 
+
+    /**
+     * Load page after subscription
+     */
     $(document).on('click', '#subscribe', function () {
         console.log(row_id);
         $.post("/core/cusb/event-manager.php", {"id-event":row_id});

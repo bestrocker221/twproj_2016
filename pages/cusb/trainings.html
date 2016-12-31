@@ -5,8 +5,7 @@
             <tr>
                 <th>Sport</th>
                 <th>Data</th>
-                <th>Campo</th>
-                <th>Organizzatore</th>
+                <th>Iscritto</th>
             </tr>
             </thead>
         </table>
@@ -20,35 +19,65 @@
         /**
          * Add Table data
          */
-        $.get("/core/events.php", function (data) {
+        $.get("/core/cusb/training-manager.php", function (data) {
             var json = JSON.parse(data);
             for (var n = 0; n < json.length; n++) {
-                t_data.row.add([
-                    json[n]["title"],
-                    json[n]["url"],
-                    json[n]["start"],
-                    json[n]["end"]
-                ]).draw(false);
+                var subscribed;
+                if(json[n]['iscritto'] == "yes"){
+                    subscribed = "<span class='glyphicon glyphicon-ok'></span>";
+                } else {
+                    subscribed = "<span class='glyphicon glyphicon-remove'></span>";
+                }
+
+                var rowNode = t_data.row.add([
+                    json[n]["of_what"],
+                    json[n]["date"],
+                    subscribed
+                ])
+                    .draw()
+                    .node();
+
+                $(rowNode).attr('id', json[n]["id_training"]);
             }
         });
 
         loadModal();
+
         /**
          * Set rows event
          */
+        var row_id;
         $("#table_id tbody").on("click", "tr", function () {
-            var subscribed = 1;
-            var button;
-            if (subscribed == 1) {
-                button = "<button type='button' class='btn btn-success' data-dismiss='modal'>Iscriviti</button>";
+            var button = "<button id='subscribe' type='button' class='btn btn-success' data-dismiss='modal'>Iscriviti</button>";
+
+            //node id retrieve
+            var node = t_data.row(this).node();
+            row_id = $(node).attr('id');
+
+            /**
+             * check whether the event has already been assigned.
+             */
+            if(!$(node).find("td").last().find("span").hasClass("glyphicon-ok")){
+                $(".modal-footer").html(button +
+                    "<button type='button' class='btn btn-default' data-dismiss='modal'>Chiudi</button>");
             } else {
-                button = "<button type='button' class='btn btn-danger' data-dismiss='modal'>Annulla iscrizione</button>";
+                $(".modal-footer").html(
+                    "<button type='button' class='btn btn-default' data-dismiss='modal'>Chiudi</button>");
             }
+
             $(".modal-title").html(t_data.row(this).data()[0]);
             $(".modal-body").html("testo");
-            $(".modal-footer").html(button +
-                "<button type='button' class='btn btn-default' data-dismiss='modal'>Chiudi</button>");
+
             $("#myModal").modal('show');
+        });
+
+        /**
+         * Load page after subscription
+         */
+        $(document).on('click', '#subscribe', function () {
+            console.log(row_id);
+            $.post("/core/cusb/training-manager.php", {"id-training":row_id});
+            loadTrainingPage();
         });
     });
 </script>

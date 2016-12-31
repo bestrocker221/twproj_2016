@@ -268,11 +268,15 @@ $("#profile-btn").on('click', function () {
 });
 
 function loadEventPage() {
+    $("#main-content").load("/pages/cusb/events.html");
+}
 
+function loadTournamentPage() {
+    $("#main-content").load("/pages/cusb/tournaments.html");
+}
 
-    $("#main-content").load("/pages/cusb/events.html", function (e) {
-
-    });
+function loadTrainingPage() {
+    $("#main-content").load("/pages/cusb/trainings.html");
 }
 
 function cusb_main_ref() {

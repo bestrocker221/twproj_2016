@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $id = 6;
 
     if(isset($_POST['id-training'])) {
-        $id_training = htmlspecialchars($_POST['id-event']);
+        $id_training = htmlspecialchars($_POST['id-training']);
 
         $sql = "INSERT INTO follow_Tr (ID_training,ID_Member) VALUES ('$id_training','$id')";
         if($db->query($sql) === true){
