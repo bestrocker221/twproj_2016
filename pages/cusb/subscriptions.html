@@ -1,0 +1,126 @@
+<div class="container-fluid">
+    <div class="row">
+        <h6>Tornei</h6>
+        <table id="tournaments-table" class="display">
+            <thead>
+            <tr>
+                <th>Sport</th>
+                <th>Data evento</th>
+                <th>Data iscrizione</th>
+                <th>Iscritto</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="row">
+        <h6>Allenamenti</h6>
+        <table id="trainings-table" class="display">
+            <thead>
+            <tr>
+                <th>Sport</th>
+                <th>Data</th>
+                <th>Iscritto</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="row">
+        <h6>Eventi</h6>
+        <table id="events-table" class="display">
+            <thead>
+            <tr>
+                <th>Descrizione</th>
+                <th>Data</th>
+                <th>Numero partecipanti</th>
+                <th>Iscritto</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<script>
+    addToBreadcrumbs("Iscrizioni");
+
+    tourn_data = initTable("tournaments-table");
+
+    /**
+     * Add Tournaments Table data
+     */
+    $.get("/core/cusb/tournaments-manager.php", function (data) {
+        var json = JSON.parse(data);
+        for (var n = 0; n < json.length; n++) {
+            var subscribed;
+            if(json[n]['iscritto'] != null){
+                subscribed = "<span class='glyphicon glyphicon-ok'></span>";
+            } else {
+                subscribed = "<span class='glyphicon glyphicon-remove'></span>";
+            }
+            var rowNode = tourn_data.row.add([
+                json[n]["of_what"],
+                json[n]["n_player"],
+                json[n]["date"],
+                json[n]["id_field"],
+                subscribed
+            ])
+                .draw()
+                .node();
+
+            $(rowNode).attr('id', json[n]["id_tourn"]);
+        }
+    });
+
+
+    train_data = initTable("trainings-table");
+    /**
+     * Add Trainings Table data
+     */
+    $.get("/core/cusb/training-manager.php", function (data) {
+        var json = JSON.parse(data);
+        for (var n = 0; n < json.length; n++) {
+            var subscribed;
+            if(json[n]['iscritto'] == "yes"){
+                subscribed = "<span class='glyphicon glyphicon-ok'></span>";
+            } else {
+                subscribed = "<span class='glyphicon glyphicon-remove'></span>";
+            }
+
+            var rowNode = train_data.row.add([
+                json[n]["of_what"],
+                json[n]["date"],
+                subscribed
+            ])
+                .draw()
+                .node();
+
+            $(rowNode).attr('id', json[n]["id_training"]);
+        }
+    });
+
+    event_data = initTable("events-table");
+    /**
+     * Add Trainings Table data
+     */
+    $.get("/core/cusb/event-manager.php", function (data) {
+        var json = JSON.parse(data);
+        for (var n = 0; n < json.length; n++) {
+            var subscribed;
+            if(json[n]['iscritto'] == "yes"){
+                subscribed = "<span class='glyphicon glyphicon-ok'></span>";
+            } else {
+                subscribed = "<span class='glyphicon glyphicon-remove'></span>";
+            }
+
+            var rowNode = event_data.row.add([
+                json[n]["description"],
+                json[n]["date"],
+                json[n]["n_partec"],
+                subscribed
+            ])
+                .draw()
+                .node();
+
+            $(rowNode).attr('id', json[n]["id_training"]);
+        }
+    });
+
+</script>

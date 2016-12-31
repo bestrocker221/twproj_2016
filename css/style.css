@@ -866,18 +866,17 @@ footer{
     text-align: center;
 }
 
+/*******************
+
+        NEWS
+
+ ******************/
 
 .news-title{
     font-family: 'Cinzel', serif;
     font-size:22px;
     margin-bottom: 20px;
 }
-
-/*******************
-
-        NEWS
-
- ******************/
 
 .news-item
 {
@@ -902,8 +901,8 @@ footer{
     top:0;
     right:0;
     background: rgba(255, 73, 59, 0.53);
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     padding:2%;
     display: none;
     text-align:center;;
@@ -912,7 +911,7 @@ footer{
 }
 
 .caption h4 {
-    margin-top: 30%;
+    padding-top: 30%;
 }
 
 /*****************

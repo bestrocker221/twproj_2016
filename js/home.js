@@ -304,6 +304,12 @@ function cusb_main_ref() {
             $("#main-content").load("/pages/cusb/trainings.html");
             e.preventDefault();
         });
+
+        $("#subscriptions-link").on('click', function (e) {
+            addToBreadcrumbs("Iscrizioni");
+            $("#main-content").load("/pages/cusb/subscriptions.html");
+            e.preventDefault();
+        });
     });
 }
 
@@ -333,15 +339,16 @@ $(document).on("scroll", function (height) {
 /**
  * Set Table property
  */
-var t_data = 0;
-function initTable() {
-    $("#table_id").addClass("table table-striped table-bordered");
+
+function initTable(table_id) {
+    var t_data = 0;
+    $("#" + table_id).addClass("table table-striped table-bordered");
 
     if ( $.fn.dataTable.isDataTable( '#table_id' ) ) {
-        t_data = $('#table_id').DataTable();
+        t_data = $("#" + table_id).DataTable();
     }
     else {
-        t_data = $('#table_id').DataTable({
+        t_data = $("#" + table_id).DataTable({
                 "language": {
                     "decimal": "",
                     "emptyTable": "Dati non disponibili",
@@ -369,33 +376,7 @@ function initTable() {
             }
          );
     }
-    /*
-    t_data = $("#table_id").DataTable({
-        "language": {
-            "decimal": "",
-            "emptyTable": "Dati non disponibili",
-            "infoPostFix": "",
-            "thousands": ",",
-            "loadingRecords": "Caricamento...",
-            "processing": "Elaborazione...",
-            "search": "Cerca:",
-            "lengthMenu": "Mostra _MENU_ per pagina",
-            "zeroRecords": "Nessun risultato",
-            "info": "Pagina _PAGE_ di _PAGES_",
-            "infoEmpty": "Nessun risultato",
-            "infoFiltered": "(filtrato tra _MAX_ risultati totali)",
-            "paginate": {
-                "first": "Primo",
-                "last": "Ultimo",
-                "next": "Avanti",
-                "previous": "Indietro"
-            },
-            "aria": {
-                "sortAscending": ": ordina ascendente",
-                "sortDescending": ": ordina discendente"
-            }
-        }*/
-
+    return t_data;
 }
 
 /**
