@@ -79,7 +79,6 @@
          * Load page after subscription
          */
         $(document).on('click', '#subscribe', function () {
-            console.log(row_id);
             $.post("/core/cusb/tournaments-manager.php", {"id-tourn":row_id});
             loadTournamentPage();
         });

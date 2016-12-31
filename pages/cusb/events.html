@@ -82,7 +82,6 @@ $(document).ready(function () {
      * Load page after subscription
      */
     $(document).on('click', '#subscribe', function () {
-        console.log(row_id);
         $.post("/core/cusb/event-manager.php", {"id-event":row_id});
         loadEventPage();
     });

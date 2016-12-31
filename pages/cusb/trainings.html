@@ -75,7 +75,6 @@
          * Load page after subscription
          */
         $(document).on('click', '#subscribe', function () {
-            console.log(row_id);
             $.post("/core/cusb/training-manager.php", {"id-training":row_id});
             loadTrainingPage();
         });
