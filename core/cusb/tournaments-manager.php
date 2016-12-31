@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $id = 6;
 
     if(isset($_POST['id-tourn'])) {
-        $id_tourn = htmlspecialchars($_POST['id-tourn']);
+        $id_tourn = ($_POST['id-tourn']);
 
         $sql = "INSERT INTO Tourn_Subsc (ID_torneo,ID_Member) VALUES ('$id_tourn','$id')";
         if($db->query($sql) === true){

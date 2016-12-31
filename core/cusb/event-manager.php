@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $id = 6;
 
     if(isset($_POST['id-event'])) {
-        $id_ev = htmlspecialchars($_POST['id-event']);
+        $id_ev = ($_POST['id-event']);
 
         $sql = "INSERT INTO follow_Ev (ID_EV,ID_Member) VALUES ('$id_ev','$id')";
         if($db->query($sql) === true){
