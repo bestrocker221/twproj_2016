@@ -1,6 +1,13 @@
 <div class="container-fluid">
     <div class="row">
         <h6>Tornei</h6>
+        <div class="filter-tournaments">
+            <button type="button" class="btn btn-filter">Calcetto</button>
+            <button type="button" class="btn btn-filter">Basket</button>
+            <button type="button" class="btn btn-filter">Pallavolo</button>
+            <button type="button" class="btn btn-filter">Tennis</button>
+            <button type="button" class="btn btn-filter btn-danger">Reset</button>
+        </div>
         <table id="tournaments-table" class="display">
             <thead>
             <tr>
@@ -15,6 +22,13 @@
     </div>
     <div class="row">
         <h6>Allenamenti</h6>
+        <div class="filter-trainings">
+            <button type="button" class="btn btn-filter">Calcetto</button>
+            <button type="button" class="btn btn-filter">Basket</button>
+            <button type="button" class="btn btn-filter">Pallavolo</button>
+            <button type="button" class="btn btn-filter">Tennis</button>
+            <button type="button" class="btn btn-filter btn-danger">Reset</button>
+        </div>
         <table id="trainings-table" class="display">
             <thead>
             <tr>
@@ -109,6 +123,14 @@
             }
             $(rowNode).attr('id', json[n]["id_training"]);
         }
+    });
+
+    $(".filter-tournaments .btn-filter").on('click',function () {
+        buttonFilterTable(tourn_data,$(this));
+    });
+
+    $(".filter-trainings .btn-filter").on('click',function () {
+        buttonFilterTable(train_data,$(this));
     });
 
 </script>

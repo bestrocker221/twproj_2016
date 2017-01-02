@@ -1,5 +1,12 @@
 <div class="container-fluid">
     <div class="row">
+        <div class="filter">
+            <button type="button" class="btn btn-filter">Calcetto</button>
+            <button type="button" class="btn btn-filter">Basket</button>
+            <button type="button" class="btn btn-filter">Pallavolo</button>
+            <button type="button" class="btn btn-filter">Tennis</button>
+            <button type="button" class="btn btn-filter btn-danger">Reset</button>
+        </div>
         <table id="table_id" class="display">
             <thead>
             <tr>
@@ -77,6 +84,10 @@
         $(document).on('click', '#subscribe', function () {
             $.post("/core/cusb/training-manager.php", {"id-training":row_id});
             loadTrainingPage();
+        });
+
+        $(".btn-filter").on('click',function () {
+            buttonFilterTable(t_data,$(this));
         });
     });
 </script>

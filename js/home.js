@@ -379,6 +379,14 @@ function initTable(table_id) {
     return t_data;
 }
 
+function buttonFilterTable(table, filter){
+    if ($(filter).text().toLowerCase() == "reset") {
+        table.search("").draw();
+    } else {
+        table.search($(filter).text().toLocaleLowerCase()).draw();
+    }
+}
+
 /**
  * Load modal from file
  */
