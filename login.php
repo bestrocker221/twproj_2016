@@ -46,24 +46,22 @@ if (controllo_cookie_member()){
             } else {
                 $("#hash-psw").val(hex_sha512($("#password-login").val()));
                 $("#password-login").val("");
-                $("#login-form").submit();
+
+                $.post("/core/check_login.php", {"username":$("#username").val(), "hash-psw":$("#hash-psw").val()}, function (data) {
+                    if(data == "OK"){
+                        window.location.href = "/index.php";
+                    } else {
+                        $("#error-div2").fadeIn(150);
+                    }
+                });
             }
+
             event.preventDefault();
         });
 
         function addWarningToElement(elem){
             elem.addClass("has-error has-feedback");
         }
-
-        function activateAlert(){
-            $("#error-div-register").fadeIn(150);
-        }
-        /*
-        $("#login-submit").bind("click", function (e) {
-
-            $("#password-login").val(hex_sha512($("#password-login").val()));
-            $("#login-form").submit();
-        })*/
     });
 </script>
     <div class="container" style="padding-top: 60px;">
@@ -99,6 +97,10 @@ if (controllo_cookie_member()){
                                     <div id="error-div" class="alert alert-danger alert-dismissible fade in" style="display: none; margin-top: 10px;">
                                         <a href="#" class="close" aria-label="close">&times;</a>
                                         <strong>Errore!</strong><span id="error-msg"> Mancano informazioni per procedere (minimo 8 caratteri) </span>
+                                    </div>
+                                    <div id="error-div2" class="alert alert-danger alert-dismissible fade in" style="display: none; margin-top: 10px;">
+                                        <a href="#" class="close" aria-label="close">&times;</a>
+                                        <strong>Errore!</strong><span id="error-msg"> Username o password errati. Riprova, hai al massimo 3 tentativi.</span>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">

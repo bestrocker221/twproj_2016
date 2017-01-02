@@ -15,16 +15,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     if(checkBruteforce($_SERVER['REMOTE_ADDR'])){
         //TODO
-        header("location: /basi/login-register/bann.php");
+        //header("location: /basi/login-register/bann.php");
+        echo "BANN";
         die;
     }
     $username = sanitize($_POST['username'],true);
     $password = md5(sanitize($_POST['hash-psw'],true));
-
     //$q = mysql_query("SELECT * from `members` WHERE username='$username' AND password='$password'",$conn) or die("Query non valida: " . mysql_error());
 
     if(getLoginInfo($username,$password)){
-        echo "setto cookie --> user: ". $_SESSION["username"];
+        //echo "setto cookie --> user: ". $_SESSION["username"];
         $cookie_time = 3600*24*7;
         $sess_cookie = session_get_cookie_params();
         setcookie('session', $_SESSION["username"].'_&&_'.$_SESSION["password"],
@@ -35,13 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         if ($_SESSION["authority"] != "member"){
             //header("location: /basi/admin_pan.php");
         } else {
-            header("location: /index.php");
-            echo "FUNZIA";
+            //header("location: /index.php");
+            echo "OK";
         }
     } else {
         failedLoginLog($username,$_POST['password'],$_SERVER['REMOTE_ADDR']);
         $_SESSION["logged"]=false;
-        header("location: login_failed.html");
+        //header("location: login_failed.html");
+        echo "FAILED";
     }
 }
 

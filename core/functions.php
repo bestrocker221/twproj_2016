@@ -34,7 +34,7 @@ function logLogin($username, $ip_addr){
 }
 
 function cacheLoginInfo($row){
-    var_dump($row);
+    //var_dump($row);
     $_SESSION["logged"]= true;
     $_SESSION["username"] = $row["username"];
     $_SESSION["password"] = $row["password"];
