@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $temp['id_ev'] = $row['ID_EV'];
             $temp['description'] = $row['description'];
             $temp['date'] = $row['date'];
+            $temp['description'] = $row['description'];
             $temp['n_partec'] = $row['n_partec'];
             if (array_key_exists($temp['id_ev'], $temp2)) {
                 $temp['iscritto'] = "yes";

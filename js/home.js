@@ -373,7 +373,6 @@ $(document).on("scroll", function (height) {
 /**
  * Set Table property
  */
-
 function initTable(table_id) {
     var t_data = 0;
     $("#" + table_id).addClass("table table-striped table-bordered");

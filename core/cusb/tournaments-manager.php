@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $temp['date'] = $row['date'];
             $temp['n_player'] = $row['n_player'];
             $temp['of_what'] = $row['of_what'];
+            $temp['title'] = $row['title'];
+            $temp['description'] = $row['description'];
             $temp['id_field'] = $row['ID_field'];
 
             if (array_key_exists($row['ID_torneo'], $temp2)) {
