@@ -41,9 +41,9 @@ function controllo_cookie_member(){
         if( $result->num_rows> 0 ) {
 			$row= $result->fetch_row();
 			//immagazzinano le informazioni dell'utente in un array
-			$$_SESSION["username"]=$row["username"];
-			$$_SESSION["password"]=$row["password"];
-			$$_SESSION["authority"]=="member";
+			$_SESSION["username"]=$row["username"];
+			//$_SESSION["password"]=$row["password"];
+			$_SESSION["authority"]=="member";
 			return true;
 		} else
 			return false;
@@ -117,4 +117,4 @@ function controllo_cookie_trainer2(){
 		return false;
 }
 
-?>
+?>*/

@@ -4,7 +4,6 @@
 $(document).ready(function () {
 
 
-
     /**
      * Load unibo home
      */
@@ -192,6 +191,9 @@ $(document).ready(function () {
         });
     }
 
+
+
+    loadProfileInfo();
     checkNotifications();
 
     setInterval(function () {
@@ -200,6 +202,36 @@ $(document).ready(function () {
     }, 2000);
 
 });
+
+/**
+ * Get user Information.
+ */
+function loadProfileInfo(){
+    $.get("core/info.php", function (e) {
+        console.log(e);
+
+        var data = JSON.parse(e);
+
+        console.log(data);
+
+        $("#name").text(data.surname + " " +data.name);
+        $("#member-email").text(data.username);
+        $("#member-name").text(data.name);
+
+        //$("#school");
+        //$("#department");
+        $("#matr").text(data.matr);
+        $("#profile-name").text(data.name);
+        $("#profile-email").text(data.username);
+        $("#surname").text(data.surname);
+        //$("#email-private");
+        //$("#birthday").text();
+        //$("#birth-place");
+
+        $("#welcome-title").text(data.name);
+
+    });
+}
 
 /**
  * Append text (current page) breadcrumb on navigation-breadcrumbs
@@ -263,8 +295,10 @@ $("#tab_notifications").on('click', function () {
 });
 
 $("#profile-btn").on('click', function () {
+    returnToHome();
     addToBreadcrumbs("Profile");
     $("#main-content").load("/pages/profile.html");
+    loadProfileInfo();
 });
 
 function loadEventPage() {

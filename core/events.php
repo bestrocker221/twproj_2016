@@ -6,7 +6,7 @@
  * Time: 12:00
  */
 
-require '../db_conn.php';
+require 'db_conn.php';
 
 //make request to the server, must retrieve json format and with
 

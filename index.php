@@ -52,7 +52,7 @@ if (controllo_cookie_member()){
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
                     <ul class="nav sidebar-nav">
                         <li class="sidebar-brand">
-                            <a id="name" href="#" style="background: #1a1a1a;">Scola Carlo Alberto</a>
+                            <a id="name" href="#" style="background: #1a1a1a;"></a>
                         </li>
                         <li><a href="#">Prove d'ammissione</a></li>
                         <li><a href="#">Immatricolazioni</a></li>
@@ -77,7 +77,7 @@ if (controllo_cookie_member()){
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestione Studi
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li class="dropdown-header">Dropdown heading</li>
+                                <li class="dropdown-header">Sotto sezioni..</li>
                                 <li><a href="#">Trasferimento</a></li>
                                 <li><a href="#">Sospensione studi</a></li>
                                 <li><a href="#">Rinuncia agli studi</a></li>

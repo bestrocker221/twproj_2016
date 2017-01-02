@@ -41,9 +41,11 @@ function cacheLoginInfo($row){
     $_SESSION["email"] = $row["username"];
     $_SESSION["surname"] = $row["surname"];
     $_SESSION["name"] = $row["name"];
+    $_SESSION["address"] = $row["address"];
+    $_SESSION["sex"] = $row["sex"];
 
     /*$_SESSION["city"] = $row["city"];
-    $_SESSION["address"] = $row["address"];
+
     $_SESSION["birthday_date"] = $row["birthday_date"];
     $tmp = split("-", $_SESSION["birthday_date"]);
     $_SESSION["birthday_year"] = $tmp[0];

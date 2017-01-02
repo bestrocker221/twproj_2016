@@ -22,18 +22,48 @@ if (controllo_cookie_member()){
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script type="application/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/login.js"></script>
     <script src="js/sha512.js"></script>
     <title>Login</title>
 </head>
 <body>
 <script>
     $(document).ready(function () {
+        $('.alert .close').on('click', function(e) {
+            //$(this).parent().hide();
+            $(this).parent().fadeOut(400);
+            $("#row-user").removeClass("has-error has-feedback");
+            $("#row-password").removeClass("has-error has-feedback");
+        });
+
+        //LOGIN BUTTON ROUTINE
+        $("#login-submit").click(function (event) {
+            if($("#username").val().length < 8){
+                $("#error-div").fadeIn(150);
+                addWarningToElement($("#row-user"));
+            } else if($("#password-login").val().length < 8) {
+                $("#error-div").fadeIn(150);
+                addWarningToElement($("#row-password"));
+            } else {
+                $("#hash-psw").val(hex_sha512($("#password-login").val()));
+                $("#password-login").val("");
+                $("#login-form").submit();
+            }
+            event.preventDefault();
+        });
+
+        function addWarningToElement(elem){
+            elem.addClass("has-error has-feedback");
+        }
+
+        function activateAlert(){
+            $("#error-div-register").fadeIn(150);
+        }
+        /*
         $("#login-submit").bind("click", function (e) {
 
             $("#password-login").val(hex_sha512($("#password-login").val()));
             $("#login-form").submit();
-        })
+        })*/
     });
 </script>
     <div class="container" style="padding-top: 60px;">
@@ -64,6 +94,7 @@ if (controllo_cookie_member()){
                                         <label for="password-login" hidden>Password</label>
                                         <input class="form-control" placeholder="Password" value="" tabindex="2" type="password" name="password" id="password-login" >
                                     </div>
+                                    <input type="hidden" id="hash-psw" name="hash-psw" value=""/>
                                     <!-- error messages -->
                                     <div id="error-div" class="alert alert-danger alert-dismissible fade in" style="display: none; margin-top: 10px;">
                                         <a href="#" class="close" aria-label="close">&times;</a>

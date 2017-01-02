@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         die;
     }
     $username = sanitize($_POST['username'],true);
-    $password = md5(sanitize($_POST['password'],true));
+    $password = md5(sanitize($_POST['hash-psw'],true));
 
     //$q = mysql_query("SELECT * from `members` WHERE username='$username' AND password='$password'",$conn) or die("Query non valida: " . mysql_error());
 
