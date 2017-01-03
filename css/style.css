@@ -238,8 +238,6 @@ html { height: 100%;}
 }
 
 
-
-/* CSS Transform Align Navbar Brand Text ... This could also be achieved with table / table-cells */
 .navbar-alignit .navbar-header {
 	  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -789,30 +787,6 @@ footer{
 
 }
 
-/****************************
-
-        CALENDAR
-
- ****************************/
-
-#calendar {
-    max-width: 310px;
-    float: right;
-    display: inline-block;
-    /*margin-right: 19px;*/
-}
-#calendar-title{
-    font-family: 'Cinzel', serif;
-    font-size:22px;
-    /*margin-bottom: 15px;*/
-}
-
-.fc-bg td:hover,
-.fc-content-skeleton > table > thead > tr > td:hover,
-.fc-content-skeleton > table > tbody > tr > td:hover{
-    background-color: #ffbb88;
-}
-
 /*********************************
 
             LOGIN
@@ -843,13 +817,45 @@ footer{
             TABLE
 
  *********************************/
-#table_id tr:hover td{
+tr:hover td{
     background-color: #ffbb88;
 }
 
 .tr-row-disabled{
     background-color: #b7aaaa !important;
     opacity: 0.8;
+}
+
+.glyphicon-ok {
+    color: green;
+}
+
+.glyphicon-remove {
+    color: red;
+}
+
+/****************************
+
+        CALENDAR
+
+ ****************************/
+
+#calendar {
+    max-width: 310px;
+    float: right;
+    display: inline-block;
+    /*margin-right: 19px;*/
+}
+#calendar-title{
+    font-family: 'Cinzel', serif;
+    font-size:22px;
+    /*margin-bottom: 15px;*/
+}
+
+.fc-bg td:hover,
+.fc-content-skeleton > table > thead > tr > td:hover,
+.fc-content-skeleton > table > tbody > tr > td:hover{
+    background-color: #ffbb88;
 }
 
 /*********************************
