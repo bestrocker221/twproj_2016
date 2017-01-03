@@ -10,6 +10,8 @@
         <table id="table_id" class="display">
             <thead>
             <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
                 <th>Sport</th>
                 <th>Numero partecipanti</th>
                 <th>Data</th>
@@ -39,6 +41,8 @@
                     subscribed = "<span class='glyphicon glyphicon-remove'></span>";
                 }
                 var rowNode = t_data.row.add([
+                    json[n]["title"],
+                    json[n]["description"],
                     json[n]["of_what"],
                     json[n]["n_player"],
                     json[n]["date"],
@@ -76,7 +80,7 @@
             }
 
             $(".modal-title").html(t_data.row(this).data()[0]);
-            $(".modal-body").html("testo");
+            $(".modal-body").html(t_data.row(this).data()[1]);
 
             $("#myModal").modal('show');
         });

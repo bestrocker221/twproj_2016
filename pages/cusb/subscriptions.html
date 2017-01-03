@@ -11,8 +11,9 @@
         <table id="tournaments-table" class="display">
             <thead>
             <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
                 <th>Sport</th>
-                <th>Numero partecipanti</th>
                 <th>Data evento</th>
                 <th>Campo</th>
                 <th>Data iscrizione</th>
@@ -67,8 +68,9 @@
                 n++;
             } else {
                 var rowNode = tourn_data.row.add([
+                    json[n]["title"],
+                    json[n]["description"],
                     json[n]["of_what"],
-                    json[n]["n_player"],
                     json[n]["date"],
                     json[n]["id_field"],
                     json[n]['iscritto']
