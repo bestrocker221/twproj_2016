@@ -43,7 +43,14 @@ if(checkLogin()) {
                 $temp['of_what'] = $row['of_what'];
                 $temp['title'] = $row['title'];
                 $temp['description'] = $row['description'];
-                $temp['id_field'] = $row['ID_field'];
+
+                $field = "select name, place from Field where ID_field='".$row['ID_field']."'";
+                $fres = $db->query($field);
+                if($fres->num_rows == 1){
+                    $r = $fres->fetch_assoc();
+                    $temp['field_name'] = $r['name'];
+                    $temp['field_place'] = $r['place'];
+                }
 
                 if (array_key_exists($row['ID_torneo'], $temp2)) {
                     $temp['iscritto'] = $temp2[$row['ID_torneo']];
