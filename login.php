@@ -1,14 +1,9 @@
 <?php
 require_once 'core/functions.php';
-require_once 'core/cookie_check.php';
 secure_session_start();
-$tmp = preg_split("_&&_", $_COOKIE['session']);
-$tmp[0] = urldecode($tmp[0]);
-echo str_replace("_", "",$tmp[0]);
-echo "</br>";
-echo str_replace("_", "",$tmp[1]);
-if (controllo_cookie_member()){
+if (checkLogin()){
     header("location: /index.php");
+    echo "fatto";
 } else {
     echo "user: lampa@dina.it</br>pwd: lampadina";
 }
@@ -47,11 +42,14 @@ if (controllo_cookie_member()){
                 $("#hash-psw").val(hex_sha512($("#password-login").val()));
                 $("#password-login").val("");
 
+                console.log($("#hash-psw").val());
+
                 $.post("/core/check_login.php", {"username":$("#username").val(), "hash-psw":$("#hash-psw").val()}, function (data) {
                     if(data == "OK"){
                         window.location.href = "/index.php";
                     } else {
                         $("#error-div2").fadeIn(150);
+                        console.log(data);
                     }
                 });
             }

@@ -7,6 +7,25 @@
  */
 
 require_once 'db_conn.php';
+secure_session_start();
+
+
+/*
+Funzione che crea una sessione php sicura
+*/
+function secure_session_start(){
+    $sec_session_name = 'sec_session';
+    $secure = false; //set true if SSL/TSL
+    $httponly = true;
+    ini_set('session.use_only_cookies', 1);
+    $cookie_params = session_get_cookie_params();
+    session_set_cookie_params($cookie_params["lifetime"],$cookie_params["path"],$cookie_params["domain"],$secure, $httponly);
+    session_name($sec_session_name);
+    session_start();
+    session_regenerate_id();
+}
+
+
 
 /*
 Funzione che aggiunge al db un log, quando un utente cerca di effettuare login ma non va a buon fine.
@@ -36,8 +55,7 @@ function logLogin($username, $ip_addr){
 function cacheLoginInfo($row){
     //var_dump($row);
     $_SESSION["logged"]= true;
-    $_SESSION["username"] = $row["username"];
-    $_SESSION["password"] = $row["password"];
+
     $_SESSION["email"] = $row["username"];
     $_SESSION["surname"] = $row["surname"];
     $_SESSION["name"] = $row["name"];
@@ -54,29 +72,87 @@ function cacheLoginInfo($row){
 
 }
 
-function getLoginInfo($username,$password){
+function checkLogin(){
+    global $db;
+    if(isset($_SESSION['user_id'], $_SESSION['username'], $_SESSION['login_string'])) {
+
+        $user_id = $_SESSION['user_id'];
+        $login_string = $_SESSION['login_string'];
+        $username = $_SESSION['username'];
+        $user_browser = $_SERVER['HTTP_USER_AGENT']; // reperisce la stringa 'user-agent' dell'utente.
+
+        if ($stmt = $db->prepare("SELECT password FROM member WHERE ID_Member = ? LIMIT 1")) {
+            $stmt->bind_param('i', $user_id); // esegue il bind del parametro '$user_id'.
+            $stmt->execute(); // Esegue la query creata.
+            $stmt->store_result();
+
+            if($stmt->num_rows == 1) { // se l'utente esiste
+
+                $stmt->bind_result($password); // recupera le variabili dal risultato ottenuto.
+                $stmt->fetch();
+                $login_check = hash('sha512', $password.$user_browser);
+                if($login_check == $login_string) {
+                    // Login eseguito!!!!
+                    return true;
+                } else {
+                    //  Login non eseguito
+                    return false;
+                }
+            } else {
+                // Login non eseguito
+                return false;
+            }
+        } else {
+            // Login non eseguito
+            return false;
+        }
+
+    } else {
+        // Login non eseguito
+        return false;
+    }
+}
+
+
+function getLoginInfo($username,$password /*X*/){
     global $db;
     //$array = array("member","Organizer","Trainer","admins");
     $array = array("member");
+
+
+
     foreach ($array as $type ){
-        $query = "SELECT * from `".$type."` WHERE username='$username' AND password='$password'";
+        $query = "SELECT * from `".$type."` WHERE username='$username'";
         $res = $db->query($query);
         if ($res->num_rows > 0) {
             $s = $res->fetch_array();
-            cacheLoginInfo($s);
-            if ($type=="member"){
-                $_SESSION["authority"] = "member";
-            } else if ($type=="Organizer"){
-                $_SESSION["authority"] = "organizer";
-            } else if ($type=="Trainer"){
-                $_SESSION["authority"] = "trainer";
-            } else if ($type=="admins"){
-                $_SESSION["authority"] = "root";
+
+            $newPsw = hash('sha512',$password.$s['salt']); /*E*/
+
+            if($newPsw == $s['password']){
+
+                $_SESSION['username'] = $username;
+                $_SESSION['login_string'] = hash('sha512', $newPsw.$_SERVER['HTTP_USER_AGENT']);
+                $_SESSION['user_id'] = $s['ID_Member'];
+                cacheLoginInfo($s);
+
+                if ($type=="member"){
+                    $_SESSION["authority"] = "member";
+                } else if ($type=="Organizer"){
+                    $_SESSION["authority"] = "organizer";
+                } else if ($type=="Trainer"){
+                    $_SESSION["authority"] = "trainer";
+                } else if ($type=="admins"){
+                    $_SESSION["authority"] = "root";
+                }
+                return true;
             }
-            return true;
+
         }
+        $res->free_result();
     }
-    $res->free_result();
+    //
+
     return false;
 }
 /*

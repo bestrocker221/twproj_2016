@@ -5,25 +5,31 @@
  * Date: 30/12/16
  * Time: 01:35
  */
-require 'db_conn.php';
+require_once 'db_conn.php';
+require_once 'functions.php';
 
-$sql = "SELECT * from news";
+secure_session_start();
 
-$tot = array();
+if(checkLogin()) {
 
-$result = $db->query($sql);
-if($result->num_rows > 0){
-    while($row = $result->fetch_assoc()){
-        $temp = array();
-        $temp['id'] = $row['id'];
-        $temp['text'] = $row['text'];
-        $temp['date'] = $row['date'];
+    $sql = "SELECT * FROM news";
 
-        array_push($tot, $temp);
+    $tot = array();
+
+    $result = $db->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $temp = array();
+            $temp['id'] = $row['id'];
+            $temp['text'] = $row['text'];
+            $temp['date'] = $row['date'];
+
+            array_push($tot, $temp);
+        }
+    } else {
+        echo "ERROR " . $db->errno;
+        echo "num row" . $result->num_rows;
     }
-} else {
-    echo "ERROR " . $db->errno;
-    echo "num row" . $result->num_rows;
+    $tot = json_encode($tot);
+    echo $tot;
 }
-$tot = json_encode($tot);
-echo $tot;

@@ -7,11 +7,11 @@
  */
 
 require_once 'db_conn.php';
-require_once 'cookie_check.php';
+require_once 'functions.php';
 
-//var_dump($_SESSION);
+secure_session_start();
 
-if(controllo_cookie_member()){
+if(checkLogin()){
     if($_SERVER['REQUEST_METHOD'] == "GET") {
 
         $temp = array();

@@ -5,72 +5,80 @@
  * Date: 30/12/16
  * Time: 17:15
  */
-require '../db_conn.php';
+require_once '../db_conn.php';
+require_once '../functions.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+secure_session_start();
 
-    $id = 6;
+if(checkLogin()) {
 
-    $sqlA = "SELECT * from Tournaments";
-    $sqlC = "SELECT * from Tourn_Subsc WHERE ID_Member='$id'";
 
-    $tot = array();
+    $id = $_SESSION['user_id'];
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-    $temp2 = array();
-    $result = $db->query($sqlC);
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $temp2[$row['ID_torneo']] = $row['iscr_date'];
-        }
-    }
+        //$id = 6;
 
-    $result = $db->query($sqlA);
-    if ($result->num_rows > 0) {
-        $atot = array();
-        while ($row = $result->fetch_assoc()) {
-            $temp = array();
+        $sqlA = "SELECT * FROM Tournaments";
+        $sqlC = "SELECT * from Tourn_Subsc WHERE ID_Member='$id'";
 
-            $temp['id_tourn'] = $row['ID_torneo'];
-            $temp['date'] = $row['date'];
-            $temp['n_player'] = $row['n_player'];
-            $temp['of_what'] = $row['of_what'];
-            $temp['title'] = $row['title'];
-            $temp['description'] = $row['description'];
-            $temp['id_field'] = $row['ID_field'];
+        $tot = array();
 
-            if (array_key_exists($row['ID_torneo'], $temp2)) {
-                $temp['iscritto'] = $temp2[$row['ID_torneo']];
-                unset($temp2[$temp['ID_torneo']]);
+        $temp2 = array();
+        $result = $db->query($sqlC);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $temp2[$row['ID_torneo']] = $row['iscr_date'];
             }
-            array_push($tot, $temp);
         }
-    } else {
-        echo "ERROR " . $db->errno;
-        echo "num row" . $result->num_rows;
-    }
 
-    $tot = json_encode($tot);
-    echo $tot;
+        $result = $db->query($sqlA);
+        if ($result->num_rows > 0) {
+            $atot = array();
+            while ($row = $result->fetch_assoc()) {
+                $temp = array();
 
+                $temp['id_tourn'] = $row['ID_torneo'];
+                $temp['date'] = $row['date'];
+                $temp['n_player'] = $row['n_player'];
+                $temp['of_what'] = $row['of_what'];
+                $temp['title'] = $row['title'];
+                $temp['description'] = $row['description'];
+                $temp['id_field'] = $row['ID_field'];
 
-} else if ($_SERVER['REQUEST_METHOD'] == "POST"){
-
-    $id = 6;
-
-    if(isset($_POST['id-tourn'])) {
-        $id_tourn = ($_POST['id-tourn']);
-
-        $sql = "INSERT INTO Tourn_Subsc (ID_torneo,ID_Member) VALUES ('$id_tourn','$id')";
-        if($db->query($sql) === true){
-
-            $sqlB = "UPDATE Tournaments SET n_player=n_player+'1' WHERE ID_torneo='$id_tourn'";
-            if($db->query($sqlB) === true){
-                echo "tutte e due le query eseguite correttamente";
+                if (array_key_exists($row['ID_torneo'], $temp2)) {
+                    $temp['iscritto'] = $temp2[$row['ID_torneo']];
+                    unset($temp2[$temp['ID_torneo']]);
+                }
+                array_push($tot, $temp);
             }
-
         } else {
             echo "ERROR " . $db->errno;
+            echo "num row" . $result->num_rows;
         }
-    }
 
+        $tot = json_encode($tot);
+        echo $tot;
+
+
+    } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+        //$id = 6;
+
+        if (isset($_POST['id-tourn'])) {
+            $id_tourn = ($_POST['id-tourn']);
+
+            $sql = "INSERT INTO Tourn_Subsc (ID_torneo,ID_Member) VALUES ('$id_tourn','$id')";
+            if ($db->query($sql) === true) {
+
+                $sqlB = "UPDATE Tournaments SET n_player=n_player+'1' WHERE ID_torneo='$id_tourn'";
+                if ($db->query($sqlB) === true) {
+                    echo "tutte e due le query eseguite correttamente";
+                }
+
+            } else {
+                echo "ERROR " . $db->errno;
+            }
+        }
+
+    }
 }

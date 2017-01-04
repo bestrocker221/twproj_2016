@@ -7,7 +7,7 @@
  */
 
 require_once 'functions.php';
-require_once "cookie_check.php";
+
 secure_session_start();
 $_SESSION = array();
 $params = session_get_cookie_params();

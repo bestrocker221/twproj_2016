@@ -1,8 +1,7 @@
 <?php
 require_once 'core/functions.php';
-require_once 'core/cookie_check.php';
 secure_session_start();
-if (controllo_cookie_member()){
+if (checkLogin()){
 
 } else {
     header("location: login.php");
