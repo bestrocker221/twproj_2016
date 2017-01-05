@@ -424,6 +424,8 @@ function buttonFilterTable(table, filter){
  * Load modal from file
  */
 function loadModal() {
-    $(document.body).append("<div id='result-modal'></div>");
+    if(!$('.result-modal').length) {
+        $(document.body).append("<div id='result-modal'></div>");
+    }
     $("#result-modal").load("modal.html");
 }
