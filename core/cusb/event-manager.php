@@ -38,7 +38,7 @@ if(checkLogin()) {
                 $temp['id_ev'] = $row['ID_EV'];
                 $temp['description'] = $row['description'];
                 $temp['date'] = $row['date'];
-                $temp['description'] = $row['description'];
+                $temp['ev_description'] = $row['ev_description'];
                 $temp['n_partec'] = $row['n_partec'];
                 if (array_key_exists($temp['id_ev'], $temp2)) {
                     $temp['iscritto'] = "yes";

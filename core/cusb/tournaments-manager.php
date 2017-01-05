@@ -42,7 +42,6 @@ if(checkLogin()) {
                 $temp['n_player'] = $row['n_player'];
                 $temp['of_what'] = $row['of_what'];
                 $temp['title'] = $row['title'];
-                $temp['description'] = $row['description'];
 
                 $field = "select name, place from Field where ID_field='".$row['ID_field']."'";
                 $fres = $db->query($field);

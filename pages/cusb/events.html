@@ -3,6 +3,7 @@
         <table id="table_id" class="display">
             <thead>
             <tr>
+                <th>Nome</th>
                 <th>Descrizione</th>
                 <th>Data</th>
                 <th>Numero partecipanti</th>
@@ -34,6 +35,7 @@ $(document).ready(function () {
             var rowNode = t_data
                 .row.add([
                     json[n]["description"],
+                    json[n]["ev_description"],
                     json[n]["date"],
                     json[n]["n_partec"],
                     subscribed
@@ -72,7 +74,7 @@ $(document).ready(function () {
         }
 
         $(".modal-title").html(t_data.row(this).data()[0]);
-        $(".modal-body").html("testo");
+        $(".modal-body").html(t_data.row(this).data()[1]);
 
         $("#myModal").modal('show');
     });
