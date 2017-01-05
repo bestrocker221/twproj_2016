@@ -375,7 +375,6 @@ $(document).on("scroll", function (height) {
  */
 function initTable(table_id) {
     var t_data = 0;
-    $("#" + table_id).addClass("table table-striped table-bordered");
 
     if ( $.fn.dataTable.isDataTable( '#table_id' ) ) {
         t_data = $("#" + table_id).DataTable();
