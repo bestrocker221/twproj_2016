@@ -108,9 +108,36 @@ $(document).ready(function () {
     });
 
     /**
+     * handle drobdown effects
+     */
+    $(".navbar-nav>.dropdown").on({
+
+        "hide.bs.dropdown": function (event) {
+            $(event.target).find(".dropdown-menu").addClass('animated fadeOut');
+            $(event.target).find('.dropdown-toggle').dropdown();
+
+            event.preventDefault();
+
+            setTimeout(function(){
+                $(event.currentTarget).removeClass("open");
+                $(event.target).find(".dropdown-menu").removeClass('animated fadeOut');
+            },1000);
+        },
+
+        "show.bs.dropdown" : function (event) {
+            $(event.target).parent().find('li.dropdown').removeClass('open');
+            $(event.target).find(".dropdown-menu").addClass('animated flipInX');
+
+            setTimeout(function(){
+                $(event.target).find(".dropdown-menu").removeClass('animated flipInX');
+            },1000);
+        }
+    });
+    /**
      * dropdown click event on notifications button (CHANGE ID)
      */
     $(".menu-parent").on("shown.bs.dropdown", function (event) {
+
         //importa tutte le notifiche "viste"
         console.log("notifiche viste");
 

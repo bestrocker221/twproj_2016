@@ -934,3 +934,11 @@ footer{
 .caption h1 {
     padding-top: 30%;
 }
+
+/*/
+        ANIMATION
+ */
+
+.animated {
+    animation-duration: 0.5s !important;
+}
