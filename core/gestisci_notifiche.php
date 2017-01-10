@@ -12,7 +12,7 @@ secure_session_start();
 
 if(checkLogin()) {
 //crea nuova notifica
-    if (isset($_POST['desc']) && isset($_POST['title'])) {
+    if (isset($_POST['id']) && isset($_POST['desc']) && isset($_POST['title'])) {
         $id = $_POST["id"];
         $desc = $_POST["desc"];
         $title = $_POST['title'];
