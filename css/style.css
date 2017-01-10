@@ -817,7 +817,7 @@ footer{
             TABLE
 
  *********************************/
-tr:hover td{
+.list tr:hover td{
     background-color: #ffbb88;
 }
 
@@ -922,15 +922,4 @@ tr:hover td{
 
 .caption h1 {
     padding-top: 30%;
-}
-
-/*****************
-
-    BREADCRUMBS
-
- *****************/
-
-#navigation-breadcrumb {
-   /* background-color: transparent;*/
-    border-bottom: 10px red;
 }
