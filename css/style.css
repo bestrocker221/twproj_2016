@@ -906,6 +906,17 @@ footer{
     overflow:hidden;
 }
 
+.thumbnail .img-container img{
+    max-width: 100%;
+    transition: all 0.5s;
+}
+
+.thumbnail:hover .img-container img{
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
 .caption {
     position:absolute;
     top:0;

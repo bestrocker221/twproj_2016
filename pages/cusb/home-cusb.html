@@ -12,8 +12,8 @@
                     <div class="caption">
                         <h1>Tornei</h1>
                     </div>
-                    <a href="#" id="tournaments-link">
-                        <img src="http://lorempixel.com/400/300/sports/1/" alt="...">
+                    <a href="#" id="tournaments-link" class="img-container">
+                        <img src="/res/sport1.jpg" alt="...">
                     </a>
                 </div>
             </div>
@@ -24,8 +24,8 @@
                     <div class="caption">
                         <h1>Allenamenti</h1>
                     </div>
-                    <a href="#" id="training-link">
-                        <img src="http://lorempixel.com/400/300/sports/1/" alt="...">
+                    <a href="#" id="training-link" class="img-container">
+                        <img src="/res/sport1.jpg" alt="...">
                     </a>
                 </div>
             </div>
@@ -38,8 +38,8 @@
                     <div class="caption">
                         <h1>Eventi</h1>
                     </div>
-                    <a href="#" id="events-link">
-                        <img src="http://lorempixel.com/400/300/sports/1/" alt="...">
+                    <a href="#" id="events-link" class="img-container">
+                        <img src="/res/sport1.jpg" alt="...">
                     </a>
                 </div>
             </div>
@@ -50,8 +50,8 @@
                     <div class="caption">
                         <h1>Iscrizioni</h1>
                     </div>
-                    <a href="#" id="subscriptions-link">
-                        <img src="http://lorempixel.com/400/300/sports/1/" alt="...">
+                    <a href="#" id="subscriptions-link" class="img-container">
+                        <img src="/res/sport1.jpg" alt="...">
                     </a>
                 </div>
             </div>
@@ -64,14 +64,19 @@
 <script>
     $( document ).ready(function() {
         $("[rel='tooltip']").tooltip();
+        //$caption = $(this).find('.caption');
         $(this).find('.caption').slideDown(250); //.fadeIn(250)
 
         $('.thumbnail').hover(
+
             function(){
-                $(this).find('.caption').slideUp(250); //.fadeOut(205)
+                //$(this).find('.caption').slideUp(250); //.fadeOut(205)
+                $(this).find('.caption').fadeOut(250); //.fadeOut(205)
+
             },
             function(){
-              $(this).find('.caption').slideDown(250); //.fadeOut(205)
+              //$(this).find('.caption').slideDown(250); //.fadeOut(205)
+                $(this).find('.caption').fadeIn(250); //.fadeOut(205)
             }
         );
     });
