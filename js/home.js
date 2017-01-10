@@ -107,19 +107,6 @@ $(document).ready(function () {
         $('#wrapper').toggleClass('toggled');
     });
 
-
-    /**
-     * Notifications
-     */
-    $("#crea-notifica").on("click",function () {
-
-        $.post("/core/gestisci_notifiche.php", {"id" : "2","title":"Nuovo allenamento!" ,"desc":"giovedi alle 15"},function (data) {
-            //console.log("OK? " + data);
-        });
-        //console.log("cerco notifiche..");
-
-    });
-
     /**
      * dropdown click event on notifications button (CHANGE ID)
      */

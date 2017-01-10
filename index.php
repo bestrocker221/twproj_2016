@@ -82,7 +82,7 @@ if (checkLogin()){
                                 <li><a href="#">Rinuncia agli studi</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Alma Orienta</a></li>
+                        <li><a href="/crea.html">Alma Orienta</a></li>
                     </ul>
                 </nav>
         <!-- /#sidebar-wrapper -->
@@ -201,9 +201,6 @@ if (checkLogin()){
                                     </ul>
                                 </div>
                                 <!-- /#Breadcrumbs -->
-
-                                <button type="button" class="btn" id="crea-notifica" >Crea</button>
-
                                 <!-- Interchangeable content -->
                                 <div id="main-content" class="row">
 
