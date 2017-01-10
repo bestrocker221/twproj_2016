@@ -300,6 +300,11 @@ function loadTrainingPage() {
     $("#main-content").load("/pages/cusb/trainings.html");
 }
 
+function loadSubPage(){
+    $("#main-content").load("/pages/cusb/subscriptions.html");
+}
+
+
 function cusb_main_ref() {
     returnToHome();
     addToBreadcrumbs("Cusb");
@@ -312,23 +317,27 @@ function cusb_main_ref() {
             addToBreadcrumbs("Eventi");
             bindEventBreadcrumb("Eventi",loadEventPage);
             loadEventPage();
+            e.preventDefault();
         });
 
         $("#tournaments-link").on('click', function (e) {
             addToBreadcrumbs("Tornei");
-            $("#main-content").load("/pages/cusb/tournaments.html");
+            bindEventBreadcrumb("Tornei",loadTournamentPage);
+            loadTournamentPage();
             e.preventDefault();
         });
 
         $("#training-link").on('click', function (e) {
             addToBreadcrumbs("Allenamenti");
-            $("#main-content").load("/pages/cusb/trainings.html");
+            bindEventBreadcrumb("Allenamenti",loadTrainingPage);
+            loadTrainingPage();
             e.preventDefault();
         });
 
         $("#subscriptions-link").on('click', function (e) {
             addToBreadcrumbs("Iscrizioni");
-            $("#main-content").load("/pages/cusb/subscriptions.html");
+            bindEventBreadcrumb("Iscrizioni",loadSubPage);
+            loadSubPage();
             e.preventDefault();
         });
     });

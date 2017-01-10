@@ -119,8 +119,6 @@ function getLoginInfo($username,$password /*X*/){
     //$array = array("member","Organizer","Trainer","admins");
     $array = array("member");
 
-
-
     foreach ($array as $type ){
         $query = "SELECT * from `".$type."` WHERE username='$username'";
         $res = $db->query($query);
@@ -134,6 +132,7 @@ function getLoginInfo($username,$password /*X*/){
                 $_SESSION['username'] = $username;
                 $_SESSION['login_string'] = hash('sha512', $newPsw.$_SERVER['HTTP_USER_AGENT']);
                 $_SESSION['user_id'] = $s['ID_Member'];
+                $_SESSION['mat'] = $s['mat'];
                 cacheLoginInfo($s);
 
                 if ($type=="member"){
@@ -155,6 +154,7 @@ function getLoginInfo($username,$password /*X*/){
 
     return false;
 }
+
 /*
 function retrieve_password($username, $email, $authority){
     if ($authority=="organizer") $param="Organizer";
@@ -211,7 +211,7 @@ Funzione che sanitizza l'input per impedire attacchi di tipo SQL Injection
 	$bool --> True (elimina gli spazi)
 		  --> False (tiene gli spazi)
 */
-function sanitize($login, $bool){ 
+function sanitize($login, $bool = false){
 	if($bool){
 		$login=str_replace(" ","",$login);
 	}
