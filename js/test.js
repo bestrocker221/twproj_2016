@@ -9,12 +9,24 @@ $(document).ready(function () {
 
         $.post("/core/gestisci_notifiche.php", {
             "id": "2",
-            "title": "Nuovo allenamento!",
-            "desc": "giovedi alle 15"
+            "title": $("#notif-title").val(),
+            "desc": $("#notif-desc").val()
         }, function (data) {
-            //console.log("OK? " + data);
-        });
-        //console.log("cerco notifiche..");
+            });
+    });
 
+    $("#crea-evento").on("click", function (e) {
+       console.log($("#date").val());
+       $.post("/core/calendar_manager.php", {
+                        "text":$("#text").val(),
+                        "date":$("#date").val(),
+                        "id": "24"}, function (e) {
+           console.log(e);
+           if(e == "OK"){
+               console.log("OK!");
+           } else {
+               console.log("NOOO");
+           }
+       })
     });
 });
