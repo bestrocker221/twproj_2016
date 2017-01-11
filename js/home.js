@@ -109,30 +109,127 @@ $(document).ready(function () {
 
     /**
      * handle drobdown effects
+     * my version.. not perfect
      */
+    /*
     $(".navbar-nav>.dropdown").on({
 
         "hide.bs.dropdown": function (event) {
             $(event.target).find(".dropdown-menu").addClass('animated fadeOut');
             $(event.target).find('.dropdown-toggle').dropdown();
 
-            event.preventDefault();
+             event.preventDefault();
 
-            setTimeout(function(){
-                $(event.currentTarget).removeClass("open");
-                $(event.target).find(".dropdown-menu").removeClass('animated fadeOut');
-            },1000);
+             setTimeout(function(){
+                 $(event.currentTarget).removeClass("open");
+                 $(event.target).find(".dropdown-menu").removeClass('animated fadeOut');
+             },800);
         },
 
         "show.bs.dropdown" : function (event) {
             $(event.target).parent().find('li.dropdown').removeClass('open');
             $(event.target).find(".dropdown-menu").addClass('animated flipInX');
 
-            setTimeout(function(){
-                $(event.target).find(".dropdown-menu").removeClass('animated flipInX');
-            },1000);
+             setTimeout(function(){
+                 $(event.target).find(".dropdown-menu").removeClass('animated flipInX');
+             },800);
+        },
+        "shown.bs.dropdown" : function (event) {
+            console.log("load complete");
+            $(event.target).delay(800).find(".dropdown-menu").removeClass('animated flipInX');
+        },
+
+        "hidden.bs.dropdown" : function (event) {
+            console.log("unload complete");
+            $(event.target).find(".dropdown-menu").removeClass('animated fadeOut');
+        }
+    });*/
+
+    /**
+     *
+     * dropdown animation. [animation.css]
+     */
+    var dropdownSelectors = $('.dropdown, .dropup');
+
+    // Custom function to read dropdown data
+    // =========================
+    function dropdownEffectData(target) {
+        var effectInDefault = null,
+            effectOutDefault = null;
+        var dropdown = $(target),
+            dropdownMenu = $('.dropdown-menu', target);
+        var parentUl = dropdown.parents('ul.nav');
+
+        // If parent is ul.nav allow global effect settings
+        if (parentUl.length > 0) {
+            effectInDefault = parentUl.data('dropdown-in') || null;
+            effectOutDefault = parentUl.data('dropdown-out') || null;
+        }
+
+        return {
+            target:       target,
+            dropdown:     dropdown,
+            dropdownMenu: dropdownMenu,
+            effectIn:     dropdownMenu.data('dropdown-in') || effectInDefault,
+            effectOut:    dropdownMenu.data('dropdown-out') || effectOutDefault,
+        };
+    }
+
+    // Custom function to start effect (in or out)
+    // =========================
+    function dropdownEffectStart(data, effectToStart) {
+        if (effectToStart) {
+            data.dropdown.addClass('dropdown-animating');
+            data.dropdownMenu.addClass('animated');
+            data.dropdownMenu.addClass(effectToStart);
+        }
+    }
+
+    // Custom function to read when animation is over
+    // =========================
+    function dropdownEffectEnd(data, callbackFunc) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        data.dropdown.one(animationEnd, function() {
+            data.dropdown.removeClass('dropdown-animating');
+            data.dropdownMenu.removeClass('animated');
+            data.dropdownMenu.removeClass(data.effectIn);
+            data.dropdownMenu.removeClass(data.effectOut);
+
+            // Custom callback option, used to remove open class in out effect
+            if(typeof callbackFunc == 'function'){
+                callbackFunc();
+            }
+        });
+    }
+
+    // Bootstrap API hooks
+    // =========================
+    dropdownSelectors.on({
+        "show.bs.dropdown": function () {
+            // On show, start in effect
+            var dropdown = dropdownEffectData(this);
+            dropdownEffectStart(dropdown, dropdown.effectIn);
+        },
+        "shown.bs.dropdown": function () {
+            // On shown, remove in effect once complete
+            var dropdown = dropdownEffectData(this);
+            if (dropdown.effectIn && dropdown.effectOut) {
+                dropdownEffectEnd(dropdown, function() {});
+            }
+        },
+        "hide.bs.dropdown":  function(e) {
+            // On hide, start out effect
+            var dropdown = dropdownEffectData(this);
+            if (dropdown.effectOut) {
+                e.preventDefault();
+                dropdownEffectStart(dropdown, dropdown.effectOut);
+                dropdownEffectEnd(dropdown, function() {
+                    dropdown.dropdown.removeClass('open');
+                });
+            }
         }
     });
+
     /**
      * dropdown click event on notifications button (CHANGE ID)
      */

@@ -12,15 +12,15 @@ $(document).ready(function () {
             "title": $("#notif-title").val(),
             "desc": $("#notif-desc").val()
         }, function (data) {
-            //console.log("OK? " + data);
-        });
-        //console.log("cerco notifiche..");
-
+            });
     });
 
     $("#crea-evento").on("click", function (e) {
        console.log($("#date").val());
-       $.post("/core/calendar_manager.php", {"text":$("#text").val(), "date":$("#date").val(), "id": "24"}, function (e) {
+       $.post("/core/calendar_manager.php", {
+                        "text":$("#text").val(),
+                        "date":$("#date").val(),
+                        "id": "24"}, function (e) {
            console.log(e);
            if(e == "OK"){
                console.log("OK!");

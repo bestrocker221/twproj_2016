@@ -111,39 +111,39 @@ if (checkLogin()){
                         <div class="col-lg-offset-1 col-lg-4 col-md-offset-0 col-md-6 col-sm-offset-0 col-sm-7 col-xs-offset-3 col-xs-8">
                         <div class="navbar-header">
                             <ul class="nav navbar-nav ">
-                                <li id="not-toggle" class="dropdown menu-parent">
-                                    <a  href="" class="dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="true">
+                                <li id="not-toggle" class="dropdown">
+                                    <a  href="#" class="dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="true">
                                         <span class="glyphicon glyphicon-bell"></span>
                                         <span id="total_not" class="badge"></span>
-                                        <ul id="notification_list" role="menu" class="dropdown-menu" >
-                                            <li hidden><a></a></li>
-                                            <li class="message-preview" id="not-template" hidden>
-                                                <a href="">
-                                                    <div class="not-media">
-                                                        <h5 class="media-heading" >
-                                                            <strong id="not-title">Title</strong>
-                                                        </h5>
-                                                        <p class="small text-muted text-right" >
-                                                            <i class="fa fa-clock-o" id="not-date"> date</i>
-                                                        </p>
-                                                        <p id="not-body">
-                                                            body
-                                                        </p>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <!--
-                                             <li id="notification-separator" role="separator" class="divider"></li>
-                                             -->
-                                            <li id="view-all" role="presentation"><a id="tab_notifications">Visualizza tutte</a> </li>
-                                        </ul>
                                     </a>
+                                    <ul id="notification_list" role="menu" class="dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut" >
+                                        <li hidden><a></a></li>
+                                        <li class="message-preview" id="not-template" hidden>
+                                            <a href="">
+                                                <div class="not-media">
+                                                    <h5 class="media-heading" >
+                                                        <strong id="not-title">Title</strong>
+                                                    </h5>
+                                                    <p class="small text-muted text-right" >
+                                                        <i class="fa fa-clock-o" id="not-date"> date</i>
+                                                    </p>
+                                                    <p id="not-body">
+                                                        body
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <!--
+                                         <li id="notification-separator" role="separator" class="divider"></li>
+                                         -->
+                                        <li id="view-all" role="presentation"><a id="tab_notifications">Visualizza tutte</a> </li>
+                                    </ul>
                                 </li>
                                 <li id="prof-toggle" class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <span class="glyphicon glyphicon-user"></span> 
                                     </a>
-                                    <ul class="dropdown-menu" >
+                                    <ul class="dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                         <li>
                                             <div class="navbar-login">
                                                 <div class="row">
