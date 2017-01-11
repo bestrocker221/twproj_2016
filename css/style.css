@@ -817,6 +817,11 @@ footer{
             TABLE
 
  *********************************/
+
+table {
+    padding-top: 10px;
+}
+
 .list tr:hover td{
     background-color: #ffbb88;
 }
@@ -920,6 +925,6 @@ footer{
     z-index:2;
 }
 
-.caption h1 {
-    padding-top: 30%;
+.caption h2 {
+    padding-top: 25%;
 }
