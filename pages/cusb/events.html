@@ -23,6 +23,7 @@ $(document).ready(function () {
      * Add Table data
      */
     $.get("/core/cusb/event-manager.php", function (data) {
+        console.log(data);
         var json = JSON.parse(data);
         for (var n = 0; n < json.length ; n++) {
             var subscribed;

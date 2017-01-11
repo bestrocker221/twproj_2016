@@ -111,7 +111,7 @@ if (checkLogin()){
                         <div class="col-lg-offset-1 col-lg-4 col-md-offset-0 col-md-6 col-sm-offset-0 col-sm-7 col-xs-offset-3 col-xs-8">
                         <div class="navbar-header">
                             <ul class="nav navbar-nav ">
-                                <li id="not-toggle" class="dropdown">
+                                <li id="not-toggle" class="dropdown menu-parent">
                                     <a  href="#" class="dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="true">
                                         <span class="glyphicon glyphicon-bell"></span>
                                         <span id="total_not" class="badge"></span>

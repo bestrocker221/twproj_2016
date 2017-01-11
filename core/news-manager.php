@@ -33,3 +33,5 @@ if(checkLogin()) {
     $tot = json_encode($tot);
     echo $tot;
 }
+
+$db->close();

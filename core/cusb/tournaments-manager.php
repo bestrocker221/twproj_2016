@@ -12,8 +12,8 @@ secure_session_start();
 
 if(checkLogin()) {
 
-
     $id = $_SESSION['user_id'];
+
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
         //$id = 6;
@@ -88,3 +88,4 @@ if(checkLogin()) {
 
     }
 }
+$db->close();

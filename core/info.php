@@ -25,9 +25,10 @@ if(checkLogin()){
 
         echo json_encode($temp);
 
-        //var_dump($temp);
     }
 
 } else {
     echo "not logged";
 }
+
+$db->close();
