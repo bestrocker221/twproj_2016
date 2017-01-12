@@ -3,53 +3,57 @@
         <h1>Benvenuto <strong id="welcome-title"></strong></h1>
     </div>
 </div>
-<div class="col-md-7 col-lg-7">
-    <!-- News -->
-    <div class="row panel panel-default">
-        <div class="panel-heading text-left">
-            <div id="news-title" class="row text-center">
-                <span class="glyphicon glyphicon-list-alt"></span>
-                <strong>News</strong>
-            </div>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul id="news-ul" style="overflow-y: hidden; height: 200px;">
-                        <li id="news-li-template" class="news-item no-active">
-                            <p id="news-li-p"></p>
-                            <a href="#">Leggi tutto...</a>
-                            <p class="small text-muted text-right" >
-                                <em class="fa fa-clock-o" id="news-li-data"> date</em>
-                            </p>
-                        </li>
-                    </ul>
+<section>
+    <div class="col-md-7 col-lg-7">
+        <!-- News -->
+        <div class="row panel panel-default">
+            <div class="panel-heading text-left">
+                <div id="news-title" class="row text-center">
+                    <span class="glyphicon glyphicon-list-alt"></span>
+                    <strong>News</strong>
                 </div>
             </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul id="news-ul" style="overflow-y: hidden; height: 200px;">
+                            <li id="news-li-template" class="news-item no-active">
+                                <p id="news-li-p"></p>
+                                <a href="#">Leggi tutto...</a>
+                                <p class="small text-muted text-right" >
+                                    <em class="fa fa-clock-o" id="news-li-data"> date</em>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <ul class="pagination pull-right" style="margin: 0px;"></ul>
+                <div class="clearfix"></div>
+            </div>
         </div>
-        <div class="panel-footer">
-            <ul class="pagination pull-right" style="margin: 0px;"></ul>
-            <div class="clearfix"></div>
-        </div>
+        <!-- /#News -->
     </div>
-    <!-- /#News -->
-</div>
+</section>
 
-<!-- Calendar -->
-<div class="col-md-5 col-lg-5">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div id="calendar-title" class="row text-center">
-                <span class="glyphicon glyphicon-calendar"></span>
-                <strong>Da ricordare</strong>
+<section>
+    <!-- Calendar -->
+    <div class="col-md-5 col-lg-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div id="calendar-title" class="row text-center">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                    <strong>Da ricordare</strong>
+                </div>
             </div>
-        </div>
-        <div class="panel-body">
-            <div class="row" style="text-align: center;">
-                <div id="cal-content" style="display: inline-flex;"></div>
+            <div class="panel-body">
+                <div class="row" style="text-align: center;">
+                    <div id="cal-content" style="display: inline-flex;"></div>
+                </div>
             </div>
+            <div class="panel-footer"></div>
         </div>
-        <div class="panel-footer"></div>
     </div>
-</div>
-<!-- /#Calendar -->
+    <!-- /#Calendar -->
+</section>

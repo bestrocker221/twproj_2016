@@ -1,28 +1,30 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="jumbotron">
-            <h1>Allenamenti</h1>
-            <p>Elenco degli allenamenti disponibili per gli studenti dell'ateneo di Bologna.</p>
-            <p>Clicca su un allenamento per iscriverti.</p>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="jumbotron">
+                <h1>Allenamenti</h1>
+                <p>Elenco degli allenamenti disponibili per gli studenti dell'ateneo di Bologna.</p>
+                <p>Clicca su un allenamento per iscriverti.</p>
+            </div>
+            <div class="filter btn-group">
+                <button type="button" class="btn btn-filter btn-primary">Calcetto</button>
+                <button type="button" class="btn btn-filter btn-primary">Basket</button>
+                <button type="button" class="btn btn-filter btn-primary">Pallavolo</button>
+                <button type="button" class="btn btn-filter btn-primary">Tennis</button>
+                <button type="button" class="btn btn-filter btn-danger">Reset</button>
+            </div>
+            <table id="table_id" class="display table table-striped table-bordered list">
+                <thead>
+                <tr>
+                    <th>Sport</th>
+                    <th>Data</th>
+                    <th>Iscritto</th>
+                </tr>
+                </thead>
+            </table>
         </div>
-        <div class="filter btn-group">
-            <button type="button" class="btn btn-filter btn-primary">Calcetto</button>
-            <button type="button" class="btn btn-filter btn-primary">Basket</button>
-            <button type="button" class="btn btn-filter btn-primary">Pallavolo</button>
-            <button type="button" class="btn btn-filter btn-primary">Tennis</button>
-            <button type="button" class="btn btn-filter btn-danger">Reset</button>
-        </div>
-        <table id="table_id" class="display table table-striped table-bordered list">
-            <thead>
-            <tr>
-                <th>Sport</th>
-                <th>Data</th>
-                <th>Iscritto</th>
-            </tr>
-            </thead>
-        </table>
     </div>
-</div>
+</section>
 <script>
 $(document).ready(function () {
     addToBreadcrumbs("Allenamenti");

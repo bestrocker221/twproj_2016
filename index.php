@@ -179,7 +179,7 @@ if (checkLogin()){
                     <!-- /#Notifiche -->
                 </div>
             </nav>
-            <div class="row">
+            <div class="row" style="margin-top: 60px; z-index: -1">
                 <!-- Page Content -->
                 <div id="page-content-wrapper">
                     <div class="container-fluid">

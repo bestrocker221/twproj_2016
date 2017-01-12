@@ -1,23 +1,25 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="jumbotron">
-            <h1>Eventi</h1>
-            <p>Elenco degli eventi disponibili per gli studenti dell'ateneo di Bologna.</p>
-            <p>Clicca su un evento per iscriverti.</p>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="jumbotron">
+                <h1>Eventi</h1>
+                <p>Elenco degli eventi disponibili per gli studenti dell'ateneo di Bologna.</p>
+                <p>Clicca su un evento per iscriverti.</p>
+            </div>
+            <table id="table_id" class="display table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrizione</th>
+                    <th>Data</th>
+                    <th>Numero partecipanti</th>
+                    <th>Iscritto</th>
+                </tr>
+                </thead>
+            </table>
         </div>
-        <table id="table_id" class="display table table-striped table-bordered">
-            <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Descrizione</th>
-                <th>Data</th>
-                <th>Numero partecipanti</th>
-                <th>Iscritto</th>
-            </tr>
-            </thead>
-        </table>
     </div>
-</div>
+</section>
 <script>
 $(document).ready(function () {
     addToBreadcrumbs("Eventi");
