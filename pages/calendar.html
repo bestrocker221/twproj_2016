@@ -6,46 +6,41 @@
 
 
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        loadModal();
+    loadModal();
 
-        $('#calendar').fullCalendar({
+    $('#calendar').fullCalendar({
 
-            <!--Header Section Including Previous,Next and Today-->
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,basicWeek,basicDay'
-            },
+        <!--Header Section Including Previous,Next and Today-->
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,basicWeek,basicDay'
+        },
 
-            <!--Default Date-->
-            defaultDate: $.now(),
+        <!--Default Date-->
+        defaultDate: $.now(),
 
 
-            <!--Event Section-->
-            eventLimit: true, // allow "more" link when too many events
-            events: {
-                url:'/core/events.php',
-                cache:true
-            },
+        <!--Event Section-->
+        eventLimit: true, // allow "more" link when too many events
+        events: {
+            url:'/core/events.php',
+            cache:true
+        },
 
-            eventRender: function (event, element) {
-                element.attr("href","javascript:void(0);");
-                element.click(function () {
+        eventRender: function (event, element) {
+            element.attr("href","javascript:void(0);");
+            element.click(function () {
 
-                    $(" .modal-title").html("Evento");
-                    $(" .modal-body").html(element.find(".fc-title").html());
-                    $("#myModal").modal('show');
+                $(" .modal-title").html("Evento");
+                $(" .modal-body").html(element.find(".fc-title").html());
+                $("#myModal").modal('show');
 
-                })
-            }
-        });
-
+            })
+        }
     });
-</script>
 
-<div style="text-align: center">
-    <div id='calendar'></div>
-</div>
-<!-- /#Home & Calendar -->
+});
+</script>

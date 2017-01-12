@@ -59,6 +59,7 @@
     </div>
 </div>
 <script>
+$(document).ready(function () {
     addToBreadcrumbs("Iscrizioni");
 
     tourn_data = initTable("tournaments-table");
@@ -130,5 +131,6 @@
     $(".filter-trainings .btn-filter").on('click',function () {
         buttonFilterTable(train_data,$(this));
     });
+});
 
 </script>
