@@ -12,12 +12,13 @@ $(document).ready(function () {
             "title": $("#notif-title").val(),
             "desc": $("#notif-desc").val()
         }, function (data) {
+            console.log(data);
             });
     });
 
     $("#crea-evento").on("click", function (e) {
        console.log($("#date").val());
-       $.post("/core/calendar_manager.php", {
+       $.post("/core/events.php", {
                         "text":$("#text").val(),
                         "date":$("#date").val(),
                         "id": "24"}, function (e) {

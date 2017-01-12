@@ -12,35 +12,53 @@ require_once 'functions.php';
 secure_session_start();
 
 if(checkLogin()) {
-//make request to the server, must retrieve json format and with
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(isset($_POST['text']) && isset($_POST['date']) && isset($_POST['id'])){
 
-    $id = $_SESSION['user_id'];
+            $stmt = $db->prepare("INSERT into general_events (title,start,id_member) VALUES (?,?,?)");
+            $stmt->bind_param("ssi", $text,$date,$id);
 
-    $sql = "SELECT id, title, url, start, end FROM `general_events` WHERE id_member='$id'";
+            $id = sanitize($_POST['id']);
+            $text = sanitize($_POST['text']);
+            $date = explode("T",$_POST['date']);
+            $date = $date[0];
 
-    $result = $db->query($sql);
-    $tot = array();
-
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $temp = array();
-            $temp['id'] = $row['id'];
-            $temp['title'] = $row['title'];
-            $temp['url'] = $row['url'];
-            $temp['start'] = $row['start'];
-            $temp['end'] = $row['end'];
-
-            array_push($tot, $temp);
+            $stmt->execute();
+            $stmt->close();
         }
 
-        /*$num = $result->num_rows;
-        for( $k=0;$k<$num;$k++){
-            array_push($tot,$result->fetch_row());
-        }*/
     } else {
-        echo "ERROR " . $db->errno;
-        echo "num row" . $result->num_rows;
+//make request to the server, must retrieve json format and with
+
+
+        $tot = array();
+
+        $stmt = $db->prepare("SELECT id, title, url, start, end FROM `general_events` WHERE id_member=?");
+        $stmt->bind_param("i", $id);
+        $stmt->bind_result($final_id,$title, $url, $start, $end);
+
+        $id = $_SESSION['user_id'];
+
+        if($stmt->execute()){
+            while($row = $stmt->fetch()){
+                $temp = array();
+                $temp['id'] = $final_id;
+                $temp['title'] = $title;
+                $temp['url'] = $url;
+                $temp['start'] =  $start;
+                $temp['end'] =  $end;
+
+                array_push($tot, $temp);
+            }
+        } else {
+            echo "ERROR " . $db->errno;
+            echo "num row" . $result->num_rows;
+        }
+        $stmt->close();
+
+        $tot = json_encode($tot);
+        echo $tot;
     }
-    $tot = json_encode($tot);
-    echo $tot;
 }
+
+$db->close();

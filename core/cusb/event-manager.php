@@ -74,3 +74,4 @@ if(checkLogin()) {
 
     }
 }
+$db->close();

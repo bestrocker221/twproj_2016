@@ -44,8 +44,6 @@ Function for logging user logins.
 */
 function logLogin($username, $ip_addr){
     global $db;
-    $time = time();
-
     $query = "INSERT into `login_history` (member,ip) values ('$username','$ip_addr')";
     if(!$db->query($query)){
         die("error loglogin");
@@ -53,22 +51,21 @@ function logLogin($username, $ip_addr){
 }
 
 function cacheLoginInfo($row){
-    //var_dump($row);
     $_SESSION["logged"]= true;
-
     $_SESSION["email"] = $row["username"];
     $_SESSION["surname"] = $row["surname"];
     $_SESSION["name"] = $row["name"];
     $_SESSION["address"] = $row["address"];
     $_SESSION["sex"] = $row["sex"];
 
-    /*$_SESSION["city"] = $row["city"];
-
+    /*
+    $_SESSION["city"] = $row["city"];
     $_SESSION["birthday_date"] = $row["birthday_date"];
     $tmp = split("-", $_SESSION["birthday_date"]);
     $_SESSION["birthday_year"] = $tmp[0];
     $_SESSION["birthday_month"] = $tmp[1];
-    $_SESSION["birthday_day"] = $tmp[2];*/
+    $_SESSION["birthday_day"] = $tmp[2];
+    */
 
 }
 
@@ -83,7 +80,7 @@ function checkLogin(){
 
         if ($stmt = $db->prepare("SELECT password FROM member WHERE ID_Member = ? LIMIT 1")) {
             $stmt->bind_param('i', $user_id); // esegue il bind del parametro '$user_id'.
-            $stmt->execute(); // Esegue la query creata.
+            $stmt->execute();
             $stmt->store_result();
 
             if($stmt->num_rows == 1) { // se l'utente esiste
@@ -106,7 +103,6 @@ function checkLogin(){
             // Login non eseguito
             return false;
         }
-
     } else {
         // Login non eseguito
         return false;
@@ -120,38 +116,41 @@ function getLoginInfo($username,$password /*X*/){
     $array = array("member");
 
     foreach ($array as $type ){
-        $query = "SELECT * from `".$type."` WHERE username='$username'";
-        $res = $db->query($query);
-        if ($res->num_rows > 0) {
-            $s = $res->fetch_array();
 
-            $newPsw = hash('sha512',$password.$s['salt']); /*E*/
+        if($stmt = $db->prepare("SELECT * from `".$type."` WHERE username=?")){
+            $stmt->bind_param("s",$username);
+            $stmt->execute();
 
-            if($newPsw == $s['password']){
+            $res = $stmt->get_result();
+            if($res->num_rows > 0){
 
-                $_SESSION['username'] = $username;
-                $_SESSION['login_string'] = hash('sha512', $newPsw.$_SERVER['HTTP_USER_AGENT']);
-                $_SESSION['user_id'] = $s['ID_Member'];
-                $_SESSION['mat'] = $s['mat'];
-                cacheLoginInfo($s);
+                $s = $res->fetch_array(MYSQLI_ASSOC);
 
-                if ($type=="member"){
-                    $_SESSION["authority"] = "member";
-                } else if ($type=="Organizer"){
-                    $_SESSION["authority"] = "organizer";
-                } else if ($type=="Trainer"){
-                    $_SESSION["authority"] = "trainer";
-                } else if ($type=="admins"){
-                    $_SESSION["authority"] = "root";
+                $newPsw = hash('sha512',$password.$s['salt']); //E
+
+                if($newPsw == $s['password']){
+
+                    $_SESSION['username'] = $username;
+                    $_SESSION['login_string'] = hash('sha512', $newPsw.$_SERVER['HTTP_USER_AGENT']);
+                    $_SESSION['user_id'] = $s['ID_Member'];
+                    $_SESSION['mat'] = $s['mat'];
+                    cacheLoginInfo($s);
+
+                    if ($type=="member"){
+                        $_SESSION["authority"] = "member";
+                    } else if ($type=="Organizer"){
+                        $_SESSION["authority"] = "organizer";
+                    } else if ($type=="Trainer"){
+                        $_SESSION["authority"] = "trainer";
+                    } else if ($type=="admins"){
+                        $_SESSION["authority"] = "root";
+                    }
+                    return true;
                 }
-                return true;
             }
-
+            $stmt->close();
         }
-        $res->free_result();
     }
-    //
-
     return false;
 }
 
@@ -164,16 +163,6 @@ function retrieve_password($username, $email, $authority){
     $ret = mysql_fetch_array($q);
     return $ret["password"];
 }*/
-
-function update_values($name,$surname,$city,$address,$birthday_date,$email,$new_password){
-    $_SESSION["name"] = $name;
-    $_SESSION["surname"] = $surname;
-    $_SESSION["city"] = $city;
-    $_SESSION["email"] = $email;
-    $_SESSION["birthday_date"] = $birthday_date;
-    $_SESSION["password"] = $new_password;
-}
-
 
 function getLastLogin($username){
     global $db;

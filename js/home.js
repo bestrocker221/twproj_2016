@@ -145,6 +145,18 @@ $(document).ready(function () {
         }
     });*/
 
+
+    /**
+     * dropdown click event on notifications button (CHANGE ID)
+     */
+    $(".menu-parent").on("shown.bs.dropdown", function (event) {
+
+        //importa tutte le notifiche "viste"
+        console.log("notifiche viste");
+
+        $.post("/core/gestisci_notifiche.php", {"id":"2"});
+    });
+
     /**
      *
      * dropdown animation. [animation.css]
@@ -209,6 +221,7 @@ $(document).ready(function () {
             // On show, start in effect
             var dropdown = dropdownEffectData(this);
             dropdownEffectStart(dropdown, dropdown.effectIn);
+
         },
         "shown.bs.dropdown": function () {
             // On shown, remove in effect once complete
@@ -230,16 +243,7 @@ $(document).ready(function () {
         }
     });
 
-    /**
-     * dropdown click event on notifications button (CHANGE ID)
-     */
-    $(".menu-parent").on("shown.bs.dropdown", function (event) {
 
-        //importa tutte le notifiche "viste"
-        console.log("notifiche viste");
-
-        $.post("/core/gestisci_notifiche.php", {"id":"2"});
-    });
 
     /**
      * Load moadal

@@ -18,28 +18,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     }
     $username = sanitize($_POST['username'],true);
     $password = sanitize($_POST['hash-psw'],true);
-    //$q = mysql_query("SELECT * from `members` WHERE username='$username' AND password='$password'",$conn) or die("Query non valida: " . mysql_error());
 
     if(getLoginInfo($username,$password)){
-        //echo "setto cookie --> user: ". $_SESSION["username"];
+
         $cookie_time = 3600*24*7;
         $sess_cookie = session_get_cookie_params();
+
         setcookie('session', "",
             time()+$cookie_time,$sess_cookie["path"],$sess_cookie["domain"],
             $sess_cookie["secure"],true);
         $_SESSION["last_login"] = getLastLogin($username);
+
         logLogin($username,$_SERVER['REMOTE_ADDR']);
+
         if ($_SESSION["authority"] != "member"){
-            //header("location: /basi/admin_pan.php");
+            //non è membro
         } else {
-            //header("location: /index.php");
+            //è membro
             echo "OK";
         }
     } else {
         failedLoginLog($username,$_POST['password'],$_SERVER['REMOTE_ADDR']);
+
         $_SESSION["logged"]=false;
-        //header("location: login_failed.html");
-        echo "FAILED";
+
+        echo "LOGIN FAILED";
     }
 }
 
+$db->close();
