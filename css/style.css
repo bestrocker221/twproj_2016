@@ -955,7 +955,7 @@ table {
  ********************/
 
 .breadcrumb {
-    background-color: transparent;
+    /*background-color: transparent;*/
 }
 
 /******************
@@ -968,6 +968,10 @@ table {
     background-color: transparent;
     padding-top: 5px;
     padding-bottom: 5px;
-    border-bottom: 2px black solid;
+    border-bottom: 1px grey solid;
     border-radius: 0px !important;
+}
+
+.jumbotron h1 {
+    font-size: 300%;
 }
