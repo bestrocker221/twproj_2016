@@ -9,7 +9,7 @@ if (checkLogin()){
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -82,12 +82,12 @@ if (checkLogin()){
                                 <!-- LOGIN FORM -->
                                 <form class="form-horizontal" id="login-form" action="/core/check_login.php" method="post" role="form">
                                     <div id="row-user" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <span class="input-group-addon"><em class="glyphicon glyphicon-user"></em></span>
                                         <label for="username" hidden>Username</label>
-                                        <input class="form-control" autofocus autocomplete="yes" placeholder="Email Istituzionale" tabindex="1" value="" type="text" name="username" id="username" >
+                                        <input class="form-control" autofocus autocomplete="on" placeholder="Email Istituzionale" tabindex="1" value="" type="text" name="username" id="username" >
                                     </div>
                                     <div id="row-password" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <span class="input-group-addon"><em class="glyphicon glyphicon-lock"></em></span>
                                         <label for="password-login" hidden>Password</label>
                                         <input class="form-control" placeholder="Password" value="" tabindex="2" type="password" name="password" id="password-login" >
                                     </div>
@@ -104,7 +104,7 @@ if (checkLogin()){
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6 col-sm-offset-3">
-                                                <label for="login-submit" hidden>Log in</label>
+                                                <label for="login-submit">Log in</label>
                                                 <input type="submit" name="login-submit" id="login-submit" tabindex="3" class="form-control btn btn-login" value="Log in" >
                                             </div>
                                         </div>
@@ -113,7 +113,7 @@ if (checkLogin()){
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="text-center">
-                                                    <label for="forgot-password" hidden>Forgot password?</label>
+                                                    <label for="forgot-password">Forgot password?</label>
                                                     <a href="#s" tabindex="4" class="forgot-password" id="forgot-password">Password dimenticata?</a>
                                                 </div>
                                             </div>

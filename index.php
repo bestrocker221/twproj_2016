@@ -8,7 +8,7 @@ if (checkLogin()){
 }
 ?>
 <!DOCTYPE html>
-<html >
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <title>Alma Sudenti</title>
@@ -24,22 +24,16 @@ if (checkLogin()){
 
 <header>
     <div class="container titlebox" >
-        <nav class="navbar navbar-default" id="nav-title" style="margin-bottom: 0;">
+        <nav class="navbar navbar-default" id="nav-title">
             <div class="container-fluid">
                 <div class="brand-centered myTrajanFont">
                     <a class="navbar-brand" href="">
-                        <!--
-                        <div class="title" >ALMA STUDENTI</div>
-                        <!--
-                        <img style="margin-right: 5px;margin-left: 5px; padding: 0;" src="res/Logo.jpg" alt="Alma Mater Studiorum">
-                        <div class="title" >ALMA MATER STUDIORUM</div>
-                        -->
                         <img id="header-image" src="res/logo-almamater.png" alt="Alma Mater Studiorum">
                     </a>
                 </div>
                 <!--/.nav-collapse -->
             </div>
-            <hr style="opacity: 0;margin-top: 60px; margin-bottom: 0px">
+            <hr>
             <!--/.container-fluid -->
         </nav>
     </div>
@@ -51,7 +45,7 @@ if (checkLogin()){
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
                     <ul class="nav sidebar-nav">
                         <li class="sidebar-brand">
-                            <a id="name" href="#" style="background: #1a1a1a;"></a>
+                            <a title="name" id="name" href="#"></a>
                         </li>
                         <li><a href="#">Prove d'ammissione</a></li>
                         <li><a href="#">Immatricolazioni</a></li>
@@ -88,22 +82,22 @@ if (checkLogin()){
         <!-- /#sidebar-wrapper -->
         <div class="col-lg-12">
             <nav>
-                <div class="row" id="nav-options" style="z-index:100">
+                <div class="row" id="nav-options">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 myHamb">
-                        <button type="button" class="hamburger is-open" data-toggle="offcanvas" style="margin-top: 6px;">
+                        <button type="button" class="hamburger is-open" data-toggle="offcanvas">
                             <span class="hamb-top"></span>
                             <span class="hamb-middle"></span>
                             <span class="hamb-bottom"></span>
                         </button>
                     </div>
                     <!-- Central nav logo -->
-                    <div class="col-lg-offset-3 col-lg-3 col-md-offset-2 col-md-3 col-sm-offset-1 col-sm-3" style="line-height: 3.0em;">
+                    <div class="col-lg-offset-3 col-lg-3 col-md-offset-2 col-md-3 col-sm-offset-1 col-sm-3">
                         <div class="myTrajanFont">
-                            <b id="logo-nav" style="font-size: 16px;">
+                            <em id="logo-nav">
                                 <a href="/">ALMA
-                                    <img src="/res/unibo_logo.png">
+                                    <img src="/res/unibo_logo.png" alt="Logo unibo">
                                     STUDENTI</a>
-                            </b>
+                            </em>
                         </div>
                     </div>
                     <!-- #/Central nav logo -->
@@ -125,7 +119,7 @@ if (checkLogin()){
                                                         <strong id="not-title">Title</strong>
                                                     </h5>
                                                     <p class="small text-muted text-right" >
-                                                        <i class="fa fa-clock-o" id="not-date"> date</i>
+                                                        <strong class="fa fa-clock-o" id="not-date"> date</strong>
                                                     </p>
                                                     <p id="not-body">
                                                         body
@@ -133,9 +127,6 @@ if (checkLogin()){
                                                 </div>
                                             </a>
                                         </li>
-                                        <!--
-                                         <li id="notification-separator" role="separator" class="divider"></li>
-                                         -->
                                         <li id="view-all" role="presentation"><a id="tab_notifications">Visualizza tutte</a> </li>
                                     </ul>
                                 </li>
@@ -188,7 +179,7 @@ if (checkLogin()){
                     <!-- /#Notifiche -->
                 </div>
             </nav>
-            <div class="row" style="margin-top: 60px; z-index: -1">
+            <div class="row">
                 <!-- Page Content -->
                 <div id="page-content-wrapper">
                     <div class="container-fluid">

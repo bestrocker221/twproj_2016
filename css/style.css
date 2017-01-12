@@ -881,6 +881,10 @@ table {
     background-color: #F44336;
 }
 
+.modal-header span {
+    font-size: 150%;
+}
+
 /*******************
 
         NEWS
