@@ -853,7 +853,7 @@ table {
 }
 #calendar-title{
     /*font-family: 'Cinzel', serif;*/
-    font-size:22px;
+    font-size:22px !important;
     /*margin-bottom: 15px;*/
 }
 
@@ -887,10 +887,10 @@ table {
 
  ******************/
 
-.news-title{
+#news-title{
     /*font-family: 'Cinzel', serif;*/
     font-size:22px;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 
 .news-item
@@ -946,4 +946,28 @@ table {
 
 .animated {
     animation-duration: 0.5s !important;
+}
+
+/********************
+
+    BREADCRUMB
+
+ ********************/
+
+.breadcrumb {
+    background-color: transparent;
+}
+
+/******************
+
+       JUMBOTRON
+
+ ******************/
+
+.jumbotron {
+    background-color: transparent;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 2px black solid;
+    border-radius: 0px !important;
 }
