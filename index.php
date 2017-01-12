@@ -24,7 +24,7 @@ if (checkLogin()){
 
 <header>
     <div class="container titlebox" >
-        <nav class="navbar navbar-default" id="nav-title">
+        <nav class="navbar navbar-default" id="nav-title" style="margin-bottom: 0;">
             <div class="container-fluid">
                 <div class="brand-centered myTrajanFont">
                     <a class="navbar-brand" href="">
@@ -33,7 +33,7 @@ if (checkLogin()){
                 </div>
                 <!--/.nav-collapse -->
             </div>
-            <hr>
+            <hr style="opacity: 0;margin-top: 60px; margin-bottom: 0px">
             <!--/.container-fluid -->
         </nav>
     </div>
@@ -45,7 +45,7 @@ if (checkLogin()){
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
                     <ul class="nav sidebar-nav">
                         <li class="sidebar-brand">
-                            <a title="name" id="name" href="#"></a>
+                            <a title="name" id="name" href="#" style="background: #1a1a1a;"></a>
                         </li>
                         <li><a href="#">Prove d'ammissione</a></li>
                         <li><a href="#">Immatricolazioni</a></li>
@@ -82,22 +82,22 @@ if (checkLogin()){
         <!-- /#sidebar-wrapper -->
         <div class="col-lg-12">
             <nav>
-                <div class="row" id="nav-options">
+                <div class="row" id="nav-options" style="z-index:100">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 myHamb">
-                        <button type="button" class="hamburger is-open" data-toggle="offcanvas">
+                        <button type="button" class="hamburger is-open" data-toggle="offcanvas" style="margin-top: 6px;">
                             <span class="hamb-top"></span>
                             <span class="hamb-middle"></span>
                             <span class="hamb-bottom"></span>
                         </button>
                     </div>
                     <!-- Central nav logo -->
-                    <div class="col-lg-offset-3 col-lg-3 col-md-offset-2 col-md-3 col-sm-offset-1 col-sm-3">
+                    <div class="col-lg-offset-3 col-lg-3 col-md-offset-2 col-md-3 col-sm-offset-1 col-sm-3" style="line-height: 3.0em;">
                         <div class="myTrajanFont">
-                            <em id="logo-nav">
+                            <strong id="logo-nav" style="font-size: 16px;">
                                 <a href="/">ALMA
                                     <img src="/res/unibo_logo.png" alt="Logo unibo">
                                     STUDENTI</a>
-                            </em>
+                            </strong>
                         </div>
                     </div>
                     <!-- #/Central nav logo -->
