@@ -12,6 +12,7 @@ if (checkLogin()){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -62,9 +63,9 @@ if (checkLogin()){
         }
     });
 </script>
-    <div class="container" style="padding-top: 60px;">
+    <div class="container">
         <div class="row" >
-            <div class="col-md-6 col-md-offset-3 col-sm-offset-3 col-sm-6 col-xs-offset-3 col-xs-6 group-login">
+                <div class="col-md-6 col-md-offset-3 col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-9 group-login">
                 <div class="panel panel-login">
                     <div class="panel-heading">
                         <div class="row">
@@ -79,7 +80,7 @@ if (checkLogin()){
                         <div class="row" id="pwd-container">
                             <div class="col-lg-12">
                                 <!-- LOGIN FORM -->
-                                <form class="form-horizontal" id="login-form" action="/core/check_login.php" method="post" role="form" style="display:block;">
+                                <form class="form-horizontal" id="login-form" action="/core/check_login.php" method="post" role="form">
                                     <div id="row-user" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                         <label for="username" hidden>Username</label>
@@ -92,11 +93,11 @@ if (checkLogin()){
                                     </div>
                                     <input type="hidden" id="hash-psw" name="hash-psw" value=""/>
                                     <!-- error messages -->
-                                    <div id="error-div" class="alert alert-danger alert-dismissible fade in" style="display: none; margin-top: 10px;">
+                                    <div id="error-div" class="alert alert-danger alert-dismissible fade in">
                                         <a href="#" class="close" aria-label="close">&times;</a>
                                         <strong>Errore!</strong><span id="error-msg"> Mancano informazioni per procedere (minimo 8 caratteri) </span>
                                     </div>
-                                    <div id="error-div2" class="alert alert-danger alert-dismissible fade in" style="display: none; margin-top: 10px;">
+                                    <div id="error-div2" class="alert alert-danger alert-dismissible fade in">
                                         <a href="#" class="close" aria-label="close">&times;</a>
                                         <strong>Errore!</strong><span id="error-msg"> Username o password errati. Riprova, hai al massimo 3 tentativi.</span>
                                     </div>
