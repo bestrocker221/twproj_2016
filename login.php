@@ -19,7 +19,7 @@ if (checkLogin()){
     <script type="application/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/sha512.js"></script>
-    <title>Login</title>
+    <title>Unibo - Login</title>
 </head>
 <body>
 <script>
@@ -43,14 +43,14 @@ if (checkLogin()){
                 $("#hash-psw").val(hex_sha512($("#password-login").val()));
                 $("#password-login").val("");
 
-                console.log($("#hash-psw").val());
+                //console.log($("#hash-psw").val());
 
                 $.post("/core/check_login.php", {"username":$("#username").val(), "hash-psw":$("#hash-psw").val()}, function (data) {
                     if(data == "OK"){
                         window.location.href = "/index.php";
                     } else {
                         $("#error-div2").fadeIn(150);
-                        console.log(data);
+                        //console.log(data);
                     }
                 });
             }
@@ -131,8 +131,5 @@ if (checkLogin()){
             </div>
         </div>
     </div>
-    <!--
-    <div class="illustrationClass"></div>
-    -->
 </body>
 </html>

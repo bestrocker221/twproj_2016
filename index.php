@@ -11,7 +11,7 @@ if (checkLogin()){
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Alma Sudenti</title>
+    <title>Alma Studenti - Unibo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet prefetch' href='css/bootstrap.min.css'>
     <link rel='stylesheet' href='css/font-awesome.min.css'>

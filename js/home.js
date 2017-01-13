@@ -14,6 +14,8 @@ $(document).ready(function () {
              */
             $("#cal-content").load("/pages/calendar.html");
 
+            loadProfileInfo();
+
             /**
              * Carico news
              */
@@ -32,8 +34,6 @@ $(document).ready(function () {
                     $("#news-li-data", $template).text(c[n]["date"]);
 
                     //bind? TODO?
-
-
                     $template.insertAfter("#news-li-template");
                 }
 
@@ -54,7 +54,7 @@ $(document).ready(function () {
     loadHome();
 
 
-    $("#home-btn").bind('click', function (e) {
+    $("#home-btn").on('click', function (e) {
        loadHome();
        e.preventDefault();
         removeAllBreadcrubsAfter("Home");
@@ -73,7 +73,6 @@ $(document).ready(function () {
 
     $(window).resize(function(){
         if ($(window).width() <= 766){
-            //console.log("FIRE!");
             if(isClosed){
                 hamburger_cross();
                 $("#wrapper").removeClass("toggled");
@@ -152,7 +151,7 @@ $(document).ready(function () {
     $(".menu-parent").on("shown.bs.dropdown", function (event) {
 
         //importa tutte le notifiche "viste"
-        console.log("notifiche viste");
+        //console.log("Notifiche viste");
 
         $.post("/core/gestisci_notifiche.php", {"id":"2"});
     });
@@ -284,12 +283,12 @@ $(document).ready(function () {
                 $("#not-body",$template).text(c[n][1]);
                 if(c[n][4] == 0)
                     $template.addClass('notification-not-viewed');
-                    $template.bind("click", function (e) {
+                    $template.on("click", function (e) {
                         //notifica cliccata, invia +1 al server
 
                         $.post("/core/gestisci_notifiche.php", {"id-notifica":$(this).attr('id')}, function (data) {
                             $(this).removeClass("notification-not-viewed");
-                            console.log(data);
+                            //console.log(data);
                         });
 
                         //inserisci location
@@ -323,11 +322,8 @@ $(document).ready(function () {
  */
 function loadProfileInfo(){
     $.get("core/info.php", function (e) {
-        console.log(e);
 
         var data = JSON.parse(e);
-
-        console.log(data);
 
         $("#name").text(data.surname + " " +data.name);
         $("#member-email").text(data.username);
@@ -365,15 +361,13 @@ function addToBreadcrumbs(text) {
 
 function bindEventBreadcrumb(text, func){
     //console.log("entro.. testo: " + text, " funzione -> " + func);
-    getBreadcrumb(text).bind('click',function (e) {
+    getBreadcrumb(text).on('click',function (e) {
         func();
         e.preventDefault();
     });
 }
 
 function getBreadcrumb(text){
-    /*console.log("T:"+text);
-    console.log("preso elemento-->" + $("#navigation-breadcrumb li:contains('"+text+"')") );*/
     return $("#navigation-breadcrumb li:contains('"+text+"')");
 }
 
@@ -471,11 +465,12 @@ function cusb_main_ref() {
     });
 }
 
-
+/**
+ * bind all breadcrumbs and load cusb main
+ */
 $("#cusb").on('click',function () {
     cusb_main_ref();
 });
-
 
 
 /**
