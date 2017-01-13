@@ -539,6 +539,13 @@ function buttonFilterTable(table, filter){
 }
 
 /**
+ * Show n row per table
+ */
+function showRows(table, n) {
+    table.page.len(n).draw();
+}
+
+/**
  * Load modal from file
  */
 function loadModal() {

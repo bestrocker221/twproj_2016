@@ -91,6 +91,7 @@ $(document).ready(function () {
             }
         }
     });
+    showRows(tourn_data,5);
 
 
     train_data = initTable("trainings-table");
@@ -111,6 +112,8 @@ $(document).ready(function () {
         }
     });
 
+    showRows(train_data,5);
+
     event_data = initTable("events-table");
     /**
      * Add Trainings Table data
@@ -129,6 +132,8 @@ $(document).ready(function () {
             }
         }
     });
+
+    showRows(event_data,5);
 
     $(".filter-tournaments .btn-filter").on('click',function () {
         buttonFilterTable(tourn_data,$(this));
