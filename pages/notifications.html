@@ -29,9 +29,9 @@ $(document).ready(function () {
         for (var n = 0; n < Object.keys(json).length - 1; n++) {
             t_data.row.add([
                 json[n][0],
+                json[n][6],
                 json[n][1],
-                json[n][2],
-                json[n][3]
+                json[n][2]
             ]).draw();
         }
     });
