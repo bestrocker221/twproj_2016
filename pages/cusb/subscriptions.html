@@ -44,6 +44,8 @@
                 <tr>
                     <th>Sport</th>
                     <th>Data</th>
+                    <th>Indirizzo</th>
+                    <th>Campo</th>
                 </tr>
                 </thead>
             </table>
@@ -58,6 +60,7 @@
                     <th>Descrizione</th>
                     <th>Data</th>
                     <th>Numero partecipanti</th>
+                    <th>Indirizzo</th>
                 </tr>
                 </thead>
             </table>
@@ -106,7 +109,9 @@ $(document).ready(function () {
             } else {
                 train_data.row.add([
                     json[n]["of_what"],
-                    json[n]["date"]
+                    json[n]["date"],
+                    json[n]["field_place"],
+                    json[n]["field_name"]
                 ]).draw();
             }
         }
@@ -127,7 +132,8 @@ $(document).ready(function () {
                 event_data.row.add([
                     json[n]["description"],
                     json[n]["date"],
-                    json[n]["n_partec"]
+                    json[n]["n_partec"],
+                    json[n]["field_place"],
                 ]).draw();
             }
         }
