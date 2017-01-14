@@ -18,6 +18,8 @@
                 <tr>
                     <th>Sport</th>
                     <th>Data</th>
+                    <th>Indirizzo</th>
+                    <th>Campo</th>
                     <th>Iscritto</th>
                 </tr>
                 </thead>
@@ -46,6 +48,8 @@ $(document).ready(function () {
             var rowNode = t_data.row.add([
                 json[n]["of_what"],
                 json[n]["date"],
+                json[n]["field_place"],
+                json[n]["field_name"],
                 subscribed
             ])
                 .draw()
