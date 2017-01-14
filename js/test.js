@@ -10,7 +10,8 @@ $(document).ready(function () {
         $.post("/core/gestisci_notifiche.php", {
             "id": "2",
             "title": $("#notif-title").val(),
-            "desc": $("#notif-desc").val()
+            "desc": $("#notif-desc").val(),
+            "sender": $("#notif-sender").val()
         }, function (data) {
             console.log(data);
             });

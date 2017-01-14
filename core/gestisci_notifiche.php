@@ -17,12 +17,13 @@ if(checkLogin()) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         //crea nuova notifica
-        if (isset($_POST['id']) && isset($_POST['desc']) && isset($_POST['title'])) {
+        if (isset($_POST['id']) && isset($_POST['desc']) && isset($_POST['title']) && isset($_POST['sender'])) {
             //$id = $_POST["id"];
             $desc = $_POST["desc"];
             $title = $_POST['title'];
+            $sender = $_POST['sender'];
 
-            $sql = "INSERT INTO notifications (id_member,title,description) VALUES ('$id','$title','$desc')";
+            $sql = "INSERT INTO notifications (id_member,title,description,sender) VALUES ('$id','$title','$desc','$sender')";
             if ($db->query($sql) === TRUE) {
                 echo "OK";
             } else {
@@ -56,7 +57,7 @@ if(checkLogin()) {
         if (isset($_GET["id"])) {
             //$id = $_GET['id'];
 
-            $sql = "SELECT title,description, date, showed, clicked,id FROM notifications WHERE id_member='$id' ORDER BY date DESC";
+            $sql = "SELECT title,description, date, showed, clicked,id, sender FROM notifications WHERE id_member='$id' ORDER BY date DESC";
             $sql2 = "SELECT COUNT(*) FROM notifications WHERE id_member='$id' and showed='0'";
 
             $tot = array();

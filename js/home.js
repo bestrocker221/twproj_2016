@@ -388,8 +388,9 @@ $(window).on("load", function() {
 
     /**
      * Loading Footer
+     * now preloaded by server.
      */
-    $("#footer-content").load("/pages/footer.html");
+    //$("#footer-content").load("/pages/footer.html");
 
     // Animate loader off screen
     $(".se-pre-con").delay(700).fadeOut("slow");
