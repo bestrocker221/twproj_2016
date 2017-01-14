@@ -8,9 +8,23 @@
             </div>
         </div>
         <div class="row">
-
-            <span class="weather-temperature"></span>
-            <span class="weather-description"></span>
+            <div class="wather-wrapper">
+                <img class="weather-icon" alt="wheater icon">
+                <p>Temperatura (max/min) </br>
+                    <span class="weather-temperature"></span>
+                    (<span class="weather-max-temperature"></span> / <span class="weather-min-temperature"></span>)
+                </p>
+                <p>Descrizione </br>
+                    <span class="weather-description"></span>
+                </p>
+                <p>Vento </br>
+                    <span class="weather-wind-speed"></span>
+                </p>
+                <p>
+                    Umidità </br>
+                    <span class="weather-humidity"></span>
+                </p>
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-5 col-md-5 col-lg-offset-2 col-lg-4">
@@ -85,23 +99,21 @@ $( document ).ready(function() {
     $('.weather-temperature').openWeather({
         key: 'c9d49310f8023ee2617a7634de23c2aa',
         lang: 'it',
-        city: 'Toronto, ON',
+        city: 'Bologna, IT',
         placeTarget: '.weather-place',
-        units: 'f',
+        units: 'c',
         descriptionTarget: '.weather-description',
         minTemperatureTarget: '.weather-min-temperature',
         maxTemperatureTarget: '.weather-max-temperature',
         windSpeedTarget: '.weather-wind-speed',
         humidityTarget: '.weather-humidity',
-        sunriseTarget: '.weather-sunrise',
-        sunsetTarget: '.weather-sunset',
         iconTarget: '.weather-icon',
-        customIcons: '/img/icons/weather/',
+        customIcons: '/res/weather/',
         success: function() {
-            $('.weather-temperature').show();
+            $('.weather-wrapper').show();
         },
-        error: function(message) {
-            console.log(message);
+        error: function() {
+            console.log("Errore caricamento dati meteo");
         }
     });
 });
