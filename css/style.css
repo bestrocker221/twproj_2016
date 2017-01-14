@@ -820,6 +820,8 @@ footer{
 
 table {
     padding-top: 10px;
+    table-layout: fixed;
+    word-wrap:break-word;
 }
 
 .list tr:hover td{
