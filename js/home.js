@@ -552,6 +552,7 @@ function showRows(table, n) {
 function loadModal() {
     if(!$('.result-modal').length) {
         $(document.body).append("<div id='result-modal'></div>");
+    } else {
+        $("#result-modal").load("modal.html");
     }
-    $("#result-modal").load("modal.html");
 }

@@ -43,7 +43,7 @@ $(document).ready(function () {
      */
     $("#table_id tbody").on("click", "tr", function () {
         $(".modal-title").html(t_data.row(this).data()[0]);
-        $(".modal-body").html(t_data.row(this).data()[1]);
+        $(".modal-body").html("<p>"+ t_data.row(this).data()[2] + "</p><p><em>" + t_data.row(this).data()[1]+"</em></p>");
         $("#myModal").modal('show');
     });
 });
