@@ -294,7 +294,7 @@ $(document).ready(function () {
                         //inserisci location
                         e.preventDefault();
 
-                        $(".modal-title").html($(this).find("strong").text());
+                        $(".modal-title").html($(this).find("strong#not-title").text());
                         $(".modal-body").html($(this).find("p:odd").text());
                         $("#myModal").modal('show');
                     });
