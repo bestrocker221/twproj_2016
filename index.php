@@ -22,22 +22,7 @@ if (checkLogin()){
 <body>
 <div class="se-pre-con"></div>
 
-<header>
-    <div class="container titlebox" >
-        <nav class="navbar navbar-default" id="nav-title" style="margin-bottom: 0;">
-            <div class="container-fluid">
-                <div class="brand-centered myTrajanFont">
-                    <a class="navbar-brand" href="">
-                        <img id="header-image" src="res/logo-almamater.png" alt="Alma Mater Studiorum">
-                    </a>
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-            <hr style="opacity: 0;margin-top: 60px; margin-bottom: 0px">
-            <!--/.container-fluid -->
-        </nav>
-    </div>
-</header>
+<?php include "pages/header.html"?>
 
 <div class="container-fluid">
     <div id="wrapper" class="toggled row" >
@@ -80,7 +65,9 @@ if (checkLogin()){
                     </ul>
                 </nav>
         <!-- /#sidebar-wrapper -->
+
         <div class="col-lg-12">
+            <!-- MainNavbar -->
             <nav>
                 <div class="row" id="nav-options" style="z-index:100">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 myHamb">
@@ -179,6 +166,7 @@ if (checkLogin()){
                     <!-- /#Notifiche -->
                 </div>
             </nav>
+            <!-- /#MainNavbar -->
             <div class="row" style="margin-top: 60px; z-index: -1">
                 <!-- Page Content -->
                 <div id="page-content-wrapper">
@@ -193,16 +181,18 @@ if (checkLogin()){
                                 </div>
                                 <!-- /#Breadcrumbs -->
                                 <!-- Interchangeable content -->
-                                <div id="main-content" class="row">
-
-                                </div>
-
+                                <section>
+                                    <div id="main-content" class="row"></div>
+                                </section>
                                 <!-- /#Interchangeable content -->
                             </div>
                         </div>
-                        <!-- Footer -->
-                        <div id="footer-content" class="row"></div>
+                        <!-- Footer-->
+                        <div id="footer-content" class="row">
+                            <?php include "pages/footer.html";?>
+                        </div>
                         <!-- /#Footer -->
+
                     </div>
                 </div>
                 <!-- /#page-content-wrapper -->

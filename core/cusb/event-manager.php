@@ -44,6 +44,13 @@ if(checkLogin()) {
                     $temp['iscritto'] = "yes";
                     unset($temp2[$$temp['id_ev']]);
                 }
+                $field = "select name, place from Field where ID_field='".$row['ID_field']."'";
+                $fres = $db->query($field);
+                if($fres->num_rows == 1){
+                    $r = $fres->fetch_assoc();
+                    $temp['field_name'] = $r['name'];
+                    $temp['field_place'] = $r['place'];
+                }
                 array_push($tot, $temp);
             }
         } else {
