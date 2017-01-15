@@ -849,6 +849,7 @@ table {
     max-width: 310px;
     float: right;
     display: inline-block;
+    /*height: 500px;*/
     /*margin-right: 19px;*/
 }
 #calendar-title{
@@ -858,9 +859,18 @@ table {
 }
 
 .fc-bg td:hover,
-.fc-content-skeleton > table > thead > tr > td:hover,
-.fc-content-skeleton > table > tbody > tr > td:hover{
+.fc-content-skeleton  table  thead  tr  td:hover,
+.fc-content-skeleton  table  tbody  tr  td:hover{
     background-color: #ffbb88;
+}
+
+.fc-scroller {
+    overflow-y: hidden !important;
+}
+
+.fc-day-grid-container.fc-scroller {
+    height: auto!important;
+    overflow-y: auto;
 }
 
 /*********************************
