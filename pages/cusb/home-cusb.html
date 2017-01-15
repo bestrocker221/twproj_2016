@@ -10,18 +10,35 @@
         <div class="row">
             <div class="col-sm-5 col-md-5 col-lg-offset-2 col-lg-4">
                 <div class="info-wrapper">
-                    <p>
-                        <span id="nex-tourn"></span>
-                        <span id="number-tourn"></span>
-                    </p>
-                    <p>
-                        <span id="nex-event"></span>
-                        <span id="number-event"></span>
-                    </p>
-                    <p>
-                        <span id="nex-training"></span>
-                        <span id="number-training"></span>
-                    </p>
+                    <table class="table table-hover">
+                        <caption>Informazioni</caption>
+                        <tbody>
+                            <tr>
+                                <td>Prossimo torneo:</td>
+                                <td id="nex-tourn"></td>
+                            </tr>
+                            <tr>
+                                <td>Tornei partecipati:</td>
+                                <td id="number-tourn"></td>
+                            </tr>
+                            <tr>
+                                <td>Prossimo evento:</td>
+                                <td id="nex-event"></td>
+                            </tr>
+                            <tr>
+                                <td>Eventi partecipati:</td>
+                                <td id="number-event"></td>
+                            </tr>
+                            <tr>
+                                <td>Prossimo allenamento:</td>
+                                <td id="nex-training"></td>
+                            </tr>
+                            <tr>
+                                <td>Allenamenti partecipati:</td>
+                                <td id="number-training"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="col-sm-5 col-md-5 col-lg-4">
@@ -132,19 +149,30 @@ $( document ).ready(function() {
         json = JSON.parse(data);
         //Tournaments
         if (json[0].length > 0) {
-            $("#nex-tourn").html("Prossimo torneo: "+"<a>"+json[0][0]+"</a>");
+            $("#nex-tourn").html("<a>"+json[0][0]+"</a>");
+        }
+
+        if (json[1].length > 0) {
+            $("#number-tourn").html(json[0]);
         }
 
         //Events
         if (json[2].length > 0) {
-            $("#nex-event").html("Prossimo evento: "+"<a>"+json[2][0]+"</a>");
+            $("#nex-event").html("<a>"+json[2][0]+"</a>");
+        }
+
+        if (json[3].length > 0) {
+            $("#number-tourn").html(json[5]);
         }
 
         //Trainings
         if (json[4].length > 0) {
-            $("#nex-training").html("Prossimo allenamento di: "+"<a>"+json[4][0]+"</a>");
+            $("#nex-training").html("<a>"+json[4][0]+"</a>");
         }
 
+        if (json[5].length > 0) {
+            $("#number-training").html(json[5]);
+        }
     });
 
     loadModal();

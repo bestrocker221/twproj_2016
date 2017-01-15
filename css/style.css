@@ -957,7 +957,7 @@ table {
     BREADCRUMB
 
  ********************/
-
+/*
 .breadcrumb {
     background-color: transparent;
     border: 1px solid lightgrey;
@@ -967,7 +967,7 @@ table {
 .breadcrumb a {
     color: black;
 }
-
+*/
 /******************
 
        JUMBOTRON
@@ -1027,5 +1027,5 @@ table {
 }
 
 .info-wrapper {
-    font-size: 115%;
+    font-size: 110%;
 }
