@@ -78,12 +78,27 @@ if(checkLogin()) {
 
                 $sqlB = "UPDATE Tournaments SET n_player=n_player+'1' WHERE ID_torneo='$id_tourn'";
                 if ($db->query($sqlB) === true) {
-                    echo "tutte e due le query eseguite correttamente";
+                    //insert into calendar
+                    $sql = "INSERT INTO `general_events`(`id_member`, `title`, `start`) 
+                                VALUES ('$id',
+                                  (SELECT title
+                                    FROM Tournaments
+                                    WHERE ID_torneo='$id_tourn'),
+                                  (SELECT date
+                                    FROM Tournaments
+                                    WHERE ID_torneo='$id_tourn'))";
+                    if($db->query($sql) === TRUE) {
+                        echo "tutte e due le query eseguite correttamente";
+                    } else {
+                        echo "ERROR " . $db->errno;
+                    }
                 }
 
             } else {
                 echo "ERROR " . $db->errno;
             }
+
+            //insert into calendar TODO
         }
 
     }

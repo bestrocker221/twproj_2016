@@ -71,14 +71,30 @@ if(checkLogin()) {
 
                 $sqlB = "UPDATE Events SET n_partec=n_partec+'1' WHERE ID_EV='$id_ev'";
                 if ($db->query($sqlB) === true) {
-                    echo "tutte e due le query eseguite correttamente";
+
+                    //insert into calendar
+                    $sql = "INSERT INTO `general_events`(`id_member`, `title`, `start`) 
+                                VALUES ('$id',
+                                  (SELECT description
+                                    FROM Events
+                                    WHERE ID_EV='$id_ev'),
+                                  (SELECT date
+                                    FROM Events
+                                    WHERE ID_EV='$id_ev'))";
+                    if($db->query($sql) === TRUE) {
+                        echo "tutte e due le query eseguite correttamente";
+                    } else {
+                        echo "ERROR " . $db->errno;
+                    }
+
+                } else {
+                    echo "ERROR " . $db->errno;
                 }
 
             } else {
                 echo "ERROR " . $db->errno;
             }
         }
-
     }
 }
 $db->close();

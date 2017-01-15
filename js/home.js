@@ -33,7 +33,7 @@ $(document).ready(function () {
                     $("#news-li-p", $template).text(c[n]["text"]);
                     $("#news-li-data", $template).text(c[n]["date"]);
 
-                    //bind? TODO?
+                    //bind link to info? TODO?
                     $template.insertAfter("#news-li-template");
                 }
 

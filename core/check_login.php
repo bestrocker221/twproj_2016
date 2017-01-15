@@ -13,7 +13,8 @@ secure_session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     if(checkBruteforce($_SERVER['REMOTE_ADDR'])){
-        echo "BANN";//TODO
+        echo "BANN";
+        //TODO
         die;
     }
     $username = sanitize($_POST['username'],true);

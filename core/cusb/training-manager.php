@@ -66,11 +66,25 @@ if(checkLogin()) {
 
             $sql = "INSERT INTO follow_Tr (ID_training,ID_Member) VALUES ('$id_training','$id')";
             if ($db->query($sql) === true) {
-                echo "OK";
+                //insert into calendar
+                $sql = "INSERT INTO `general_events`(`id_member`, `title`, `start`) 
+                                VALUES ('$id',
+                                  (SELECT of_what
+                                    FROM Trainings
+                                    WHERE ID_training='$id_training'),
+                                  (SELECT date
+                                    FROM Trainings
+                                    WHERE ID_training='$id_training'))";
+                if($db->query($sql) === TRUE) {
+                    echo "tutte e due le query eseguite correttamente";
+                } else {
+                    echo "ERROR " . $db->errno;
+                }
             } else {
                 echo "ERROR " . $db->errno;
             }
         }
+        //insert into calendar TODO
 
     }
 }
