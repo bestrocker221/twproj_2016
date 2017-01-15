@@ -127,7 +127,7 @@ $( document ).ready(function() {
      4 = array prox allen con dati
      5 = tot allenamenti partecipati
      */
-    var json
+    var json;
     $.get("/core/cusb/main-page-info.php", function (data) {
         json = JSON.parse(data);
         //Tournaments
@@ -137,12 +137,12 @@ $( document ).ready(function() {
 
         //Events
         if (json[2].length > 0) {
-            $("#nex-event").text("Prossimo evento: "+json[2][0]);
+            $("#nex-event").html("Prossimo evento: "+"<a>"+json[2][0]+"</a>");
         }
 
         //Trainings
         if (json[4].length > 0) {
-            $("#nex-training").text("Prossimo allenamento di: "+json[4][0]);
+            $("#nex-training").html("Prossimo allenamento di: "+"<a>"+json[4][0]+"</a>");
         }
 
     });

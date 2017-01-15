@@ -1025,3 +1025,7 @@ table {
     margin: auto;
     padding-right: 2%;
 }
+
+.info-wrapper {
+    font-size: 115%;
+}
