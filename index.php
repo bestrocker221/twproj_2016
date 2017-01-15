@@ -181,9 +181,9 @@ if (checkLogin()){
                                 </div>
                                 <!-- /#Breadcrumbs -->
                                 <!-- Interchangeable content -->
-                                <section>
+                                <main>
                                     <div id="main-content" class="row"></div>
-                                </section>
+                                </main>
                                 <!-- /#Interchangeable content -->
                             </div>
                         </div>
