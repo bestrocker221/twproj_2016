@@ -111,39 +111,15 @@ li.message-preview {
     transition: background-color 0.3s linear;
     background-color: lightblue;
 }
-/* old
+
 #header-image{
     position: absolute;
     width: 50%;
     height: auto;
     right: 27%;
-}
- */
-
-#header-image {
-    width: 96%;
-    height: 200%;
-    margin-right: 25%;
-    margin-left: 25%;
+    top:-18px;
 }
 
-@media (max-width:769px){
-    #header-image {
-        width: 70%;
-        height: 200%;
-        margin-right: 25%;
-        margin-left: 15%;
-    }
-}
-
-@media (max-width:425px){
-    #header-image {
-        width: 115%;
-        height: 200%;
-        margin-right: 25%;
-        margin-left: -8%;
-    }
-}
 
 hr{
     margin-top: 0;
@@ -200,9 +176,10 @@ html { height: 100%;}
 
 /*Logo with Text*/
 .titlebox .navbar-brand {
+    /*
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex;*/
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -213,9 +190,10 @@ html { height: 100%;}
 
 /* Center with Flexbox and Text*/
 .brand-centered {
+    /*
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex;*/
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -225,9 +203,10 @@ html { height: 100%;}
   top: 0;
 }
 .brand-centered .navbar-brand {
+    /*
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: flex;*/
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -241,6 +220,10 @@ html { height: 100%;}
         position: absolute ;
         background-color: white;
         margin-top: 9px;
+    }
+
+    #header-image{
+        top:0;
     }
 
     .navbar-nav>li>.dropdown-menu {
