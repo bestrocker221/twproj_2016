@@ -1004,16 +1004,16 @@ table {
  ************/
 
 .wather-wrapper {
+
     background-color: #a6e1ec;
-    /*width: auto;
-    height: inherit;*/
-    text-align: left;
+    text-align: center;
     padding: 1% 1% 1% 4%;
     color: #526ccd;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 50px;
     margin-bottom: 5%;
-    text-shadow: 2px 2px lightgrey;
+    width: 180px;
+    text-shadow:2px 2px lightgreen;
 }
 
 .wather-wrapper span {
