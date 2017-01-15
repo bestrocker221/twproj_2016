@@ -111,13 +111,40 @@ li.message-preview {
     transition: background-color 0.3s linear;
     background-color: lightblue;
 }
-
+/* old
 #header-image{
     position: absolute;
     width: 50%;
     height: auto;
     right: 27%;
 }
+ */
+
+#header-image {
+    width: 96%;
+    height: 200%;
+    margin-right: 25%;
+    margin-left: 25%;
+}
+
+@media (max-width:769px){
+    #header-image {
+        width: 70%;
+        height: 200%;
+        margin-right: 25%;
+        margin-left: 15%;
+    }
+}
+
+@media (max-width:425px){
+    #header-image {
+        width: 115%;
+        height: 200%;
+        margin-right: 25%;
+        margin-left: -8%;
+    }
+}
+
 hr{
     margin-top: 0;
     margin-bottom:0;
@@ -224,7 +251,6 @@ html { height: 100%;}
     #logo-nav{
         display: none !important;
     }
-
 }
 @media (max-width:1080px){
     #logo-nav{
@@ -856,12 +882,6 @@ table {
     /*font-family: 'Cinzel', serif;*/
     font-size:22px !important;
     /*margin-bottom: 15px;*/
-}
-
-.fc-bg td:hover,
-.fc-content-skeleton  table  thead  tr  td:hover,
-.fc-content-skeleton  table  tbody  tr  td:hover{
-    background-color: #ffbb88;
 }
 
 .fc-scroller {
