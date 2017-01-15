@@ -322,7 +322,6 @@ $(document).ready(function () {
  */
 function loadProfileInfo(){
     $.get("core/info.php", function (e) {
-
         var data = JSON.parse(e);
 
         $("#name").text(data.surname + " " +data.name);
@@ -333,6 +332,7 @@ function loadProfileInfo(){
         //$("#department");
         $("#matr").text(data.matr);
         $("#profile-name").text(data.name);
+        $("#surname").text(data.surname);
         $("#profile-email").text(data.username);
         $("#surname").text(data.surname);
         //$("#email-private");

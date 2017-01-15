@@ -5,7 +5,7 @@ if (checkLogin()){
     header("location: /index.php");
     echo "fatto";
 } else {
-    echo "user: lampa@dina.it</br>pwd: lampadina";
+    echo "user: lampa.dina@studio.unibo.it</br>pwd: lampadina";
 }
 ?>
 <!DOCTYPE html>
