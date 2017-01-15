@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         setcookie('session', "",
             time()+$cookie_time,$sess_cookie["path"],$sess_cookie["domain"],
             $sess_cookie["secure"],true);
+
         $_SESSION["last_login"] = getLastLogin($username);
 
         logLogin($username,$_SERVER['REMOTE_ADDR']);
@@ -40,11 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         }
     } else {
         failedLoginLog($username,$_POST['password'],$_SERVER['REMOTE_ADDR']);
-
         $_SESSION["logged"]=false;
-
         echo "LOGIN FAILED";
     }
 }
-
 $db->close();

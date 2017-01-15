@@ -10,13 +10,17 @@ require_once '../functions.php';
 
 secure_session_start();
 
+/*
+ * Check user permissions
+ */
 if(checkLogin()) {
 
     $id = $_SESSION['user_id'];
 
+    /*
+     * Get all tournaments data
+     */
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
-        //$id = 6;
 
         $sqlA = "SELECT * FROM Tournaments";
         $sqlC = "SELECT * from Tourn_Subsc WHERE ID_Member='$id'";
@@ -64,11 +68,11 @@ if(checkLogin()) {
 
         $tot = json_encode($tot);
         echo $tot;
-
-
-    } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
-        //$id = 6;
+    }
+    /*
+     * Else post data to db (tourn subscription)
+     */
+    else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         if (isset($_POST['id-tourn'])) {
             $id_tourn = ($_POST['id-tourn']);
@@ -93,14 +97,10 @@ if(checkLogin()) {
                         echo "ERROR " . $db->errno;
                     }
                 }
-
             } else {
                 echo "ERROR " . $db->errno;
             }
-
-            //insert into calendar TODO
         }
-
     }
 }
 $db->close();

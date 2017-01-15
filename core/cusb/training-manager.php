@@ -10,13 +10,17 @@ require_once '../functions.php';
 
 secure_session_start();
 
+/*
+ * Check user permissions
+ */
 if(checkLogin()) {
 
     $id = $_SESSION['user_id'];
 
+    /*
+     * Get trainings data
+     */
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
-        //$id = 6;
 
         $sqlA = "SELECT * FROM Trainings";
         $sqlB = "SELECT ID_training from follow_Tr WHERE ID_Member='$id'";
@@ -57,9 +61,12 @@ if(checkLogin()) {
         }
         $tot = json_encode($tot);
         echo $tot;
-    } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-        //$id = 6;
+    }
+    /*
+     * Else post data to db
+     */
+    else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         if (isset($_POST['id-training'])) {
             $id_training = ($_POST['id-training']);
@@ -84,9 +91,6 @@ if(checkLogin()) {
                 echo "ERROR " . $db->errno;
             }
         }
-        //insert into calendar TODO
-
     }
 }
-
 $db->close();
