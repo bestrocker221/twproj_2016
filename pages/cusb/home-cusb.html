@@ -8,7 +8,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-offset-6 col-lg-6">
+            <div class="col-sm-5 col-md-5 col-lg-offset-2 col-lg-4">
+                <div class="info-wrapper">
+                    <p>
+                        <span id="nex-tourn"></span>
+                        <span id="number-tourn"></span>
+                    </p>
+                    <p>
+                        <span id="nex-event"></span>
+                        <span id="number-event"></span>
+                    </p>
+                    <p>
+                        <span id="nex-training"></span>
+                        <span id="number-training"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-4">
                 <div class="wather-wrapper">
                     <img class="weather-icon" alt="wheater icon">
                     <p>Città</br>
@@ -86,11 +102,14 @@
 <script src="/js/weather/openWeather.js"></script>
 <script>
 $( document ).ready(function() {
+
+    /**
+     * Thumbnails effect
+     */
     $("[rel='tooltip']").tooltip();
     $(this).find('.caption').slideDown(250); //.fadeIn(250)
 
     $('.thumbnail').hover(
-
         function(){
             $(this).find('.caption').fadeOut(250); //.fadeOut(205)
 
@@ -99,6 +118,54 @@ $( document ).ready(function() {
             $(this).find('.caption').fadeIn(250); //.fadeOut(205)
         }
     );
+
+    /**
+     * [0] = array prox torneo con dati
+     1 = tot tornei partecipati
+     [2] = array prox evento con dati
+     3 = tot event partecipati
+     4 = array prox allen con dati
+     5 = tot allenamenti partecipati
+     */
+    var json
+    $.get("/core/cusb/main-page-info.php", function (data) {
+        json = JSON.parse(data);
+        //Tournaments
+        if (json[0].length > 0) {
+            $("#nex-tourn").html("Prossimo torneo: "+"<a>"+json[0][0]+"</a>");
+        }
+
+        //Events
+        if (json[2].length > 0) {
+            $("#nex-event").text("Prossimo evento: "+json[2][0]);
+        }
+
+        //Trainings
+        if (json[4].length > 0) {
+            $("#nex-training").text("Prossimo allenamento di: "+json[4][0]);
+        }
+
+    });
+
+    loadModal();
+
+    $("#nex-tourn").on('click',function () {
+        $(".modal-title").html(json[0][0]);
+        $(".modal-body").html("<p>Data: "+ json[0][1] + "</p><p>Via: " + json[0][2]+"</p>");
+        $("#myModal").modal('show');
+    });
+
+    $("#nex-event").on('click',function () {
+        $(".modal-title").html(json[2][0]);
+        $(".modal-body").html("<p>Data: "+ json[2][1] + "</p><p>Via: " + json[2][2]+"</p>");
+        $("#myModal").modal('show');
+    });
+
+    $("#nex-training").on('click',function () {
+        $(".modal-title").html(json[4][0]);
+        $(".modal-body").html("<p>Data: "+ json[4][1] +"</p>");
+        $("#myModal").modal('show');
+    });
 
     $('.weather-temperature').openWeather({
         key: 'c9d49310f8023ee2617a7634de23c2aa',

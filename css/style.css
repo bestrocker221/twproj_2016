@@ -959,7 +959,13 @@ table {
  ********************/
 
 .breadcrumb {
-    /*background-color: transparent;*/
+    background-color: transparent;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+}
+
+.breadcrumb a {
+    color: black;
 }
 
 /******************
@@ -999,8 +1005,8 @@ table {
 
 .wather-wrapper {
     background-color: #a6e1ec;
-    width: inherit;
-    height: inherit;
+    /*width: auto;
+    height: inherit;*/
     text-align: left;
     padding: 1% 1% 1% 4%;
     color: #526ccd;
