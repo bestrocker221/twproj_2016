@@ -14,6 +14,9 @@ if(checkLogin()) {
 
     $id = $_SESSION['user_id'];
 
+    /*
+     * post a new notify to db
+     */
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         //crea nuova notifica
@@ -39,7 +42,7 @@ if(checkLogin()) {
             } else {
                 echo "ERROR " . $db->error;
             }
-        } //aggiunge +1 alla visualizzazione della notifica (SISTEMA CON SESSION)
+        } //aggiunge +1 alla visualizzazione della notifica
         else if (isset($_POST['id-notifica'])) {
             $id_notifica = $_POST['id-notifica'];
             $sql = "UPDATE notifications SET clicked=clicked + '1' WHERE id='$id_notifica'";
@@ -55,7 +58,6 @@ if(checkLogin()) {
         //riceve notifiche --> aggiusta per richieste notifiche (add total)
 
         if (isset($_GET["id"])) {
-            //$id = $_GET['id'];
 
             $sql = "SELECT title,description, date, showed, clicked,id, sender FROM notifications WHERE id_member='$id' ORDER BY date DESC";
             $sql2 = "SELECT COUNT(*) FROM notifications WHERE id_member='$id' and showed='0'";

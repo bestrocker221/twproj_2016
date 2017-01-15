@@ -11,7 +11,13 @@ require_once 'functions.php';
 
 secure_session_start();
 
+/*
+ * Check user permissions
+ */
 if(checkLogin()) {
+    /*
+     * post a new event to db
+     */
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(isset($_POST['text']) && isset($_POST['date']) && isset($_POST['id'])){
 
@@ -28,9 +34,9 @@ if(checkLogin()) {
         }
 
     } else {
-//make request to the server, must retrieve json format and with
-
-
+        /*
+         * make request to the server, must retrieve json format
+         */
         $tot = array();
 
         $stmt = $db->prepare("SELECT id, title, url, start, end FROM `general_events` WHERE id_member=?");
@@ -55,10 +61,8 @@ if(checkLogin()) {
             echo "num row" . $result->num_rows;
         }
         $stmt->close();
-
         $tot = json_encode($tot);
         echo $tot;
     }
 }
-
 $db->close();

@@ -19,7 +19,8 @@ function secure_session_start(){
     $httponly = true;
     ini_set('session.use_only_cookies', 1);
     $cookie_params = session_get_cookie_params();
-    session_set_cookie_params($cookie_params["lifetime"],$cookie_params["path"],$cookie_params["domain"],$secure, $httponly);
+    session_set_cookie_params($cookie_params["lifetime"],$cookie_params["path"],
+        $cookie_params["domain"],$secure, $httponly);
     session_name($sec_session_name);
     session_start();
     session_regenerate_id();
@@ -33,7 +34,8 @@ Funzione che aggiunge al db un log, quando un utente cerca di effettuare login m
 function failedLoginLog($username,$password,$ip_addr){
     global $db;
     $time = time();
-    $q = "INSERT into `login_attempts` (user_id,password_tried,time,ip) values ('$username','$password','$time','$ip_addr')";
+    $q = "INSERT into `login_attempts` (user_id,password_tried,time,ip) 
+            values ('$username','$password','$time','$ip_addr')";
     if(!$db->query($q)){
         die("error failedLogin");
     }
@@ -69,6 +71,10 @@ function cacheLoginInfo($row){
 
 }
 
+/**
+ * Check if a user has permissions (logged in)
+ * @return bool
+ */
 function checkLogin(){
     global $db;
     if(isset($_SESSION['user_id'], $_SESSION['username'], $_SESSION['login_string'])) {
@@ -154,16 +160,6 @@ function getLoginInfo($username,$password /*X*/){
     return false;
 }
 
-/*
-function retrieve_password($username, $email, $authority){
-    if ($authority=="organizer") $param="Organizer";
-    if ($authority=="trainer") $param="Trainer";
-    if ($authority=="member") $param="member";
-    $q = mysql_query("SELECT password FROM `".$param."` WHERE username='$username' AND email='$email'") or die("Query non valida: " . mysql_error());
-    $ret = mysql_fetch_array($q);
-    return $ret["password"];
-}*/
-
 function getLastLogin($username){
     global $db;
     $q = "SELECT `data` FROM `login_history` where member='$username' ORDER BY data DESC LIMIT 1";
@@ -184,7 +180,6 @@ function checkBruteforce($ip_addr){
     global $db;
     $limit_time = time() - 120;			 //tempo limite per user-block-out
     $sql = "SELECT `time` FROM `login_attempts` WHERE ip='$ip_addr' AND `time` >'$limit_time'";
-    //$query = mysql_query("SELECT `time` FROM `login_attempts` WHERE ip='$ip_addr' AND `time` >'$limit_time'") or die ("ERROR QUERY ". mysql_error());
     $res = $db->query($sql);
     $row = $res->num_rows;
     if ( $row > 3 ) {

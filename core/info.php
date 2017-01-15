@@ -12,6 +12,9 @@ require_once 'functions.php';
 secure_session_start();
 
 if(checkLogin()){
+    /*
+     * retrieve profile info
+     */
     if($_SERVER['REQUEST_METHOD'] == "GET") {
 
         $temp = array();

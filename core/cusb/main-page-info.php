@@ -8,19 +8,20 @@
 require_once '../db_conn.php';
 require_once '../functions.php';
 
+/*
+ * Check user permissions
+ */
 if(checkLogin()){
 
+    /*
+     * get info for main-cusb page
+     */
     if($_SERVER['REQUEST_METHOD'] == "GET"){
 
         $id = $_SESSION['user_id'];
         $tot = array();
 
         //richiedo qual'è il prossimo torneo e allenamento ed evento disponibile
-        $sql = "SELECT title, date from Tournaments T
-                  INNER JOIN Tourn_Subsc S ON S.ID_torneo = T.ID_torneo
-                  WHERE S.ID_Member = '$id' 
-                  AND date >'" . date("Y M D") ."'ORDER BY date ASC  LIMIT 1 ";
-
         $queries = array(
 
             "SELECT T.title, T.date, F.place 
@@ -79,8 +80,6 @@ if(checkLogin()){
                 echo $s."error" . $db->error;
             }
         }
-
         echo json_encode($tot);
     }
-
 }

@@ -10,13 +10,18 @@ require_once '../functions.php';
 
 secure_session_start();
 
+/*
+ * Check user permissions
+ */
 if(checkLogin()) {
 
+    //retrieve user id
     $id = $_SESSION['user_id'];
 
+    /*
+     * get all events data from db
+     */
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
-        //$id = 6;
 
         $sqlA = "SELECT * FROM Events";
         $sqlB = "SELECT ID_EV from follow_Ev WHERE ID_Member='$id'";
@@ -59,9 +64,11 @@ if(checkLogin()) {
         }
         $tot = json_encode($tot);
         echo $tot;
-    } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
-    // $id = 6;
+    }
+    /*
+     *  Else post data to db (API)
+     */
+    else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         if (isset($_POST['id-event'])) {
             $id_ev = ($_POST['id-event']);
@@ -72,7 +79,7 @@ if(checkLogin()) {
                 $sqlB = "UPDATE Events SET n_partec=n_partec+'1' WHERE ID_EV='$id_ev'";
                 if ($db->query($sqlB) === true) {
 
-                    //insert into calendar
+                    //insert into calendar (notification)
                     $sql = "INSERT INTO `general_events`(`id_member`, `title`, `start`) 
                                 VALUES ('$id',
                                   (SELECT description
@@ -86,11 +93,9 @@ if(checkLogin()) {
                     } else {
                         echo "ERROR " . $db->errno;
                     }
-
                 } else {
                     echo "ERROR " . $db->errno;
                 }
-
             } else {
                 echo "ERROR " . $db->errno;
             }
