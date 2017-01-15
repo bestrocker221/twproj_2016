@@ -81,9 +81,7 @@ $(document).ready(function () {
         var json = JSON.parse(data);
         for (var n = 0; n < json.length; n++) {
             var subscribed;
-            if(json[n]['iscritto'] == null){
-                n++;
-            } else {
+            if(json[n]['iscritto'] != null) {
                 tourn_data.row.add([
                     json[n]["title"],
                     json[n]["of_what"],
@@ -105,9 +103,7 @@ $(document).ready(function () {
     $.get("/core/cusb/training-manager.php", function (data) {
         var json = JSON.parse(data);
         for (var n = 0; n < json.length; n++) {
-            if(json[n]['iscritto'] != "yes"){
-                n++;
-            } else {
+            if(json[n]['iscritto'] == "yes"){
                 train_data.row.add([
                     json[n]["of_what"],
                     json[n]["date"],
@@ -127,14 +123,12 @@ $(document).ready(function () {
     $.get("/core/cusb/event-manager.php", function (data) {
         var json = JSON.parse(data);
         for (var n = 0; n < json.length; n++) {
-            if(json[n]['iscritto'] != "yes"){
-                n++;
-            } else {
+            if(json[n]['iscritto'] == "yes"){
                 event_data.row.add([
                     json[n]["description"],
                     json[n]["date"],
                     json[n]["n_partec"],
-                    json[n]["field_place"],
+                    json[n]["field_place"]
                 ]).draw();
             }
         }
