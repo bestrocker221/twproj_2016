@@ -8,22 +8,25 @@
             </div>
         </div>
         <div class="row">
-            <div class="wather-wrapper">
-                <img class="weather-icon" alt="wheater icon">
-                <p>Temperatura (max/min) </br>
-                    <span class="weather-temperature"></span>
-                    (<span class="weather-max-temperature"></span> / <span class="weather-min-temperature"></span>)
-                </p>
-                <p>Descrizione </br>
-                    <span class="weather-description"></span>
-                </p>
-                <p>Vento </br>
-                    <span class="weather-wind-speed"></span>
-                </p>
-                <p>
-                    Umidità </br>
-                    <span class="weather-humidity"></span>
-                </p>
+            <div class="col-lg-offset-6 col-lg-6">
+                <div class="wather-wrapper">
+                    <img class="weather-icon" alt="wheater icon">
+                    <p>Città</br>
+                        <span class="weather-place"></span>
+                    </p>
+                    <p>Temperatura</br>
+                        <span class="weather-temperature"></span>
+                    </p>
+                    <p>Descrizione</br>
+                        <span class="weather-description"></span>
+                    </p>
+                    <p>Vento</br>
+                        <span class="weather-wind-speed"></span>
+                    </p>
+                    <p>Umidità</br>
+                        <span class="weather-humidity"></span>
+                    </p>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -96,6 +99,7 @@ $( document ).ready(function() {
             $(this).find('.caption').fadeIn(250); //.fadeOut(205)
         }
     );
+
     $('.weather-temperature').openWeather({
         key: 'c9d49310f8023ee2617a7634de23c2aa',
         lang: 'it',
@@ -103,8 +107,6 @@ $( document ).ready(function() {
         placeTarget: '.weather-place',
         units: 'c',
         descriptionTarget: '.weather-description',
-        minTemperatureTarget: '.weather-min-temperature',
-        maxTemperatureTarget: '.weather-max-temperature',
         windSpeedTarget: '.weather-wind-speed',
         humidityTarget: '.weather-humidity',
         iconTarget: '.weather-icon',
