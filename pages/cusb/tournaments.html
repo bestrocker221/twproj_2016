@@ -39,6 +39,7 @@ $(document).ready(function () {
      * Add Table data
      */
     $.get("/core/cusb/tournaments-manager.php", function (data) {
+        console.log(data);
         var json = JSON.parse(data);
         for (var n = 0; n < json.length; n++) {
             var subscribed;
@@ -96,7 +97,9 @@ $(document).ready(function () {
      * Load page after subscription
      */
     $(document).on('click', '#subscribe', function () {
-        $.post("/core/cusb/tournaments-manager.php", {"id-tourn":row_id});
+        $.post("/core/cusb/tournaments-manager.php", {"id-tourn":row_id}, function (e) {
+            console.log(e);
+        });
         loadTournamentPage();
     });
 
