@@ -6,7 +6,8 @@
                 <p>Elenco degli eventi disponibili per gli studenti dell'ateneo di Bologna.</p>
                 <p>Clicca su un evento per iscriverti.</p>
             </div>
-            <table id="table_id" class="display table table-striped table-bordered">
+            <table id="table_id" class="display table table-striped table-bordered list">
+                <caption hidden>Eventi</caption>
                 <thead>
                 <tr>
                     <th>Nome</th>
@@ -36,9 +37,10 @@ $(document).ready(function () {
         for (var n = 0; n < json.length ; n++) {
             var subscribed;
             if(json[n]['iscritto'] == "yes"){
-                subscribed = "<span class='glyphicon glyphicon-ok'></span>";
+                subscribed = "<span class='glyphicon glyphicon-ok'></span>" +
+                    "<span class='sr-only'>Iscritto</span>";
             } else {
-                subscribed = "<span class='glyphicon glyphicon-remove'></span>";
+                subscribed = "<span class='glyphicon glyphicon-remove'></span>"+"<span class='sr-only'>Non iscritto</span>";
             }
 
             var rowNode = t_data
