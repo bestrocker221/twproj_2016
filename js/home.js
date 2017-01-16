@@ -496,7 +496,7 @@ $(document).on("scroll", function (height) {
 function initTable(table_id) {
     var t_data = 0;
 
-    if ( $.fn.dataTable.isDataTable( '#table_id' ) ) {
+    if ( $.fn.dataTable.isDataTable( '#' +table_id ) ) {
         t_data = $("#" + table_id).DataTable();
     }
     else {
