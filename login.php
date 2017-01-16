@@ -95,11 +95,11 @@ if (checkLogin()){
                                     <!-- error messages -->
                                     <div id="error-div" class="alert alert-danger alert-dismissible fade in"  style="display: none; margin-top: 10px;">
                                         <a href="#" class="close" aria-label="close">&times;</a>
-                                        <strong>Errore!</strong><span id="error-msg"> Mancano informazioni per procedere (minimo 8 caratteri) </span>
+                                        <strong>Errore!</strong><span id="error-msg1"> Mancano informazioni per procedere (minimo 8 caratteri) </span>
                                     </div>
                                     <div id="error-div2" class="alert alert-danger alert-dismissible fade in"  style="display: none; margin-top: 10px;">
                                         <a href="#" class="close" aria-label="close">&times;</a>
-                                        <strong>Errore!</strong><span id="error-msg"> Username o password errati. Riprova, hai al massimo 3 tentativi.</span>
+                                        <strong>Errore!</strong><span id="error-msg2"> Username o password errati. Riprova, hai al massimo 3 tentativi.</span>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
